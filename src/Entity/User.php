@@ -15,7 +15,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use ActivityLogBundle\Entity\Interfaces\StringableInterface;
 
 /**
- * A user, as unique signed in individual who might be a member of an organisation.
+ * A user, as unique signed in individual who might be a member of an organisation
  * 
  * @ORM\Entity
  * @ORM\Table(name="fos_user")
