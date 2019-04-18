@@ -12,14 +12,14 @@ parameters:
             description: Sandbox server
         info:
             description: |
-                Welkom inovator!, 
-                Fijn dat je de tijd en moeite hebt genomen om je te verdiepen in dit component 
+                Welkom inovator! 
+                Fijn dat je de tijd en moeite hebt genomen om je te verdiepen in dit component. 
                 
-                # Introduction                
-                De Trouwen component is ontwikkeld voor de gemeente Utrecht en heeft als doel het aansluiten [NLX](https://nlx.io/), volgens het [Common Ground](https://vng.nl/samen-organiseren/common-ground) principe, samen spelen, samen delen.
+                # Introductie                
+                Het "agenda" component is ontwikkeld voor de gemeente Utrecht en heeft als doel een agenda koppelen aan objecten uit andere componenten. Dit stelt je in staat om voor deze objecten afspraken en beschikbaarheid te tonen en bij te houden.
               
                 # Common ground en open source
-                Om het voor andere partijen zo makkelijk mogenlijk te maken dit component bieden we zo veel mogenlijk informatie openbaar aan.  
+                Om het voor alle partijen zo makkelijk mogenlijk te maken bieden we zo veel mogenlijk informatie openbaar aan over dit component.  
                 - [datamodel als pdf](/schema/datamodel.pdf)
                 - [datamodel als mwb](/schema/datamodel.mwb)
                 - [codebase op github](https://github.com/GemeenteUtrecht/agenda)
@@ -31,7 +31,7 @@ parameters:
                 Deze API is gedocumenteerd in het **OpenAPI format** 
                 De API bevat Cross-Origin Resource Sharing (CORS) en is geimplementeerd volgen de [W3C spec](https://www.w3.org/TR/cors/) standaarden. De API staat cross-domain communicatie van de browser toe. Alle responses hebben een "wildcard same-origin" dit maakt ze volledig publiekelijk en toegankelijk voor iedereen. Dat geld voor elke code op elke site.
 
-                # Authentication
+                # Authenticatie
 
                 De agenda heeft twee vormen van authenticatie:
                   - API Key
