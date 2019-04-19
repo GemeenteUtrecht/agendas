@@ -34,6 +34,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/afspraak",
  *  		"openapi_context" = {
+ * 				"summary" = "Haal een verzameling van afspraak resources op"
  *  		}
  *  	},
  *  	"post"={
@@ -41,6 +42,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"personen"={"groups"={"write"}},
  *      	"path"="/afspraak",
  *  		"openapi_context" = {
+ * 				"summary" = "Maak een afspraak resource aan"
  *  		}
  *  	}
  *  },
@@ -50,6 +52,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/afspraken/{id}",
  *  		"openapi_context" = {
+ * 				"summary" = "Haal specifieke afspraak resources op"
  *  		}
  *  	},
  *     "put"={
@@ -57,6 +60,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/afspraken/{id}",
  *  		"openapi_context" = {
+ * 				"summary" = "Vervang een specifieke afspraak resource"
  *  		}
  *  	},
  *     "delete"={
@@ -64,6 +68,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/afspraken/{id}",
  *  		"openapi_context" = {
+ * 				"summary" = "Verwijder een specifieke afspraak resource"
  *  		}
  *  	},
  *     "log"={
@@ -102,7 +107,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *     		"normalization_context"={"groups"={"read"}},
  *     		"denormalization_context"={"groups"={"write"}},
  *         	"openapi_context" = {
- *         		"summary" = "Versie teruggedraaid",
+ *         		"summary" = "Versie teruggedraaien",
  *         		"description" = "Herstel een eerdere versie van dit object. Dit is een destructieve actie die niet ongedaan kan worden gemaakt",
  *          	"consumes" = {
  *              	"application/json",

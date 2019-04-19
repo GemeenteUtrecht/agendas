@@ -32,6 +32,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/organisaties",
  *  		"openapi_context" = {
+ * 				"summary" = "Haal een verzameling van organisatie resources op"
  *  		}
  *  	},
  *  	"post"={
@@ -39,6 +40,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/organisaties",
  *  		"openapi_context" = {
+ * 				"summary" = "Maak een organisatie resource aan"
  *  		}
  *  	}
  *  },
@@ -48,6 +50,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/organisaties/{id}",
  *  		"openapi_context" = {
+ * 				"summary" = "Haal een specifieke organisatie resource op"
  *  		}
  *  	},
  *     "put"={
@@ -55,6 +58,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/organisaties/{id}",
  *  		"openapi_context" = {
+ * 				"summary" = "Vervang een specifieke organisatie resource"
  *  		}
  *  	},
  *     "delete"={
@@ -62,6 +66,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/organisaties/{id}",
  *  		"openapi_context" = {
+ * 				"summary" = "Verwijder een specifieke organisatie resource"
  *  		}
  *  	},
  *     "log"={
@@ -100,7 +105,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *     		"normalization_context"={"groups"={"read"}},
  *     		"denormalization_context"={"groups"={"write"}},
  *         	"openapi_context" = {
- *         		"summary" = "Versie terugdraaid",
+ *         		"summary" = "Versie terugdraaien",
  *         		"description" = "Herstel een eerdere versie van dit object. Dit is een destructieve actie die niet ongedaan kan worden gemaakt",
  *          	"consumes" = {
  *              	"application/json",
