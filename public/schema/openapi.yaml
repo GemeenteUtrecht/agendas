@@ -44,10 +44,10 @@ info:
 paths:
   /afspraak:
     get:
+      summary: 'Haal een verzameling van afspraak resources op'
       tags:
         - Afspraak
       operationId: getAfspraakCollection
-      summary: 'Retrieves the collection of Afspraak resources.'
       responses:
         200:
           description: 'Afspraak collection response'
@@ -69,10 +69,10 @@ paths:
                   $ref: '#/components/schemas/Afspraak'
       parameters: []
     post:
+      summary: 'Maak een afspraak resource aan'
       tags:
         - Afspraak
       operationId: postAfspraakCollection
-      summary: 'Creates a Afspraak resource.'
       responses:
         201:
           description: 'Afspraak resource created'
@@ -110,10 +110,10 @@ paths:
         description: 'The new Afspraak resource'
   '/afspraken/{id}':
     get:
+      summary: 'Haal specifieke afspraak resources op'
       tags:
         - Afspraak
       operationId: getAfspraakItem
-      summary: 'Retrieves a Afspraak resource.'
       parameters:
         -
           name: id
@@ -137,10 +137,10 @@ paths:
         404:
           description: 'Resource not found'
     put:
+      summary: 'Vervang een specifieke afspraak resource'
       tags:
         - Afspraak
       operationId: putAfspraakItem
-      summary: 'Replaces the Afspraak resource.'
       parameters:
         -
           name: id
@@ -178,10 +178,10 @@ paths:
               $ref: '#/components/schemas/Afspraak'
         description: 'The updated Afspraak resource'
     delete:
+      summary: 'Verwijder een specifieke afspraak resource'
       tags:
         - Afspraak
       operationId: deleteAfspraakItem
-      summary: 'Removes the Afspraak resource.'
       responses:
         204:
           description: 'Afspraak resource deleted'
@@ -222,7 +222,7 @@ paths:
             type: string
   '/afspraken/{id}/revert/{version}':
     post:
-      summary: 'Versie teruggedraaid'
+      summary: 'Versie teruggedraaien'
       description: 'Herstel een eerdere versie van dit object. Dit is een destructieve actie die niet ongedaan kan worden gemaakt'
       consumes:
         - application/json
@@ -477,7 +477,7 @@ paths:
             type: string
   '/agendas/{id}/revert/{version}':
     post:
-      summary: 'Versie teruggedraaid'
+      summary: 'Versie teruggedraaien'
       description: 'Herstel een eerdere versie van dit object. Dit is een destructieve actie die niet ongedaan kan worden gemaakt'
       consumes:
         - application/json
@@ -508,10 +508,10 @@ paths:
         description: 'The new Agenda resource'
   /beschikbaar:
     get:
+      summary: 'Haal een verzameling van beschikbaarheid resources op'
       tags:
         - Beschikbaar
       operationId: getBeschikbaarCollection
-      summary: 'Retrieves the collection of Beschikbaar resources.'
       responses:
         200:
           description: 'Beschikbaar collection response'
@@ -533,10 +533,10 @@ paths:
                   $ref: '#/components/schemas/Beschikbaar'
       parameters: []
     post:
+      summary: 'Maak een beschikbaarheid resource aan'
       tags:
         - Beschikbaar
       operationId: postBeschikbaarCollection
-      summary: 'Creates a Beschikbaar resource.'
       responses:
         201:
           description: 'Beschikbaar resource created'
@@ -574,10 +574,10 @@ paths:
         description: 'The new Beschikbaar resource'
   '/beschikbaarheden/{id}':
     get:
+      summary: 'Haal een specifieke beschikbaarheid resource op'
       tags:
         - Beschikbaar
       operationId: getBeschikbaarItem
-      summary: 'Retrieves a Beschikbaar resource.'
       parameters:
         -
           name: id
@@ -601,10 +601,10 @@ paths:
         404:
           description: 'Resource not found'
     put:
+      summary: 'Vervang een specifieke beschikbaarheid resource'
       tags:
         - Beschikbaar
       operationId: putBeschikbaarItem
-      summary: 'Replaces the Beschikbaar resource.'
       parameters:
         -
           name: id
@@ -642,10 +642,10 @@ paths:
               $ref: '#/components/schemas/Beschikbaar'
         description: 'The updated Beschikbaar resource'
     delete:
+      summary: 'Verwijder een beschikbaarheid resource'
       tags:
         - Beschikbaar
       operationId: deleteBeschikbaarItem
-      summary: 'Removes the Beschikbaar resource.'
       responses:
         204:
           description: 'Beschikbaar resource deleted'
@@ -686,7 +686,7 @@ paths:
             type: string
   '/beschikbaarheden/{id}/revert/{version}':
     post:
-      summary: 'Versie teruggedraaid'
+      summary: 'Versie teruggedraaien'
       description: 'Herstel een eerdere versie van dit object. Dit is een destructieve actie die niet ongedaan kan worden gemaakt'
       consumes:
         - application/json
@@ -717,10 +717,10 @@ paths:
         description: 'The new Beschikbaar resource'
   /organisaties:
     get:
+      summary: 'Haal een verzameling van organisatie resources op'
       tags:
         - Organisatie
       operationId: getOrganisatieCollection
-      summary: 'Retrieves the collection of Organisatie resources.'
       responses:
         200:
           description: 'Organisatie collection response'
@@ -742,10 +742,10 @@ paths:
                   $ref: '#/components/schemas/Organisatie'
       parameters: []
     post:
+      summary: 'Maak een organisatie resource aan'
       tags:
         - Organisatie
       operationId: postOrganisatieCollection
-      summary: 'Creates a Organisatie resource.'
       responses:
         201:
           description: 'Organisatie resource created'
@@ -783,10 +783,10 @@ paths:
         description: 'The new Organisatie resource'
   '/organisaties/{id}':
     get:
+      summary: 'Haal een specifieke organisatie resource op'
       tags:
         - Organisatie
       operationId: getOrganisatieItem
-      summary: 'Retrieves a Organisatie resource.'
       parameters:
         -
           name: id
@@ -810,10 +810,10 @@ paths:
         404:
           description: 'Resource not found'
     put:
+      summary: 'Vervang een specifieke organisatie resource'
       tags:
         - Organisatie
       operationId: putOrganisatieItem
-      summary: 'Replaces the Organisatie resource.'
       parameters:
         -
           name: id
@@ -851,10 +851,10 @@ paths:
               $ref: '#/components/schemas/Organisatie'
         description: 'The updated Organisatie resource'
     delete:
+      summary: 'Verwijder een specifieke organisatie resource'
       tags:
         - Organisatie
       operationId: deleteOrganisatieItem
-      summary: 'Removes the Organisatie resource.'
       responses:
         204:
           description: 'Organisatie resource deleted'
@@ -895,7 +895,7 @@ paths:
             type: string
   '/organisaties/{id}/revert/{version}':
     post:
-      summary: 'Versie terugdraaid'
+      summary: 'Versie terugdraaien'
       description: 'Herstel een eerdere versie van dit object. Dit is een destructieve actie die niet ongedaan kan worden gemaakt'
       consumes:
         - application/json
@@ -1104,7 +1104,7 @@ paths:
             type: string
   '/taken/{id}/revert/{version}':
     post:
-      summary: 'Versie terugdraaid'
+      summary: 'Versie terugdraaien'
       description: 'Herstel een eerdere versie van dit object. Dit is een destructieve actie die niet ongedaan kan worden gemaakt'
       consumes:
         - application/json
@@ -1559,7 +1559,7 @@ components:
         - naam
     Beschikbaar:
       type: object
-      description: Beschikbaar
+      description: Beschikbaarheid
       properties:
         id:
           description: 'Het identificatienummer van deze Afspraak <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
@@ -1632,7 +1632,7 @@ components:
         - beschrijving
     Beschikbaar-read:
       type: object
-      description: Beschikbaar
+      description: Beschikbaarheid
       properties:
         id:
           description: 'Het identificatienummer van deze Afspraak <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
@@ -1705,7 +1705,7 @@ components:
         - beschrijving
     Beschikbaar-write:
       type: object
-      description: Beschikbaar
+      description: Beschikbaarheid
       required:
         - naam
         - samenvatting
