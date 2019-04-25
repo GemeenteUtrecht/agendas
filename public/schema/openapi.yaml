@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
   description: |
-    Welkom inovator! 
+    Welkom inovator! <br> 
     Fijn dat je de tijd en moeite hebt genomen om je te verdiepen in dit component. 
     
     # Introductie                
@@ -209,7 +209,7 @@ paths:
         400:
           description: 'Ongeldige aanvraag'
         404:
-          description: 'Huwelijk of aanvraag niet gevonden'
+          description: 'Afspraak niet gevonden'
       tags:
         - Afspraak
       operationId: logAfspraakItem
@@ -235,7 +235,7 @@ paths:
         400:
           description: 'Ongeldige aanvraag'
         404:
-          description: 'Huwelijk of aanvraag niet gevonden'
+          description: 'Afspraak niet gevonden'
       tags:
         - Afspraak
       operationId: revertAfspraakItem
@@ -438,7 +438,7 @@ paths:
         400:
           description: 'Ongeldige aanvraag'
         404:
-          description: 'Huwelijk of locatie niet gevonden'
+          description: 'Agenda niet gevonden'
       tags:
         - Agenda
       operationId: availabilityAgendaItem
@@ -464,7 +464,7 @@ paths:
         400:
           description: 'Ongeldige aanvraag'
         404:
-          description: 'Huwelijk of aanvraag niet gevonden'
+          - 'Agenda niet gevonden'
       tags:
         - Agenda
       operationId: logAgendaItem
@@ -490,7 +490,7 @@ paths:
         400:
           description: 'Ongeldige aanvraag'
         404:
-          description: 'Huwelijk of aanvraag niet gevonden'
+          description: 'Agenda niet gevonden'
       tags:
         - Agenda
       operationId: revertAgendaItem
@@ -673,7 +673,7 @@ paths:
         400:
           description: 'Ongeldige aanvraag'
         404:
-          description: 'Huwelijk of aanvraag niet gevonden'
+          description: 'Beschikbaarheid niet gevonden'
       tags:
         - Beschikbaar
       operationId: logBeschikbaarItem
@@ -699,7 +699,7 @@ paths:
         400:
           description: 'Ongeldige aanvraag'
         404:
-          description: 'Huwelijk of aanvraag niet gevonden'
+          description: 'Beschikbaarheid niet gevonden'
       tags:
         - Beschikbaar
       operationId: revertBeschikbaarItem
@@ -1091,7 +1091,7 @@ paths:
         400:
           description: 'Ongeldige aanvraag'
         404:
-          description: 'Huwelijk of aanvraag niet gevonden'
+          description: 'Taak niet gevonden'
       tags:
         - Taak
       operationId: logTaakItem
@@ -1117,7 +1117,7 @@ paths:
         400:
           description: 'Ongeldige aanvraag'
         404:
-          description: 'Huwelijk of aanvraag niet gevonden'
+          description: 'Taak niet gevonden'
       tags:
         - Taak
       operationId: revertTaakItem
@@ -1776,7 +1776,7 @@ components:
           maxLength: 255
           minLength: 8
           example: john@do.nl
-          description: 'Het email addres van deze organisatie <br /><b>Schema:</b> <a href="https://schema.org/email">https://schema.org/email</a>'
+          description: 'Het emailadres van deze organisatie <br /><b>Schema:</b> <a href="https://schema.org/email">https://schema.org/email</a>'
         telefoonnummer:
           type: string
           maxLength: 255
@@ -1859,7 +1859,7 @@ components:
           maxLength: 255
           minLength: 8
           example: john@do.nl
-          description: 'Het email addres van deze organisatie <br /><b>Schema:</b> <a href="https://schema.org/email">https://schema.org/email</a>'
+          description: 'Het emailadres van deze organisatie <br /><b>Schema:</b> <a href="https://schema.org/email">https://schema.org/email</a>'
         telefoonnummer:
           type: string
           maxLength: 255
@@ -1932,7 +1932,7 @@ components:
           maxLength: 255
           minLength: 8
           example: john@do.nl
-          description: 'Het email addres van deze organisatie <br /><b>Schema:</b> <a href="https://schema.org/email">https://schema.org/email</a>'
+          description: 'Het emailadres van deze organisatie <br /><b>Schema:</b> <a href="https://schema.org/email">https://schema.org/email</a>'
         telefoonnummer:
           type: string
           maxLength: 255
@@ -2050,13 +2050,13 @@ components:
           type: string
     'User-user_user:read':
       type: object
-      description: 'A user, as unique signed in individual who might be a member of an organisation'
+      description: 'Een user of applicatie is een unique geidentificeerde entiteit wat een onderdeel van een organisatie kan zijn.'
       properties:
         fullname:
           type: string
     'User-user_user:write':
       type: object
-      description: 'A user, as unique signed in individual who might be a member of an organisation'
+      description: 'Een user of applicatie is een unique geidentificeerde entiteit wat een onderdeel van een organisatie kan zijn.'
       properties:
         fullname:
           type: string
@@ -2090,9 +2090,6 @@ tags:
   -
     name: Organisatie
     description: 'De Organisatie wordt gebruikt om standaard configuraties in te regelen.'
-  -
-    name: User
-    description: 'Een gebruiker, of in dit geval een applicatie gebonden aan een JWT token behorende tot een organisatie.'
 x-tagGroups:
   -
     name: Agenda
@@ -2102,4 +2099,3 @@ x-tagGroups:
       - Afspraak
       - Beschikbaar
       - Organisatie
-      - User

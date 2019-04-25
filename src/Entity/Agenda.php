@@ -125,7 +125,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *         				"description" = "Ongeldige aanvraag"
  *         			},
  *         			"404" = {
- *         				"description" = "Huwelijk of locatie niet gevonden"
+ *         				"description" = "Agenda niet gevonden"
  *         			}
  *            	}
  *         }
@@ -154,7 +154,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *         				"description" = "Ongeldige aanvraag"
  *         			},
  *         			"404" = {
- *         				"description" = "Huwelijk of aanvraag niet gevonden"
+ *         				"Agenda niet gevonden"
  *         			}
  *            	}            
  *         }
@@ -183,7 +183,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *         				"description" = "Ongeldige aanvraag"
  *         			},
  *         			"404" = {
- *         				"description" = "Huwelijk of aanvraag niet gevonden"
+ *         				"description" = "Agenda niet gevonden"
  *         			}
  *            	}            
  *         }

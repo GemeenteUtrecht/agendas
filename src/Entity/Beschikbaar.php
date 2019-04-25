@@ -95,7 +95,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *         				"description" = "Ongeldige aanvraag"
  *         			},
  *         			"404" = {
- *         				"description" = "Huwelijk of aanvraag niet gevonden"
+ *         				"description" = "Beschikbaarheid niet gevonden"
  *         			}
  *            	}            
  *         }
@@ -124,7 +124,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *         				"description" = "Ongeldige aanvraag"
  *         			},
  *         			"404" = {
- *         				"description" = "Huwelijk of aanvraag niet gevonden"
+ *         				"description" = "Beschikbaarheid niet gevonden"
  *         			}
  *            	}            
  *         }

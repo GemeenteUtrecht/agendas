@@ -12,7 +12,7 @@ parameters:
             description: Sandbox server
         info:
             description: |
-                Welkom inovator! 
+                Welkom inovator! <br> 
                 Fijn dat je de tijd en moeite hebt genomen om je te verdiepen in dit component. 
                 
                 # Introductie                
@@ -67,8 +67,8 @@ parameters:
               description: "Een moment van beschikbaarheid behorende bij een of meerdere agendas, totale beschikbaarheid wordt berekend op agenda niveau door beschikbaarheid en afspraken met elkaar te vergelijken."
             - name: Organisatie
               description: "De Organisatie wordt gebruikt om standaard configuraties in te regelen."  
-            - name: User
-              description: "Een gebruiker, of in dit geval een applicatie gebonden aan een JWT token behorende tot een organisatie."
+            # - name: User
+            #   description: "Een gebruiker, of in dit geval een applicatie gebonden aan een JWT token behorende tot een organisatie."
               # Grouping the endopoint  
         x-tagGroups:
             - name: Agenda
@@ -78,7 +78,7 @@ parameters:
               - Afspraak
               - Beschikbaar
               - Organisatie
-              - User
+              # - User
               
         
 services:
