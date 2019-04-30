@@ -12,14 +12,14 @@ parameters:
             description: Sandbox server
         info:
             description: |
-                Welkom inovator!, 
-                Fijn dat je de tijd en moeite hebt genomen om je te verdiepen in dit component 
+                Welkom inovator! <br> 
+                Fijn dat je de tijd en moeite hebt genomen om je te verdiepen in dit component. 
                 
-                # Introduction                
-                De Trouwen component is ontwikkeld voor de gemeente Utrecht en heeft als doel het aansluiten [NLX](https://nlx.io/), volgens het [Common Ground](https://vng.nl/samen-organiseren/common-ground) principe, samen spelen, samen delen.
+                # Introductie                
+                Het "agenda" component is ontwikkeld voor de gemeente Utrecht en heeft als doel een agenda koppelen aan objecten uit andere componenten. Dit stelt je in staat om voor deze objecten afspraken en beschikbaarheid te tonen en bij te houden.
               
                 # Common ground en open source
-                Om het voor andere partijen zo makkelijk mogenlijk te maken dit component bieden we zo veel mogenlijk informatie openbaar aan.  
+                Om het voor alle partijen zo makkelijk mogenlijk te maken bieden we zo veel mogenlijk informatie openbaar aan over dit component.  
                 - [datamodel als pdf](/schema/datamodel.pdf)
                 - [datamodel als mwb](/schema/datamodel.mwb)
                 - [codebase op github](https://github.com/GemeenteUtrecht/agenda)
@@ -30,9 +30,8 @@ parameters:
                 # OpenAPI Specification, Cross-Origin Resource Sharing en linked Data
                 Deze API is gedocumenteerd in het **OpenAPI format** 
                 De API bevat Cross-Origin Resource Sharing (CORS) en is geimplementeerd volgen de [W3C spec](https://www.w3.org/TR/cors/) standaarden. De API staat cross-domain communicatie van de browser toe. Alle responses hebben een "wildcard same-origin" dit maakt ze volledig publiekelijk en toegankelijk voor iedereen. Dat geld voor elke code op elke site.
-
-                # Authentication
-
+                
+                # Authenticatie
                 De agenda heeft twee vormen van authenticatie:
                   - API Key
                   - OAuth2
@@ -54,22 +53,22 @@ parameters:
                 name: EUPL 1.2
                 url: 'https://opensource.org/licenses/EUPL-1.2'
         externalDocs:
-            description: Find out more in depth information on the working of the zaakonline code base.
+            description: Vind hier meer informatie over de zaakonline code base.
             url: 'https://github.com/ConductionNL/zaakonline'
         tags:
               # The general endpoints  
             - name: Agenda
-              description: "De agenda wordt gebruikt om een momenten in de tijd of een tijdspanne weer tegeven"
+              description: "De agenda wordt gebruikt om een momenten in de tijd of een tijdspanne weer tegeven."
             - name: Taak
-              description: "En taak of to do binnen een agenda"
+              description: "En taak of 'to do' binnen een agenda."
             - name: Afspraak
-              description: "Een afspraak behorende bij een of meerdere agendas"
+              description: "Een afspraak behorende bij een of meerdere agendas."
             - name: Beschikbaar
-              description: "Een moment van beschikbaarheid behorende bij een of meerdere agendas, totale beschikbaarheid wordt berekend op agenda niveau door beschikbaarheid en afspraken met elkaar te vergelijken"
+              description: "Een moment van beschikbaarheid behorende bij een of meerdere agendas, totale beschikbaarheid wordt berekend op agenda niveau door beschikbaarheid en afspraken met elkaar te vergelijken."
             - name: Organisatie
-              description: "De Organisatie wordt gebruikt om standaard configuraties in te regelen"  
-            - name: User
-              description: "Een gebruiker, of in dit geval een applicatie gebonden aan een JWT token behorende tot een organisatie"
+              description: "De Organisatie wordt gebruikt om standaard configuraties in te regelen."  
+            # - name: User
+            #   description: "Een gebruiker, of in dit geval een applicatie gebonden aan een JWT token behorende tot een organisatie."
               # Grouping the endopoint  
         x-tagGroups:
             - name: Agenda
@@ -78,10 +77,9 @@ parameters:
               - Taak
               - Afspraak
               - Beschikbaar
-            - name: Organisatie
-              tags:
               - Organisatie
-              - User
+              # - User
+              
         
 services:
     # default configuration for services in *this* file

@@ -1,14 +1,14 @@
 openapi: 3.0.2
 info:
   description: |
-    Welkom inovator!, 
-    Fijn dat je de tijd en moeite hebt genomen om je te verdiepen in dit component 
+    Welkom inovator! <br> 
+    Fijn dat je de tijd en moeite hebt genomen om je te verdiepen in dit component. 
     
-    # Introduction                
-    De Trouwen component is ontwikkeld voor de gemeente Utrecht en heeft als doel het aansluiten [NLX](https://nlx.io/), volgens het [Common Ground](https://vng.nl/samen-organiseren/common-ground) principe, samen spelen, samen delen.
+    # Introductie                
+    Het "agenda" component is ontwikkeld voor de gemeente Utrecht en heeft als doel een agenda koppelen aan objecten uit andere componenten. Dit stelt je in staat om voor deze objecten afspraken en beschikbaarheid te tonen en bij te houden.
     
     # Common ground en open source
-    Om het voor andere partijen zo makkelijk mogenlijk te maken dit component bieden we zo veel mogenlijk informatie openbaar aan.  
+    Om het voor alle partijen zo makkelijk mogenlijk te maken bieden we zo veel mogenlijk informatie openbaar aan over dit component.  
     - [datamodel als pdf](/schema/datamodel.pdf)
     - [datamodel als mwb](/schema/datamodel.mwb)
     - [codebase op github](https://github.com/GemeenteUtrecht/agenda)
@@ -20,8 +20,7 @@ info:
     Deze API is gedocumenteerd in het **OpenAPI format** 
     De API bevat Cross-Origin Resource Sharing (CORS) en is geimplementeerd volgen de [W3C spec](https://www.w3.org/TR/cors/) standaarden. De API staat cross-domain communicatie van de browser toe. Alle responses hebben een "wildcard same-origin" dit maakt ze volledig publiekelijk en toegankelijk voor iedereen. Dat geld voor elke code op elke site.
     
-    # Authentication
-    
+    # Authenticatie
     De agenda heeft twee vormen van authenticatie:
       - API Key
       - OAuth2
@@ -45,10 +44,10 @@ info:
 paths:
   /afspraak:
     get:
+      summary: 'Haal een verzameling van afspraak resources op'
       tags:
         - Afspraak
       operationId: getAfspraakCollection
-      summary: 'Retrieves the collection of Afspraak resources.'
       responses:
         200:
           description: 'Afspraak collection response'
@@ -70,10 +69,10 @@ paths:
                   $ref: '#/components/schemas/Afspraak'
       parameters: []
     post:
+      summary: 'Maak een afspraak resource aan'
       tags:
         - Afspraak
       operationId: postAfspraakCollection
-      summary: 'Creates a Afspraak resource.'
       responses:
         201:
           description: 'Afspraak resource created'
@@ -111,10 +110,10 @@ paths:
         description: 'The new Afspraak resource'
   '/afspraken/{id}':
     get:
+      summary: 'Haal specifieke afspraak resources op'
       tags:
         - Afspraak
       operationId: getAfspraakItem
-      summary: 'Retrieves a Afspraak resource.'
       parameters:
         -
           name: id
@@ -138,10 +137,10 @@ paths:
         404:
           description: 'Resource not found'
     put:
+      summary: 'Vervang een specifieke afspraak resource'
       tags:
         - Afspraak
       operationId: putAfspraakItem
-      summary: 'Replaces the Afspraak resource.'
       parameters:
         -
           name: id
@@ -179,10 +178,10 @@ paths:
               $ref: '#/components/schemas/Afspraak'
         description: 'The updated Afspraak resource'
     delete:
+      summary: 'Verwijder een specifieke afspraak resource'
       tags:
         - Afspraak
       operationId: deleteAfspraakItem
-      summary: 'Removes the Afspraak resource.'
       responses:
         204:
           description: 'Afspraak resource deleted'
@@ -210,7 +209,7 @@ paths:
         400:
           description: 'Ongeldige aanvraag'
         404:
-          description: 'Huwelijk of aanvraag niet gevonden'
+          description: 'Afspraak niet gevonden'
       tags:
         - Afspraak
       operationId: logAfspraakItem
@@ -223,7 +222,7 @@ paths:
             type: string
   '/afspraken/{id}/revert/{version}':
     post:
-      summary: 'Versie teruggedraaid'
+      summary: 'Versie teruggedraaien'
       description: 'Herstel een eerdere versie van dit object. Dit is een destructieve actie die niet ongedaan kan worden gemaakt'
       consumes:
         - application/json
@@ -236,7 +235,7 @@ paths:
         400:
           description: 'Ongeldige aanvraag'
         404:
-          description: 'Huwelijk of aanvraag niet gevonden'
+          description: 'Afspraak niet gevonden'
       tags:
         - Afspraak
       operationId: revertAfspraakItem
@@ -254,10 +253,10 @@ paths:
         description: 'The new Afspraak resource'
   /agenda:
     get:
+      summary: 'Haalt een verzameling van agenda resources op'
       tags:
         - Agenda
       operationId: getAgendaCollection
-      summary: 'Retrieves the collection of Agenda resources.'
       responses:
         200:
           description: 'Agenda collection response'
@@ -279,10 +278,10 @@ paths:
                   $ref: '#/components/schemas/Agenda'
       parameters: []
     post:
+      summary: 'Maak een agenda resources aan'
       tags:
         - Agenda
       operationId: postAgendaCollection
-      summary: 'Creates a Agenda resource.'
       responses:
         201:
           description: 'Agenda resource created'
@@ -340,10 +339,10 @@ paths:
       parameters: []
   '/agendas/{id}':
     get:
+      summary: 'Haalt een specifieke agenda resources op'
       tags:
         - Agenda
       operationId: getAgendaItem
-      summary: 'Retrieves a Agenda resource.'
       parameters:
         -
           name: id
@@ -367,10 +366,10 @@ paths:
         404:
           description: 'Resource not found'
     put:
+      summary: 'Vervang een specifieke agenda resources'
       tags:
         - Agenda
       operationId: putAgendaItem
-      summary: 'Replaces the Agenda resource.'
       parameters:
         -
           name: id
@@ -408,10 +407,10 @@ paths:
               $ref: '#/components/schemas/Agenda'
         description: 'The updated Agenda resource'
     delete:
+      summary: 'Verwijder een specifieke agenda resources'
       tags:
         - Agenda
       operationId: deleteAgendaItem
-      summary: 'Removes the Agenda resource.'
       responses:
         204:
           description: 'Agenda resource deleted'
@@ -439,7 +438,7 @@ paths:
         400:
           description: 'Ongeldige aanvraag'
         404:
-          description: 'Huwelijk of locatie niet gevonden'
+          description: 'Agenda niet gevonden'
       tags:
         - Agenda
       operationId: availabilityAgendaItem
@@ -465,7 +464,7 @@ paths:
         400:
           description: 'Ongeldige aanvraag'
         404:
-          description: 'Huwelijk of aanvraag niet gevonden'
+          - 'Agenda niet gevonden'
       tags:
         - Agenda
       operationId: logAgendaItem
@@ -478,7 +477,7 @@ paths:
             type: string
   '/agendas/{id}/revert/{version}':
     post:
-      summary: 'Versie teruggedraaid'
+      summary: 'Versie teruggedraaien'
       description: 'Herstel een eerdere versie van dit object. Dit is een destructieve actie die niet ongedaan kan worden gemaakt'
       consumes:
         - application/json
@@ -491,7 +490,7 @@ paths:
         400:
           description: 'Ongeldige aanvraag'
         404:
-          description: 'Huwelijk of aanvraag niet gevonden'
+          description: 'Agenda niet gevonden'
       tags:
         - Agenda
       operationId: revertAgendaItem
@@ -509,10 +508,10 @@ paths:
         description: 'The new Agenda resource'
   /beschikbaar:
     get:
+      summary: 'Haal een verzameling van beschikbaarheid resources op'
       tags:
         - Beschikbaar
       operationId: getBeschikbaarCollection
-      summary: 'Retrieves the collection of Beschikbaar resources.'
       responses:
         200:
           description: 'Beschikbaar collection response'
@@ -534,10 +533,10 @@ paths:
                   $ref: '#/components/schemas/Beschikbaar'
       parameters: []
     post:
+      summary: 'Maak een beschikbaarheid resource aan'
       tags:
         - Beschikbaar
       operationId: postBeschikbaarCollection
-      summary: 'Creates a Beschikbaar resource.'
       responses:
         201:
           description: 'Beschikbaar resource created'
@@ -575,10 +574,10 @@ paths:
         description: 'The new Beschikbaar resource'
   '/beschikbaarheden/{id}':
     get:
+      summary: 'Haal een specifieke beschikbaarheid resource op'
       tags:
         - Beschikbaar
       operationId: getBeschikbaarItem
-      summary: 'Retrieves a Beschikbaar resource.'
       parameters:
         -
           name: id
@@ -602,10 +601,10 @@ paths:
         404:
           description: 'Resource not found'
     put:
+      summary: 'Vervang een specifieke beschikbaarheid resource'
       tags:
         - Beschikbaar
       operationId: putBeschikbaarItem
-      summary: 'Replaces the Beschikbaar resource.'
       parameters:
         -
           name: id
@@ -643,10 +642,10 @@ paths:
               $ref: '#/components/schemas/Beschikbaar'
         description: 'The updated Beschikbaar resource'
     delete:
+      summary: 'Verwijder een beschikbaarheid resource'
       tags:
         - Beschikbaar
       operationId: deleteBeschikbaarItem
-      summary: 'Removes the Beschikbaar resource.'
       responses:
         204:
           description: 'Beschikbaar resource deleted'
@@ -674,7 +673,7 @@ paths:
         400:
           description: 'Ongeldige aanvraag'
         404:
-          description: 'Huwelijk of aanvraag niet gevonden'
+          description: 'Beschikbaarheid niet gevonden'
       tags:
         - Beschikbaar
       operationId: logBeschikbaarItem
@@ -687,7 +686,7 @@ paths:
             type: string
   '/beschikbaarheden/{id}/revert/{version}':
     post:
-      summary: 'Versie teruggedraaid'
+      summary: 'Versie teruggedraaien'
       description: 'Herstel een eerdere versie van dit object. Dit is een destructieve actie die niet ongedaan kan worden gemaakt'
       consumes:
         - application/json
@@ -700,7 +699,7 @@ paths:
         400:
           description: 'Ongeldige aanvraag'
         404:
-          description: 'Huwelijk of aanvraag niet gevonden'
+          description: 'Beschikbaarheid niet gevonden'
       tags:
         - Beschikbaar
       operationId: revertBeschikbaarItem
@@ -718,10 +717,10 @@ paths:
         description: 'The new Beschikbaar resource'
   /organisaties:
     get:
+      summary: 'Haal een verzameling van organisatie resources op'
       tags:
         - Organisatie
       operationId: getOrganisatieCollection
-      summary: 'Retrieves the collection of Organisatie resources.'
       responses:
         200:
           description: 'Organisatie collection response'
@@ -743,10 +742,10 @@ paths:
                   $ref: '#/components/schemas/Organisatie'
       parameters: []
     post:
+      summary: 'Maak een organisatie resource aan'
       tags:
         - Organisatie
       operationId: postOrganisatieCollection
-      summary: 'Creates a Organisatie resource.'
       responses:
         201:
           description: 'Organisatie resource created'
@@ -784,10 +783,10 @@ paths:
         description: 'The new Organisatie resource'
   '/organisaties/{id}':
     get:
+      summary: 'Haal een specifieke organisatie resource op'
       tags:
         - Organisatie
       operationId: getOrganisatieItem
-      summary: 'Retrieves a Organisatie resource.'
       parameters:
         -
           name: id
@@ -811,10 +810,10 @@ paths:
         404:
           description: 'Resource not found'
     put:
+      summary: 'Vervang een specifieke organisatie resource'
       tags:
         - Organisatie
       operationId: putOrganisatieItem
-      summary: 'Replaces the Organisatie resource.'
       parameters:
         -
           name: id
@@ -852,10 +851,10 @@ paths:
               $ref: '#/components/schemas/Organisatie'
         description: 'The updated Organisatie resource'
     delete:
+      summary: 'Verwijder een specifieke organisatie resource'
       tags:
         - Organisatie
       operationId: deleteOrganisatieItem
-      summary: 'Removes the Organisatie resource.'
       responses:
         204:
           description: 'Organisatie resource deleted'
@@ -896,7 +895,7 @@ paths:
             type: string
   '/organisaties/{id}/revert/{version}':
     post:
-      summary: 'Versie terugdraaid'
+      summary: 'Versie terugdraaien'
       description: 'Herstel een eerdere versie van dit object. Dit is een destructieve actie die niet ongedaan kan worden gemaakt'
       consumes:
         - application/json
@@ -927,10 +926,10 @@ paths:
         description: 'The new Organisatie resource'
   /taak:
     get:
+      summary: 'Haal een verzameling van taak resources op'
       tags:
         - Taak
       operationId: getTaakCollection
-      summary: 'Retrieves the collection of Taak resources.'
       responses:
         200:
           description: 'Taak collection response'
@@ -952,10 +951,10 @@ paths:
                   $ref: '#/components/schemas/Taak'
       parameters: []
     post:
+      summary: 'Maak een taak resource aan'
       tags:
         - Taak
       operationId: postTaakCollection
-      summary: 'Creates a Taak resource.'
       responses:
         201:
           description: 'Taak resource created'
@@ -993,10 +992,10 @@ paths:
         description: 'The new Taak resource'
   '/taken/{id}':
     get:
+      summary: 'Haal een specefieke taak resource op'
       tags:
         - Taak
       operationId: getTaakItem
-      summary: 'Retrieves a Taak resource.'
       parameters:
         -
           name: id
@@ -1020,10 +1019,10 @@ paths:
         404:
           description: 'Resource not found'
     put:
+      summary: 'Vervang een specifieke taak resource'
       tags:
         - Taak
       operationId: putTaakItem
-      summary: 'Replaces the Taak resource.'
       parameters:
         -
           name: id
@@ -1061,10 +1060,10 @@ paths:
               $ref: '#/components/schemas/Taak'
         description: 'The updated Taak resource'
     delete:
+      summary: 'Verwijder een specifieke taak resource'
       tags:
         - Taak
       operationId: deleteTaakItem
-      summary: 'Removes the Taak resource.'
       responses:
         204:
           description: 'Taak resource deleted'
@@ -1092,7 +1091,7 @@ paths:
         400:
           description: 'Ongeldige aanvraag'
         404:
-          description: 'Huwelijk of aanvraag niet gevonden'
+          description: 'Taak niet gevonden'
       tags:
         - Taak
       operationId: logTaakItem
@@ -1105,7 +1104,7 @@ paths:
             type: string
   '/taken/{id}/revert/{version}':
     post:
-      summary: 'Versie terugdraaid'
+      summary: 'Versie terugdraaien'
       description: 'Herstel een eerdere versie van dit object. Dit is een destructieve actie die niet ongedaan kan worden gemaakt'
       consumes:
         - application/json
@@ -1118,7 +1117,7 @@ paths:
         400:
           description: 'Ongeldige aanvraag'
         404:
-          description: 'Huwelijk of aanvraag niet gevonden'
+          description: 'Taak niet gevonden'
       tags:
         - Taak
       operationId: revertTaakItem
@@ -1560,7 +1559,7 @@ components:
         - naam
     Beschikbaar:
       type: object
-      description: Beschikbaar
+      description: Beschikbaarheid
       properties:
         id:
           description: 'Het identificatienummer van deze Afspraak <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
@@ -1633,7 +1632,7 @@ components:
         - beschrijving
     Beschikbaar-read:
       type: object
-      description: Beschikbaar
+      description: Beschikbaarheid
       properties:
         id:
           description: 'Het identificatienummer van deze Afspraak <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
@@ -1706,7 +1705,7 @@ components:
         - beschrijving
     Beschikbaar-write:
       type: object
-      description: Beschikbaar
+      description: Beschikbaarheid
       required:
         - naam
         - samenvatting
@@ -1777,7 +1776,7 @@ components:
           maxLength: 255
           minLength: 8
           example: john@do.nl
-          description: 'Het email addres van deze organisatie <br /><b>Schema:</b> <a href="https://schema.org/email">https://schema.org/email</a>'
+          description: 'Het emailadres van deze organisatie <br /><b>Schema:</b> <a href="https://schema.org/email">https://schema.org/email</a>'
         telefoonnummer:
           type: string
           maxLength: 255
@@ -1860,7 +1859,7 @@ components:
           maxLength: 255
           minLength: 8
           example: john@do.nl
-          description: 'Het email addres van deze organisatie <br /><b>Schema:</b> <a href="https://schema.org/email">https://schema.org/email</a>'
+          description: 'Het emailadres van deze organisatie <br /><b>Schema:</b> <a href="https://schema.org/email">https://schema.org/email</a>'
         telefoonnummer:
           type: string
           maxLength: 255
@@ -1933,7 +1932,7 @@ components:
           maxLength: 255
           minLength: 8
           example: john@do.nl
-          description: 'Het email addres van deze organisatie <br /><b>Schema:</b> <a href="https://schema.org/email">https://schema.org/email</a>'
+          description: 'Het emailadres van deze organisatie <br /><b>Schema:</b> <a href="https://schema.org/email">https://schema.org/email</a>'
         telefoonnummer:
           type: string
           maxLength: 255
@@ -2051,13 +2050,13 @@ components:
           type: string
     'User-user_user:read':
       type: object
-      description: 'A user, as unique signed in individual who might be a member of an organisation'
+      description: 'Een user of applicatie is een unique geidentificeerde entiteit wat een onderdeel van een organisatie kan zijn.'
       properties:
         fullname:
           type: string
     'User-user_user:write':
       type: object
-      description: 'A user, as unique signed in individual who might be a member of an organisation'
+      description: 'Een user of applicatie is een unique geidentificeerde entiteit wat een onderdeel van een organisatie kan zijn.'
       properties:
         fullname:
           type: string
@@ -2073,27 +2072,24 @@ servers:
     url: //agenda.zaakonline.nl/
     description: 'Sandbox server'
 externalDocs:
-  description: 'Find out more in depth information on the working of the zaakonline code base.'
+  description: 'Vind hier meer informatie over de zaakonline code base.'
   url: 'https://github.com/ConductionNL/zaakonline'
 tags:
   -
     name: Agenda
-    description: 'De agenda wordt gebruikt om een momenten in de tijd of een tijdspanne weer tegeven'
+    description: 'De agenda wordt gebruikt om een momenten in de tijd of een tijdspanne weer tegeven.'
   -
     name: Taak
-    description: 'En taak of to do binnen een agenda'
+    description: 'En taak of ''to do'' binnen een agenda.'
   -
     name: Afspraak
-    description: 'Een afspraak behorende bij een of meerdere agendas'
+    description: 'Een afspraak behorende bij een of meerdere agendas.'
   -
     name: Beschikbaar
-    description: 'Een moment van beschikbaarheid behorende bij een of meerdere agendas, totale beschikbaarheid wordt berekend op agenda niveau door beschikbaarheid en afspraken met elkaar te vergelijken'
+    description: 'Een moment van beschikbaarheid behorende bij een of meerdere agendas, totale beschikbaarheid wordt berekend op agenda niveau door beschikbaarheid en afspraken met elkaar te vergelijken.'
   -
     name: Organisatie
-    description: 'De Organisatie wordt gebruikt om standaard configuraties in te regelen'
-  -
-    name: User
-    description: 'Een gebruiker, of in dit geval een applicatie gebonden aan een JWT token behorende tot een organisatie'
+    description: 'De Organisatie wordt gebruikt om standaard configuraties in te regelen.'
 x-tagGroups:
   -
     name: Agenda
@@ -2102,8 +2098,4 @@ x-tagGroups:
       - Taak
       - Afspraak
       - Beschikbaar
-  -
-    name: Organisatie
-    tags:
       - Organisatie
-      - User

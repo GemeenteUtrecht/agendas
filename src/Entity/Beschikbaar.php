@@ -13,7 +13,7 @@ use Symfony\Component\Serializer\Annotation\MaxDepth;
 use ActivityLogBundle\Entity\Interfaces\StringableInterface;
 
 /**
- * Beschikbaar
+ * Beschikbaarheid
  * 
  * Beschrijving
  * 
@@ -34,6 +34,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/beschikbaar",
  *  		"openapi_context" = {
+ * 				"summary" = "Haal een verzameling van beschikbaarheid resources op"
  *  		}
  *  	},
  *  	"post"={
@@ -41,6 +42,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"personen"={"groups"={"write"}},
  *      	"path"="/beschikbaar",
  *  		"openapi_context" = {
+ * 				"summary" = "Maak een beschikbaarheid resource aan"
  *  		}
  *  	}
  *  },
@@ -50,6 +52,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/beschikbaarheden/{id}",
  *  		"openapi_context" = {
+ * 				"summary" = "Haal een specifieke beschikbaarheid resource op"
  *  		}
  *  	},
  *     "put"={
@@ -57,6 +60,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/beschikbaarheden/{id}",
  *  		"openapi_context" = {
+ * 				"summary" = "Vervang een specifieke beschikbaarheid resource"
  *  		}
  *  	},
  *     "delete"={
@@ -64,6 +68,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/beschikbaarheden/{id}",
  *  		"openapi_context" = {
+ * 				"summary" = "Verwijder een beschikbaarheid resource"
  *  		}
  *  	},
  *     "log"={
@@ -90,7 +95,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *         				"description" = "Ongeldige aanvraag"
  *         			},
  *         			"404" = {
- *         				"description" = "Huwelijk of aanvraag niet gevonden"
+ *         				"description" = "Beschikbaarheid niet gevonden"
  *         			}
  *            	}            
  *         }
@@ -102,7 +107,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *     		"normalization_context"={"groups"={"read"}},
  *     		"denormalization_context"={"groups"={"write"}},
  *         	"openapi_context" = {
- *         		"summary" = "Versie teruggedraaid",
+ *         		"summary" = "Versie teruggedraaien",
  *         		"description" = "Herstel een eerdere versie van dit object. Dit is een destructieve actie die niet ongedaan kan worden gemaakt",
  *          	"consumes" = {
  *              	"application/json",
@@ -119,7 +124,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *         				"description" = "Ongeldige aanvraag"
  *         			},
  *         			"404" = {
- *         				"description" = "Huwelijk of aanvraag niet gevonden"
+ *         				"description" = "Beschikbaarheid niet gevonden"
  *         			}
  *            	}            
  *         }
