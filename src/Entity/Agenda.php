@@ -16,7 +16,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
 /**
  * Agenda
  * 
- * Een agenda hoort bij een bepaald object, zoals ambtenaar of locatie. Maar kan ook abstract worden gebruikt om een planning toe te voegen aan een algemene resource (bijvoorbeeld zaal of deel-auto) is gebaseerd op de RFC 5545 standaard voor het uitwisselen van agenda's
+ * Een Agenda hoort bij een bepaald object, zoals ambtenaar of locatie. Maar kan ook abstract worden gebruikt om een planning toe te voegen aan een algemene resource (bijvoorbeeld zaal of deel-auto) is gebaseerd op de RFC 5545 standaard voor het uitwisselen van agenda's
  *
  * @category   	Entity
  *
@@ -35,7 +35,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/agenda",
  *  		"openapi_context" = {
- * 				"summary" = "Haalt een verzameling van agenda resources op"
+ * 				"summary" = "Haalt een verzameling van Agenda resources op"
  *  		}
  *  	},
  *  	"post"={
@@ -43,7 +43,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/agenda",
  *  		"openapi_context" = {
- * 				"summary" = "Maak een agenda resources aan"
+ * 				"summary" = "Maak een Agenda resources aan"
  *  		}
  *  	},
  *     "match"={
@@ -54,7 +54,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *     	   "denormalization_context"={"groups"={"match"}},
  *         "openapi_context" = {
  *         		"summary" = "Vergelijk beschikbaarheid",
- *         		"description" = "Vergelijk een aantal agenda's en geef een lijst van matchende beschikbaarheid terug",
+ *         		"description" = "Vergelijk een aantal Agenda's en geef een lijst van matchende beschikbaarheid terug",
  *          	"consumes" = {
  *              	"application/json",
  *               	"text/html",
@@ -70,7 +70,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *         				"description" = "Ongeldige aanvraag"
  *         			},
  *         			"404" = {
- *         				"description" = "Huwelijk of locatie niet gevonden"
+ *         				"description" = "Agenda niet gevonden"
  *         			}
  *            	}
  *         }
@@ -82,7 +82,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/agendas/{id}",
  *  		"openapi_context" = {
- * 				"summary" = "Haalt een specifieke agenda resources op"
+ * 				"summary" = "Haalt een specifieke Agenda resources op"
  *  		}
  *  	},
  *     "put"={
@@ -90,7 +90,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/agendas/{id}",
  *  		"openapi_context" = {
- *  			"summary" = "Vervang een specifieke agenda resources"
+ *  			"summary" = "Vervang een specifieke Agenda resources"
  *  		}
  *  	},
  *     "delete"={
@@ -98,7 +98,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/agendas/{id}",
  *  		"openapi_context" = {
- * 				"summary" = "Verwijder een specifieke agenda resources"
+ * 				"summary" = "Verwijder een specifieke Agenda resources"
  *  		}
  *  	},
  *     "availability"={
@@ -109,7 +109,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *     	   "denormalization_context"={"groups"={"write"}},
  *         "openapi_context" = {
  *         		"summary" = "Controleer beschikbaarheid",
- *         		"description" = "Controleer welke periodes nog beschikbaar zijn in deze agenda gedurende een gegeven periode",
+ *         		"description" = "Controleer welke periodes nog beschikbaar zijn in deze Agenda gedurende een gegeven periode",
  *          	"consumes" = {
  *              	"application/json",
  *               	"text/html",
@@ -138,7 +138,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *     		"denormalization_context"={"groups"={"write"}},
  *         	"openapi_context" = {
  *         		"summary" = "Logboek inzien",
- *         		"description" = "Geeft een array van eerdere versies en wijzigingen van dit object",
+ *         		"description" = "Geeft een array van eerdere versies en wijzigingen van deze Agenda",
  *          	"consumes" = {
  *              	"application/json",
  *               	"text/html",
@@ -154,7 +154,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *         				"description" = "Ongeldige aanvraag"
  *         			},
  *         			"404" = {
- *         				"Agenda niet gevonden"
+ *         				"description" = "Agenda niet gevonden"
  *         			}
  *            	}            
  *         }
@@ -167,7 +167,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *     		"denormalization_context"={"groups"={"write"}},
  *         	"openapi_context" = {
  *         		"summary" = "Versie teruggedraaien",
- *         		"description" = "Herstel een eerdere versie van dit object. Dit is een destructieve actie die niet ongedaan kan worden gemaakt",
+ *         		"description" = "Herstel een eerdere versie van deze Agenda. Dit is een destructieve actie die niet ongedaan kan worden gemaakt",
  *          	"consumes" = {
  *              	"application/json",
  *               	"text/html",
@@ -210,7 +210,7 @@ class Agenda implements StringableInterface
 	public $id;
 	
 	/**
-	 * De unieke identificatie van dit object binnen de organisatie die dit object heeft gecreeerd. <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>
+	 * De unieke identificatie van deze Agenda binnen de organisatie die ddeze Agenda heeft gecreeerd. <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>
 	 *
 	 * @var string
 	 * @ORM\Column(
@@ -228,7 +228,7 @@ class Agenda implements StringableInterface
 	 *         "openapi_context"={
 	 *             "type"="string",
 	 *             "example"="6a36c2c4-213e-4348-a467-dfa3a30f64aa",
-	 *             "description"="De unieke identificatie van dit object de organisatie die dit object heeft gecreeerd.",
+	 *             "description"="De unieke identificatie van ddeze Agenda de organisatie die ddeze Agenda heeft gecreeerd.",
 	 *             "maxLength"=40
 	 *         }
 	 *     }
@@ -238,7 +238,7 @@ class Agenda implements StringableInterface
 	public $identificatie;
 	
 	/**
-	 * Het Huwelijk waartoe deze partner behoort.
+	 * De organisatie waartoe deze Agenda behoort.
 	 *
 	 * @var \App\Entity\Organisatie
 	 * @ORM\ManyToOne(targetEntity="\App\Entity\Organisatie", cascade={"persist", "remove"}, inversedBy="agendas")
@@ -248,7 +248,7 @@ class Agenda implements StringableInterface
 	public $bronOrganisatie;
 	
 	/**
-	 * De naam van deze agenda <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>
+	 * De naam van deze Agenda <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>
 	 *
 	 * @var string
 	 *
@@ -268,7 +268,7 @@ class Agenda implements StringableInterface
 	public $naam;
 	
 	/**
-	 * Een beschrijvende tekst over deze agenda  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>
+	 * Een beschrijvende tekst over deze Agenda  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>
 	 *
 	 * @var string
 	 *
@@ -287,7 +287,7 @@ class Agenda implements StringableInterface
 	public $beschrijving;
 	
 	/**
-	 * De beschikbare momenten van deze agenda.
+	 * De beschikbare momenten van deze Agenda.
 	 *
 	 * @var \Doctrine\Common\Collections\Collection|\App\Entity\Agenda\Beschikbaar[]
 	 *
@@ -299,7 +299,7 @@ class Agenda implements StringableInterface
 	public $beschikbaarheid;
 	
 	/**
-	 * De in deze agenda opgenomen afspraken.
+	 * De in deze Agenda opgenomen afspraken.
 	 *
 	 * @var \Doctrine\Common\Collections\Collection|\App\Entity\Agenda\Afspraak[]
 	 *
@@ -310,7 +310,7 @@ class Agenda implements StringableInterface
 	public $afspraken;
 	
 		/**
-	 * De in deze agenda opgenomen taken.
+	 * De in deze Agenda opgenomen taken.
 	 *
 	 * @var \Doctrine\Common\Collections\Collection|\App\Entity\Agenda\Taak[]
 	 *

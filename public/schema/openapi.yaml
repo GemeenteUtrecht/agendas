@@ -44,7 +44,7 @@ info:
 paths:
   /afspraak:
     get:
-      summary: 'Haal een verzameling van afspraak resources op'
+      summary: 'Haal een verzameling van Afspraak resources op'
       tags:
         - Afspraak
       operationId: getAfspraakCollection
@@ -69,7 +69,7 @@ paths:
                   $ref: '#/components/schemas/Afspraak'
       parameters: []
     post:
-      summary: 'Maak een afspraak resource aan'
+      summary: 'Maak een Afspraak resource aan'
       tags:
         - Afspraak
       operationId: postAfspraakCollection
@@ -110,7 +110,7 @@ paths:
         description: 'The new Afspraak resource'
   '/afspraken/{id}':
     get:
-      summary: 'Haal specifieke afspraak resources op'
+      summary: 'Haal specifieke Afspraak resources op'
       tags:
         - Afspraak
       operationId: getAfspraakItem
@@ -137,7 +137,7 @@ paths:
         404:
           description: 'Resource not found'
     put:
-      summary: 'Vervang een specifieke afspraak resource'
+      summary: 'Vervang een specifieke Afspraak resource'
       tags:
         - Afspraak
       operationId: putAfspraakItem
@@ -178,7 +178,7 @@ paths:
               $ref: '#/components/schemas/Afspraak'
         description: 'The updated Afspraak resource'
     delete:
-      summary: 'Verwijder een specifieke afspraak resource'
+      summary: 'Verwijder een specifieke Afspraak resource'
       tags:
         - Afspraak
       operationId: deleteAfspraakItem
@@ -197,7 +197,7 @@ paths:
   '/afspraken/{id}/log':
     get:
       summary: 'Logboek inzien'
-      description: 'Geeft een array van eerdere versies en wijzigingen van dit object'
+      description: 'Geeft een array van eerdere versies en wijzigingen van deze Afspraak'
       consumes:
         - application/json
         - text/html
@@ -223,7 +223,7 @@ paths:
   '/afspraken/{id}/revert/{version}':
     post:
       summary: 'Versie teruggedraaien'
-      description: 'Herstel een eerdere versie van dit object. Dit is een destructieve actie die niet ongedaan kan worden gemaakt'
+      description: 'Herstel een eerdere versie van deze Afspraak. Dit is een destructieve actie die niet ongedaan kan worden gemaakt'
       consumes:
         - application/json
         - text/html
@@ -253,7 +253,7 @@ paths:
         description: 'The new Afspraak resource'
   /agenda:
     get:
-      summary: 'Haalt een verzameling van agenda resources op'
+      summary: 'Haalt een verzameling van Agenda resources op'
       tags:
         - Agenda
       operationId: getAgendaCollection
@@ -278,7 +278,7 @@ paths:
                   $ref: '#/components/schemas/Agenda'
       parameters: []
     post:
-      summary: 'Maak een agenda resources aan'
+      summary: 'Maak een Agenda resources aan'
       tags:
         - Agenda
       operationId: postAgendaCollection
@@ -320,7 +320,7 @@ paths:
   /agenda/match:
     get:
       summary: 'Vergelijk beschikbaarheid'
-      description: 'Vergelijk een aantal agenda''s en geef een lijst van matchende beschikbaarheid terug'
+      description: 'Vergelijk een aantal Agenda''s en geef een lijst van matchende beschikbaarheid terug'
       consumes:
         - application/json
         - text/html
@@ -332,14 +332,14 @@ paths:
         400:
           description: 'Ongeldige aanvraag'
         404:
-          description: 'Huwelijk of locatie niet gevonden'
+          description: 'Agenda niet gevonden'
       tags:
         - Agenda
       operationId: matchAgendaCollection
       parameters: []
   '/agendas/{id}':
     get:
-      summary: 'Haalt een specifieke agenda resources op'
+      summary: 'Haalt een specifieke Agenda resources op'
       tags:
         - Agenda
       operationId: getAgendaItem
@@ -366,7 +366,7 @@ paths:
         404:
           description: 'Resource not found'
     put:
-      summary: 'Vervang een specifieke agenda resources'
+      summary: 'Vervang een specifieke Agenda resources'
       tags:
         - Agenda
       operationId: putAgendaItem
@@ -407,7 +407,7 @@ paths:
               $ref: '#/components/schemas/Agenda'
         description: 'The updated Agenda resource'
     delete:
-      summary: 'Verwijder een specifieke agenda resources'
+      summary: 'Verwijder een specifieke Agenda resources'
       tags:
         - Agenda
       operationId: deleteAgendaItem
@@ -426,7 +426,7 @@ paths:
   '/agendas/{id}/beschikbaar':
     get:
       summary: 'Controleer beschikbaarheid'
-      description: 'Controleer welke periodes nog beschikbaar zijn in deze agenda gedurende een gegeven periode'
+      description: 'Controleer welke periodes nog beschikbaar zijn in deze Agenda gedurende een gegeven periode'
       consumes:
         - application/json
         - text/html
@@ -452,7 +452,7 @@ paths:
   '/agendas/{id}/log':
     get:
       summary: 'Logboek inzien'
-      description: 'Geeft een array van eerdere versies en wijzigingen van dit object'
+      description: 'Geeft een array van eerdere versies en wijzigingen van deze Agenda'
       consumes:
         - application/json
         - text/html
@@ -464,7 +464,7 @@ paths:
         400:
           description: 'Ongeldige aanvraag'
         404:
-          - 'Agenda niet gevonden'
+          description: 'Agenda niet gevonden'
       tags:
         - Agenda
       operationId: logAgendaItem
@@ -478,7 +478,7 @@ paths:
   '/agendas/{id}/revert/{version}':
     post:
       summary: 'Versie teruggedraaien'
-      description: 'Herstel een eerdere versie van dit object. Dit is een destructieve actie die niet ongedaan kan worden gemaakt'
+      description: 'Herstel een eerdere versie van deze Agenda. Dit is een destructieve actie die niet ongedaan kan worden gemaakt'
       consumes:
         - application/json
         - text/html
@@ -508,7 +508,7 @@ paths:
         description: 'The new Agenda resource'
   /beschikbaar:
     get:
-      summary: 'Haal een verzameling van beschikbaarheid resources op'
+      summary: 'Haal een verzameling van Beschikbaarheid resources op'
       tags:
         - Beschikbaar
       operationId: getBeschikbaarCollection
@@ -533,7 +533,7 @@ paths:
                   $ref: '#/components/schemas/Beschikbaar'
       parameters: []
     post:
-      summary: 'Maak een beschikbaarheid resource aan'
+      summary: 'Maak een Beschikbaarheid resource aan'
       tags:
         - Beschikbaar
       operationId: postBeschikbaarCollection
@@ -574,7 +574,7 @@ paths:
         description: 'The new Beschikbaar resource'
   '/beschikbaarheden/{id}':
     get:
-      summary: 'Haal een specifieke beschikbaarheid resource op'
+      summary: 'Haal een specifieke Beschikbaarheid resource op'
       tags:
         - Beschikbaar
       operationId: getBeschikbaarItem
@@ -601,7 +601,7 @@ paths:
         404:
           description: 'Resource not found'
     put:
-      summary: 'Vervang een specifieke beschikbaarheid resource'
+      summary: 'Vervang een specifieke Beschikbaarheid resource'
       tags:
         - Beschikbaar
       operationId: putBeschikbaarItem
@@ -642,7 +642,7 @@ paths:
               $ref: '#/components/schemas/Beschikbaar'
         description: 'The updated Beschikbaar resource'
     delete:
-      summary: 'Verwijder een beschikbaarheid resource'
+      summary: 'Verwijder een Beschikbaarheid resource'
       tags:
         - Beschikbaar
       operationId: deleteBeschikbaarItem
@@ -661,7 +661,7 @@ paths:
   '/beschikbaarheden/{id}/log':
     get:
       summary: 'Logboek inzien'
-      description: 'Geeft een array van eerdere versies en wijzigingen van dit object'
+      description: 'Geeft een array van eerdere versies en wijzigingen van deze Beschikbaarheid'
       consumes:
         - application/json
         - text/html
@@ -687,7 +687,7 @@ paths:
   '/beschikbaarheden/{id}/revert/{version}':
     post:
       summary: 'Versie teruggedraaien'
-      description: 'Herstel een eerdere versie van dit object. Dit is een destructieve actie die niet ongedaan kan worden gemaakt'
+      description: 'Herstel een eerdere versie van deze Beschikbaarheid. Dit is een destructieve actie die niet ongedaan kan worden gemaakt'
       consumes:
         - application/json
         - text/html
@@ -992,7 +992,7 @@ paths:
         description: 'The new Taak resource'
   '/taken/{id}':
     get:
-      summary: 'Haal een specefieke taak resource op'
+      summary: 'Haal een specifieke Taak resource op'
       tags:
         - Taak
       operationId: getTaakItem
@@ -1079,7 +1079,7 @@ paths:
   '/taken/{id}/log':
     get:
       summary: 'Logboek inzien'
-      description: 'Geeft een array van eerdere versies en wijzigingen van dit object'
+      description: 'Geeft een array van eerdere versies en wijzigingen van deze Taak'
       consumes:
         - application/json
         - text/html
@@ -1105,7 +1105,7 @@ paths:
   '/taken/{id}/revert/{version}':
     post:
       summary: 'Versie terugdraaien'
-      description: 'Herstel een eerdere versie van dit object. Dit is een destructieve actie die niet ongedaan kan worden gemaakt'
+      description: 'Herstel een eerdere versie van deze Taak. Dit is een destructieve actie die niet ongedaan kan worden gemaakt'
       consumes:
         - application/json
         - text/html
@@ -1298,65 +1298,65 @@ components:
           description: 'Het identificatienummer van deze Afspraak <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
           type: integer
         agendas:
-          description: 'De agendas waar deze afspraak in staat'
+          description: 'De agendas waar deze Afspraak in staat'
           type: array
           items:
             type: string
         naam:
-          description: 'De naam van deze locatie <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
+          description: 'De naam van deze Afspraak <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
         samenvatting:
-          description: 'Een samenvattende tekst over deze locatie  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een samenvattende tekst over deze Afspraak  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         beschrijving:
-          description: 'Een beschrijvende tekst over deze locatie  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een beschrijvende tekst over deze Afspraak  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         van:
-          description: 'Het begin van deze afspraak.'
+          description: 'Het begin van deze Afspraak.'
           type: string
           format: date-time
         tot:
-          description: 'Het einde van deze afspraak.'
+          description: 'Het einde van deze Afspraak.'
           type: string
           format: date-time
         herhaal:
-          description: 'Het einde van deze afspraak.'
+          description: 'Herhaal deze Afspraak.'
           type: boolean
         maandag:
-          description: 'Het einde van deze afspraak.'
+          description: Maandag
           type: boolean
         dinsdag:
-          description: 'Het einde'
+          description: Dinsdag
           type: boolean
         woensdag:
-          description: 'Het einde'
+          description: Woensdag
           type: boolean
         donderdag:
-          description: 'Het einde'
+          description: Donderdag
           type: boolean
         vrijdag:
-          description: 'Het einde'
+          description: Vrijdag
           type: boolean
         zaterdag:
-          description: 'Het einde'
+          description: Zaterdag
           type: boolean
         zondag:
-          description: 'Het einde'
+          description: Zondag
           type: boolean
         herhaalVan:
-          description: 'Het begin van deze afspraak'
+          description: 'Herhaal deze Afspraak vanaf'
           type: string
           format: date-time
         herhaalTot:
-          description: 'Het einde van deze afspraak'
+          description: 'Herhaal deze Afspraak tot'
           type: string
           format: date-time
         registratiedatum:
-          description: 'Het tijdstip waarop deze entiteit is aangemaakt.'
+          description: 'Het tijdstip waarop deze Afspraak is aangemaakt.'
           type: string
           format: date-time
         wijzigingsdatum:
-          description: 'Het tijdstip waarop deze entiteit voor het laats is gewijzigd.'
+          description: 'Het tijdstip waarop deze Afspraak voor het laatst is gewijzigd.'
           type: string
           format: date-time
       required:
@@ -1371,65 +1371,65 @@ components:
           description: 'Het identificatienummer van deze Afspraak <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
           type: integer
         agendas:
-          description: 'De agendas waar deze afspraak in staat'
+          description: 'De agendas waar deze Afspraak in staat'
           type: array
           items:
             type: string
         naam:
-          description: 'De naam van deze locatie <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
+          description: 'De naam van deze Afspraak <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
         samenvatting:
-          description: 'Een samenvattende tekst over deze locatie  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een samenvattende tekst over deze Afspraak  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         beschrijving:
-          description: 'Een beschrijvende tekst over deze locatie  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een beschrijvende tekst over deze Afspraak  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         van:
-          description: 'Het begin van deze afspraak.'
+          description: 'Het begin van deze Afspraak.'
           type: string
           format: date-time
         tot:
-          description: 'Het einde van deze afspraak.'
+          description: 'Het einde van deze Afspraak.'
           type: string
           format: date-time
         herhaal:
-          description: 'Het einde van deze afspraak.'
+          description: 'Herhaal deze Afspraak.'
           type: boolean
         maandag:
-          description: 'Het einde van deze afspraak.'
+          description: Maandag
           type: boolean
         dinsdag:
-          description: 'Het einde'
+          description: Dinsdag
           type: boolean
         woensdag:
-          description: 'Het einde'
+          description: Woensdag
           type: boolean
         donderdag:
-          description: 'Het einde'
+          description: Donderdag
           type: boolean
         vrijdag:
-          description: 'Het einde'
+          description: Vrijdag
           type: boolean
         zaterdag:
-          description: 'Het einde'
+          description: Zaterdag
           type: boolean
         zondag:
-          description: 'Het einde'
+          description: Zondag
           type: boolean
         herhaalVan:
-          description: 'Het begin van deze afspraak'
+          description: 'Herhaal deze Afspraak vanaf'
           type: string
           format: date-time
         herhaalTot:
-          description: 'Het einde van deze afspraak'
+          description: 'Herhaal deze Afspraak tot'
           type: string
           format: date-time
         registratiedatum:
-          description: 'Het tijdstip waarop deze entiteit is aangemaakt.'
+          description: 'Het tijdstip waarop deze Afspraak is aangemaakt.'
           type: string
           format: date-time
         wijzigingsdatum:
-          description: 'Het tijdstip waarop deze entiteit voor het laats is gewijzigd.'
+          description: 'Het tijdstip waarop deze Afspraak voor het laatst is gewijzigd.'
           type: string
           format: date-time
       required:
@@ -1445,13 +1445,13 @@ components:
         - beschrijving
       properties:
         naam:
-          description: 'De naam van deze locatie <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
+          description: 'De naam van deze Afspraak <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
         samenvatting:
-          description: 'Een samenvattende tekst over deze locatie  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een samenvattende tekst over deze Afspraak  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         beschrijving:
-          description: 'Een beschrijvende tekst over deze locatie  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een beschrijvende tekst over deze Afspraak  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
     Agenda:
       type: object
@@ -1463,29 +1463,29 @@ components:
         identificatie:
           type: string
           example: 6a36c2c4-213e-4348-a467-dfa3a30f64aa
-          description: 'De unieke identificatie van dit object binnen de organisatie die dit object heeft gecreeerd. <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
+          description: 'De unieke identificatie van deze Agenda binnen de organisatie die ddeze Agenda heeft gecreeerd. <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
           maxLength: 40
         bronOrganisatie:
-          description: 'Het Huwelijk waartoe deze partner behoort.'
+          description: 'De organisatie waartoe deze Agenda behoort.'
           type: string
         naam:
-          description: 'De naam van deze agenda <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
+          description: 'De naam van deze Agenda <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
         beschrijving:
-          description: 'Een beschrijvende tekst over deze agenda  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een beschrijvende tekst over deze Agenda  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         beschikbaarheid:
-          description: 'De beschikbare momenten van deze agenda.'
+          description: 'De beschikbare momenten van deze Agenda.'
           type: array
           items:
             type: string
         afspraken:
-          description: 'De in deze agenda opgenomen afspraken.'
+          description: 'De in deze Agenda opgenomen afspraken.'
           type: array
           items:
             type: string
         taken:
-          description: 'De in deze agenda opgenomen taken.'
+          description: 'De in deze Agenda opgenomen taken.'
           type: array
           items:
             type: string
@@ -1513,23 +1513,23 @@ components:
         identificatie:
           type: string
           example: 6a36c2c4-213e-4348-a467-dfa3a30f64aa
-          description: 'De unieke identificatie van dit object binnen de organisatie die dit object heeft gecreeerd. <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
+          description: 'De unieke identificatie van deze Agenda binnen de organisatie die ddeze Agenda heeft gecreeerd. <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
           maxLength: 40
         naam:
-          description: 'De naam van deze agenda <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
+          description: 'De naam van deze Agenda <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
         beschikbaarheid:
-          description: 'De beschikbare momenten van deze agenda.'
+          description: 'De beschikbare momenten van deze Agenda.'
           type: array
           items:
             type: string
         afspraken:
-          description: 'De in deze agenda opgenomen afspraken.'
+          description: 'De in deze Agenda opgenomen afspraken.'
           type: array
           items:
             type: string
         taken:
-          description: 'De in deze agenda opgenomen taken.'
+          description: 'De in deze Agenda opgenomen taken.'
           type: array
           items:
             type: string
@@ -1550,10 +1550,10 @@ components:
         identificatie:
           type: string
           example: 6a36c2c4-213e-4348-a467-dfa3a30f64aa
-          description: 'De unieke identificatie van dit object binnen de organisatie die dit object heeft gecreeerd. <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
+          description: 'De unieke identificatie van deze Agenda binnen de organisatie die ddeze Agenda heeft gecreeerd. <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
           maxLength: 40
         naam:
-          description: 'De naam van deze agenda <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
+          description: 'De naam van deze Agenda <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
       required:
         - naam
@@ -1562,68 +1562,68 @@ components:
       description: Beschikbaarheid
       properties:
         id:
-          description: 'Het identificatienummer van deze Afspraak <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
+          description: 'Het identificatienummer van deze Beschikbaarheid <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
           type: integer
         agendas:
-          description: 'De agendas waar deze afspraak in staat.'
+          description: 'De agendas waar deze Beschikbaarheid in staat.'
           type: array
           items:
             type: string
         naam:
-          description: 'De naam van deze locatie <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
+          description: 'De naam van deze Beschikbaarheid <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
         samenvatting:
-          description: 'Een samenvattende tekst over deze locatie  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een samenvattende tekst over deze Beschikbaarheid  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         beschrijving:
-          description: 'Een beschrijvende tekst over deze locatie  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een beschrijvende tekst over deze Beschikbaarheid  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         van:
-          description: 'Het begin van deze afspraak.'
+          description: 'Het begin van deze Beschikbaarheid.'
           type: string
           format: date-time
         tot:
-          description: 'Het einde'
+          description: 'Het einde van deze Beschikbaarheid'
           type: string
           format: date-time
         herhaal:
-          description: 'Het einde'
+          description: 'Herhaal deze Beschikbaarheid'
           type: boolean
         maandag:
-          description: 'Het einde'
+          description: Maandag
           type: boolean
         dinsdag:
-          description: 'Het einde'
+          description: Dinsdag
           type: boolean
         woensdag:
-          description: 'Het einde'
+          description: Woensdag
           type: boolean
         donderdag:
-          description: 'Het einde'
+          description: Donderdag
           type: boolean
         vrijdag:
-          description: 'Het einde'
+          description: Vrijdag
           type: boolean
         zaterdag:
-          description: 'Het einde'
+          description: Zaterdag
           type: boolean
         zondag:
-          description: 'Het einde'
+          description: Zondag
           type: boolean
         herhaalVan:
-          description: 'Het begin van deze afspraak'
+          description: 'Herhaal deze Beschikbaarheid vanaf'
           type: string
           format: date-time
         herhaalTot:
-          description: 'Het einde'
+          description: 'Herhaal deze Beschikbaarheid tot'
           type: string
           format: date-time
         registratiedatum:
-          description: 'Het tijdstip waarop deze entiteit is aangemaakt.'
+          description: 'Het tijdstip waarop deze Beschikbaarheid is aangemaakt.'
           type: string
           format: date-time
         wijzigingsdatum:
-          description: 'Het tijdstip waarop deze entiteit voor het laats is gewijzigd.'
+          description: 'Het tijdstip waarop deze Beschikbaarheid voor het laatst is gewijzigd.'
           type: string
           format: date-time
       required:
@@ -1635,68 +1635,68 @@ components:
       description: Beschikbaarheid
       properties:
         id:
-          description: 'Het identificatienummer van deze Afspraak <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
+          description: 'Het identificatienummer van deze Beschikbaarheid <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
           type: integer
         agendas:
-          description: 'De agendas waar deze afspraak in staat.'
+          description: 'De agendas waar deze Beschikbaarheid in staat.'
           type: array
           items:
             type: string
         naam:
-          description: 'De naam van deze locatie <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
+          description: 'De naam van deze Beschikbaarheid <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
         samenvatting:
-          description: 'Een samenvattende tekst over deze locatie  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een samenvattende tekst over deze Beschikbaarheid  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         beschrijving:
-          description: 'Een beschrijvende tekst over deze locatie  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een beschrijvende tekst over deze Beschikbaarheid  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         van:
-          description: 'Het begin van deze afspraak.'
+          description: 'Het begin van deze Beschikbaarheid.'
           type: string
           format: date-time
         tot:
-          description: 'Het einde'
+          description: 'Het einde van deze Beschikbaarheid'
           type: string
           format: date-time
         herhaal:
-          description: 'Het einde'
+          description: 'Herhaal deze Beschikbaarheid'
           type: boolean
         maandag:
-          description: 'Het einde'
+          description: Maandag
           type: boolean
         dinsdag:
-          description: 'Het einde'
+          description: Dinsdag
           type: boolean
         woensdag:
-          description: 'Het einde'
+          description: Woensdag
           type: boolean
         donderdag:
-          description: 'Het einde'
+          description: Donderdag
           type: boolean
         vrijdag:
-          description: 'Het einde'
+          description: Vrijdag
           type: boolean
         zaterdag:
-          description: 'Het einde'
+          description: Zaterdag
           type: boolean
         zondag:
-          description: 'Het einde'
+          description: Zondag
           type: boolean
         herhaalVan:
-          description: 'Het begin van deze afspraak'
+          description: 'Herhaal deze Beschikbaarheid vanaf'
           type: string
           format: date-time
         herhaalTot:
-          description: 'Het einde'
+          description: 'Herhaal deze Beschikbaarheid tot'
           type: string
           format: date-time
         registratiedatum:
-          description: 'Het tijdstip waarop deze entiteit is aangemaakt.'
+          description: 'Het tijdstip waarop deze Beschikbaarheid is aangemaakt.'
           type: string
           format: date-time
         wijzigingsdatum:
-          description: 'Het tijdstip waarop deze entiteit voor het laats is gewijzigd.'
+          description: 'Het tijdstip waarop deze Beschikbaarheid voor het laatst is gewijzigd.'
           type: string
           format: date-time
       required:
@@ -1712,13 +1712,13 @@ components:
         - beschrijving
       properties:
         naam:
-          description: 'De naam van deze locatie <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
+          description: 'De naam van deze Beschikbaarheid <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
         samenvatting:
-          description: 'Een samenvattende tekst over deze locatie  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een samenvattende tekst over deze Beschikbaarheid  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         beschrijving:
-          description: 'Een beschrijvende tekst over deze locatie  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een beschrijvende tekst over deze Beschikbaarheid  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
     Organisatie:
       type: object
@@ -1954,36 +1954,36 @@ components:
       description: taak
       properties:
         id:
-          description: 'Het identificatienummer van deze Afspraak <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
+          description: 'Het identificatienummer van deze Taak <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
           type: integer
         agendas:
-          description: 'De agendas waar deze afspraak in staan'
+          description: 'De agendas waar deze Taken in staan'
           type: array
           items:
             type: string
         naam:
-          description: 'De naam van deze locatie <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
+          description: 'De naam van deze Taak <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
         samenvatting:
-          description: 'Een samenvattende tekst over deze locatie  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een samenvattende tekst over deze Taak  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         beschrijving:
-          description: 'Een beschrijvende tekst over deze locatie  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een beschrijvende tekst over deze Taak  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         herhaalVan:
-          description: 'Het begin van deze afspraak'
+          description: 'Herhaal deze Taak vanaf'
           type: string
           format: date-time
         herhaalTot:
-          description: 'Het einde'
+          description: 'Herhaal deze Taak tot'
           type: string
           format: date-time
         registratiedatum:
-          description: 'Het tijdstip waarop deze entiteit is aangemaakt'
+          description: 'Het tijdstip waarop deze Taak is aangemaakt'
           type: string
           format: date-time
         wijzigingsdatum:
-          description: 'Het tijdstip waarop deze entiteit voor het laats is gewijzigd'
+          description: 'Het tijdstip waarop deze Taak voor het laatst is gewijzigd'
           type: string
           format: date-time
       required:
@@ -1995,36 +1995,36 @@ components:
       description: taak
       properties:
         id:
-          description: 'Het identificatienummer van deze Afspraak <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
+          description: 'Het identificatienummer van deze Taak <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
           type: integer
         agendas:
-          description: 'De agendas waar deze afspraak in staan'
+          description: 'De agendas waar deze Taken in staan'
           type: array
           items:
             type: string
         naam:
-          description: 'De naam van deze locatie <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
+          description: 'De naam van deze Taak <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
         samenvatting:
-          description: 'Een samenvattende tekst over deze locatie  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een samenvattende tekst over deze Taak  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         beschrijving:
-          description: 'Een beschrijvende tekst over deze locatie  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een beschrijvende tekst over deze Taak  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         herhaalVan:
-          description: 'Het begin van deze afspraak'
+          description: 'Herhaal deze Taak vanaf'
           type: string
           format: date-time
         herhaalTot:
-          description: 'Het einde'
+          description: 'Herhaal deze Taak tot'
           type: string
           format: date-time
         registratiedatum:
-          description: 'Het tijdstip waarop deze entiteit is aangemaakt'
+          description: 'Het tijdstip waarop deze Taak is aangemaakt'
           type: string
           format: date-time
         wijzigingsdatum:
-          description: 'Het tijdstip waarop deze entiteit voor het laats is gewijzigd'
+          description: 'Het tijdstip waarop deze Taak voor het laatst is gewijzigd'
           type: string
           format: date-time
       required:
@@ -2040,13 +2040,13 @@ components:
         - beschrijving
       properties:
         naam:
-          description: 'De naam van deze locatie <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
+          description: 'De naam van deze Taak <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
         samenvatting:
-          description: 'Een samenvattende tekst over deze locatie  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een samenvattende tekst over deze Taak  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         beschrijving:
-          description: 'Een beschrijvende tekst over deze locatie  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een beschrijvende tekst over deze Taak  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
     'User-user_user:read':
       type: object

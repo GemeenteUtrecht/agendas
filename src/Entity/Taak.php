@@ -52,7 +52,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/taken/{id}",
  *  		"openapi_context" = {
- * 				"summary" = "Haal een specefieke taak resource op"
+ * 				"summary" = "Haal een specifieke Taak resource op"
  *  		}
  *  	},
  *     "put"={
@@ -79,7 +79,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *     		"denormalization_context"={"groups"={"write"}},
  *         	"openapi_context" = {
  *         		"summary" = "Logboek inzien",
- *         		"description" = "Geeft een array van eerdere versies en wijzigingen van dit object",
+ *         		"description" = "Geeft een array van eerdere versies en wijzigingen van deze Taak",
  *          	"consumes" = {
  *              	"application/json",
  *               	"text/html",
@@ -108,7 +108,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *     		"denormalization_context"={"groups"={"write"}},
  *         	"openapi_context" = {
  *         		"summary" = "Versie terugdraaien",
- *         		"description" = "Herstel een eerdere versie van dit object. Dit is een destructieve actie die niet ongedaan kan worden gemaakt",
+ *         		"description" = "Herstel een eerdere versie van deze Taak. Dit is een destructieve actie die niet ongedaan kan worden gemaakt",
  *          	"consumes" = {
  *              	"application/json",
  *               	"text/html",
@@ -138,7 +138,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
 class Taak implements StringableInterface
 {
 	/**
-	 * Het identificatienummer van deze Afspraak <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>
+	 * Het identificatienummer van deze Taak <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>
 	 *
 	 * @var int|null
 	 *
@@ -151,7 +151,7 @@ class Taak implements StringableInterface
 	public $id;
 	
 	/**
-	 * De agendas waar deze afspraak in staan
+	 * De agendas waar deze Taken in staan
 	 *
 	 * @var \Doctrine\Common\Collections\Collection|\App\Entity\Product
 	 *
@@ -163,7 +163,7 @@ class Taak implements StringableInterface
 	public $agendas;
 	
 	/**
-	 * De naam van deze locatie <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>
+	 * De naam van deze Taak <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>
 	 *
 	 * @var string
 	 *
@@ -194,7 +194,7 @@ class Taak implements StringableInterface
 	public $naam;
 	
 	/**
-	 * Een samenvattende tekst over deze locatie  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>
+	 * Een samenvattende tekst over deze Taak  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>
 	 *
 	 * @var string
 	 *
@@ -216,7 +216,7 @@ class Taak implements StringableInterface
 	 *     attributes={
 	 *         "swagger_context"={
 	 *             "type"="string",
-	 *             "example"="Deze prachtige locatie is zeker het aanbevelen waard"
+	 *             "example"="Deze Taak is voorwaardelijk voor vervolgstappen"
 	 *         }
 	 *     }
 	 * )
@@ -224,7 +224,7 @@ class Taak implements StringableInterface
 	public $samenvatting;
 	
 	/**
-	 * Een beschrijvende tekst over deze locatie  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>
+	 * Een beschrijvende tekst over deze Taak  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>
 	 *
 	 * @var string
 	 *
@@ -256,7 +256,7 @@ class Taak implements StringableInterface
 	
 	
 	/**
-	 * Het begin van deze afspraak
+	 * Herhaal deze Taak vanaf
 	 *
 	 * @var string Een "Y-m-d H:i:s" waarde bijvoorbeeld "2018-12-31 13:33:05" ofwel "Jaar-dag-maand uur:minuut:seconde"
 	 * @Assert\DateTime
@@ -268,7 +268,7 @@ class Taak implements StringableInterface
 	public $herhaalVan;
 	
 	/**
-	 * Het einde
+	 * Herhaal deze Taak tot
 	 *
 	 * @var string Een "Y-m-d H:i:s" waarde bijvoorbeeld "2018-12-31 13:33:05" ofwel "Jaar-dag-maand uur:minuut:seconde"
 	 * @Assert\DateTime
@@ -280,7 +280,7 @@ class Taak implements StringableInterface
 	public $herhaalTot;
 	
 	/**
-	 * Het tijdstip waarop deze entiteit is aangemaakt
+	 * Het tijdstip waarop deze Taak is aangemaakt
 	 *
 	 * @var string Een "Y-m-d H:i:s" waarde bijvoorbeeld "2018-12-31 13:33:05" ofwel "Jaar-dag-maand uur:minuut:seconde"
 	 * @Gedmo\Timestampable(on="create")
@@ -293,7 +293,7 @@ class Taak implements StringableInterface
 	public $registratiedatum;
 	
 	/**
-	 * Het tijdstip waarop deze entiteit voor het laats is gewijzigd
+	 * Het tijdstip waarop deze Taak voor het laatst is gewijzigd
 	 *
 	 * @var string Een "Y-m-d H:i:s" waarde bijvoorbeeld "2018-12-31 13:33:05" ofwel "Jaar-dag-maand uur:minuut:seconde"
 	 * @Gedmo\Timestampable(on="update")

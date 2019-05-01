@@ -34,7 +34,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/beschikbaar",
  *  		"openapi_context" = {
- * 				"summary" = "Haal een verzameling van beschikbaarheid resources op"
+ * 				"summary" = "Haal een verzameling van Beschikbaarheid resources op"
  *  		}
  *  	},
  *  	"post"={
@@ -42,7 +42,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"personen"={"groups"={"write"}},
  *      	"path"="/beschikbaar",
  *  		"openapi_context" = {
- * 				"summary" = "Maak een beschikbaarheid resource aan"
+ * 				"summary" = "Maak een Beschikbaarheid resource aan"
  *  		}
  *  	}
  *  },
@@ -52,7 +52,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/beschikbaarheden/{id}",
  *  		"openapi_context" = {
- * 				"summary" = "Haal een specifieke beschikbaarheid resource op"
+ * 				"summary" = "Haal een specifieke Beschikbaarheid resource op"
  *  		}
  *  	},
  *     "put"={
@@ -60,7 +60,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/beschikbaarheden/{id}",
  *  		"openapi_context" = {
- * 				"summary" = "Vervang een specifieke beschikbaarheid resource"
+ * 				"summary" = "Vervang een specifieke Beschikbaarheid resource"
  *  		}
  *  	},
  *     "delete"={
@@ -68,7 +68,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/beschikbaarheden/{id}",
  *  		"openapi_context" = {
- * 				"summary" = "Verwijder een beschikbaarheid resource"
+ * 				"summary" = "Verwijder een Beschikbaarheid resource"
  *  		}
  *  	},
  *     "log"={
@@ -79,7 +79,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *     		"denormalization_context"={"groups"={"write"}},
  *         	"openapi_context" = {
  *         		"summary" = "Logboek inzien",
- *         		"description" = "Geeft een array van eerdere versies en wijzigingen van dit object",
+ *         		"description" = "Geeft een array van eerdere versies en wijzigingen van deze Beschikbaarheid",
  *          	"consumes" = {
  *              	"application/json",
  *               	"text/html",
@@ -108,7 +108,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *     		"denormalization_context"={"groups"={"write"}},
  *         	"openapi_context" = {
  *         		"summary" = "Versie teruggedraaien",
- *         		"description" = "Herstel een eerdere versie van dit object. Dit is een destructieve actie die niet ongedaan kan worden gemaakt",
+ *         		"description" = "Herstel een eerdere versie van deze Beschikbaarheid. Dit is een destructieve actie die niet ongedaan kan worden gemaakt",
  *          	"consumes" = {
  *              	"application/json",
  *               	"text/html",
@@ -139,7 +139,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
 class Beschikbaar implements StringableInterface
 {
 	/**
-	 * Het identificatienummer van deze Afspraak <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>
+	 * Het identificatienummer van deze Beschikbaarheid <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>
 	 *
 	 * @var int|null
 	 *
@@ -152,7 +152,7 @@ class Beschikbaar implements StringableInterface
 	public $id;	
 	
 	/**
-	 * De agendas waar deze afspraak in staat.
+	 * De agendas waar deze Beschikbaarheid in staat.
 	 *
 	 * @var \Doctrine\Common\Collections\Collection|\App\Entity\Product
 	 *
@@ -164,7 +164,7 @@ class Beschikbaar implements StringableInterface
 	public $agendas;
 	
 	/**
-	 * De naam van deze locatie <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>
+	 * De naam van deze Beschikbaarheid <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>
 	 *
 	 * @var string
 	 *
@@ -195,7 +195,7 @@ class Beschikbaar implements StringableInterface
 	public $naam;
 	
 	/**
-	 * Een samenvattende tekst over deze locatie  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>
+	 * Een samenvattende tekst over deze Beschikbaarheid  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>
 	 *
 	 * @var string
 	 *
@@ -218,7 +218,7 @@ class Beschikbaar implements StringableInterface
 	 *     attributes={
 	 *         "swagger_context"={
 	 *             "type"="string",
-	 *             "example"="Deze prachtige locatie is zeker het aanbevelen waard"
+	 *             "example"="Deze Beschikbaarheid is alleen te boeken op woensdagen"
 	 *         }
 	 *     }
 	 * )
@@ -226,7 +226,7 @@ class Beschikbaar implements StringableInterface
 	public $samenvatting;
 	
 	/**
-	 * Een beschrijvende tekst over deze locatie  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>
+	 * Een beschrijvende tekst over deze Beschikbaarheid  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>
 	 *
 	 * @var string
 	 *
@@ -257,7 +257,7 @@ class Beschikbaar implements StringableInterface
 	public $beschrijving;
 		
 	/**
-	 * Het begin van deze afspraak.
+	 * Het begin van deze Beschikbaarheid.
 	 *
 	 * @var string Een "Y-m-d H:i:s" waarde bijvoorbeeld "2018-12-31 13:33:05" ofwel "Jaar-dag-maand uur:minuut:seconde"
 	 * @Assert\DateTime
@@ -270,7 +270,7 @@ class Beschikbaar implements StringableInterface
 	public $van;
 	
 	/**
-	 * Het einde
+	 * Het einde van deze Beschikbaarheid
 	 *
 	 * @var string Een "Y-m-d H:i:s" waarde bijvoorbeeld "2018-12-31 13:33:05" ofwel "Jaar-dag-maand uur:minuut:seconde"
 	 * @Assert\DateTime
@@ -283,7 +283,7 @@ class Beschikbaar implements StringableInterface
 	public $tot;
 	
 	/**
-	 * Het einde
+	 * Herhaal deze Beschikbaarheid
 	 *
 	 * @var string Een "Y-m-d H:i:s" waarde bijvoorbeeld "2018-12-31 13:33:05" ofwel "Jaar-dag-maand uur:minuut:seconde"	 
 	 * @ORM\Column(
@@ -294,7 +294,7 @@ class Beschikbaar implements StringableInterface
 	public $herhaal = false;
 	
 	/**
-	 * Het einde
+	 * Maandag
 	 *
 	 * @var string Een "Y-m-d H:i:s" waarde bijvoorbeeld "2018-12-31 13:33:05" ofwel "Jaar-dag-maand uur:minuut:seconde"	 
 	 * @ORM\Column(
@@ -305,7 +305,7 @@ class Beschikbaar implements StringableInterface
 	public $maandag = false;
 	
 	/**
-	 * Het einde
+	 * Dinsdag
 	 *
 	 * @var string Een "Y-m-d H:i:s" waarde bijvoorbeeld "2018-12-31 13:33:05" ofwel "Jaar-dag-maand uur:minuut:seconde"	 
 	 * @ORM\Column(
@@ -316,7 +316,7 @@ class Beschikbaar implements StringableInterface
 	public $dinsdag = false;
 	
 	/**
-	 * Het einde
+	 * Woensdag
 	 *
 	 * @var string Een "Y-m-d H:i:s" waarde bijvoorbeeld "2018-12-31 13:33:05" ofwel "Jaar-dag-maand uur:minuut:seconde"	 
 	 * @ORM\Column(
@@ -327,7 +327,7 @@ class Beschikbaar implements StringableInterface
 	public $woensdag = false;
 	
 	/**
-	 * Het einde
+	 * Donderdag
 	 *
 	 * @var string Een "Y-m-d H:i:s" waarde bijvoorbeeld "2018-12-31 13:33:05" ofwel "Jaar-dag-maand uur:minuut:seconde"	 
 	 * @ORM\Column(
@@ -338,7 +338,7 @@ class Beschikbaar implements StringableInterface
 	public $donderdag = false;
 	
 	/**
-	 * Het einde
+	 * Vrijdag
 	 *
 	 * @var string Een "Y-m-d H:i:s" waarde bijvoorbeeld "2018-12-31 13:33:05" ofwel "Jaar-dag-maand uur:minuut:seconde"	 
 	 * @ORM\Column(
@@ -349,7 +349,7 @@ class Beschikbaar implements StringableInterface
 	public $vrijdag = false;
 	
 	/**
-	 * Het einde
+	 * Zaterdag
 	 *
 	 * @var string Een "Y-m-d H:i:s" waarde bijvoorbeeld "2018-12-31 13:33:05" ofwel "Jaar-dag-maand uur:minuut:seconde"	 
 	 * @ORM\Column(
@@ -360,7 +360,7 @@ class Beschikbaar implements StringableInterface
 	public $zaterdag = false;
 	
 	/**
-	 * Het einde
+	 * Zondag
 	 *
 	 * @var string Een "Y-m-d H:i:s" waarde bijvoorbeeld "2018-12-31 13:33:05" ofwel "Jaar-dag-maand uur:minuut:seconde"	 
 	 * @ORM\Column(
@@ -372,7 +372,7 @@ class Beschikbaar implements StringableInterface
 	
 	
 	/**
-	 * Het begin van deze afspraak
+	 * Herhaal deze Beschikbaarheid vanaf
 	 *
 	 * @var string Een "Y-m-d H:i:s" waarde bijvoorbeeld "2018-12-31 13:33:05" ofwel "Jaar-dag-maand uur:minuut:seconde"
 	 * @Assert\DateTime
@@ -385,7 +385,7 @@ class Beschikbaar implements StringableInterface
 	public $herhaalVan;
 	
 	/**
-	 * Het einde
+	 * Herhaal deze Beschikbaarheid tot
 	 *
 	 * @var string Een "Y-m-d H:i:s" waarde bijvoorbeeld "2018-12-31 13:33:05" ofwel "Jaar-dag-maand uur:minuut:seconde"
 	 * @Assert\DateTime
@@ -398,7 +398,7 @@ class Beschikbaar implements StringableInterface
 	public $herhaalTot;
 	
 	/**
-	 * Het tijdstip waarop deze entiteit is aangemaakt.
+	 * Het tijdstip waarop deze Beschikbaarheid is aangemaakt.
 	 *
 	 * @var string Een "Y-m-d H:i:s" waarde bijvoorbeeld "2018-12-31 13:33:05" ofwel "Jaar-dag-maand uur:minuut:seconde"
 	 * @Gedmo\Timestampable(on="create")
@@ -411,7 +411,7 @@ class Beschikbaar implements StringableInterface
 	public $registratiedatum;
 	
 	/**
-	 * Het tijdstip waarop deze entiteit voor het laats is gewijzigd.
+	 * Het tijdstip waarop deze Beschikbaarheid voor het laatst is gewijzigd.
 	 *
 	 * @var string Een "Y-m-d H:i:s" waarde bijvoorbeeld "2018-12-31 13:33:05" ofwel "Jaar-dag-maand uur:minuut:seconde"
 	 * @Gedmo\Timestampable(on="update")
