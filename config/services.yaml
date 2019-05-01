@@ -22,9 +22,9 @@ parameters:
                 Om het voor alle partijen zo makkelijk mogenlijk te maken bieden we zo veel mogenlijk informatie openbaar aan over dit component.  
                 - [datamodel als pdf](/schema/datamodel.pdf)
                 - [datamodel als mwb](/schema/datamodel.mwb)
-                - [codebase op github](https://github.com/GemeenteUtrecht/agenda)
-                - [codebase als zip](https://github.com/GemeenteUtrecht/agenda/archive/conduction.zip)
-                - [docker container](https://cloud.docker.com/u/huwelijksplanner/repository/docker/huwelijksplanneragenda-php)
+                - [codebase op github](https://github.com/GemeenteUtrecht/agendas)
+                - [codebase als zip](https://github.com/GemeenteUtrecht/agendas/archive/master.zip)
+                - [docker container](https://hub.docker.com/r/huwelijksplanner/agendas-component)
                 - [online demo](http://agenda.demo.zaakonline.nl/)
 
                 # OpenAPI Specification, Cross-Origin Resource Sharing en linked Data
