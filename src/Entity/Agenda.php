@@ -7,11 +7,16 @@ use Doctrine\Common\Collections\ArrayCollection;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Serializer\Annotation\MaxDepth;
 use ActivityLogBundle\Entity\Interfaces\StringableInterface;
+
 
 /**
  * Agenda
@@ -238,14 +243,37 @@ class Agenda implements StringableInterface
 	public $identificatie;
 	
 	/**
-	 * De organisatie waartoe deze Agenda behoort.
+	 * Het RSIN van de organisatie waartoe deze Agenda behoord. Dit moet een geldig RSIN zijn van 9 nummers en voldoen aan https://nl.wikipedia.org/wiki/Burgerservicenummer#11-proef. <br> Het RSIN word bepaald aan de hand van de gauthenticeerde applicatie en kan niet worden overschreven
 	 *
-	 * @var \App\Entity\Organisatie
-	 * @ORM\ManyToOne(targetEntity="\App\Entity\Organisatie", cascade={"persist", "remove"}, inversedBy="agendas")
-	 * @ORM\JoinColumn(referencedColumnName="id")
-	 *
+	 * @var integer
+	 * @ORM\Column(
+	 *     type     = "integer",
+	 *     length   = 9
+	 * )
+	 * @Assert\Length(
+	 *      min = 8,
+	 *      max = 9,
+	 *      minMessage = "Het RSIN moet ten minste {{ limit }} karakters lang zijn",
+	 *      maxMessage = "Het RSIN kan niet langer dan {{ limit }} karakters zijn"
+	 * )
+	 * @Groups({"read"})
+     * @ApiFilter(SearchFilter::class, strategy="exact")
+     * @ApiFilter(OrderFilter::class)
+	 * @ApiProperty(
+	 *     attributes={
+	 *         "openapi_context"={
+	 *             "title"="bronOrganisatie",
+	 *             "type"="string",
+	 *             "example"="123456789",
+	 *             "required"="true",
+	 *             "maxLength"=9,
+	 *             "minLength"=8
+	 *         }
+	 *     }
+	 * )
 	 */
 	public $bronOrganisatie;
+
 	
 	/**
 	 * De naam van deze Agenda <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>
@@ -321,7 +349,7 @@ class Agenda implements StringableInterface
 	public $taken;
 	
 	/**
-	 * Het tijdstip waarop deze entiteit is aangemaakt.
+	 * Het tijdstip waarop dit Agenda object is aangemaakt
 	 *
 	 * @var string Een "Y-m-d H:i:s" waarde bijvoorbeeld "2018-12-31 13:33:05" ofwel "Jaar-dag-maand uur:minuut:seconde"
 	 * @Gedmo\Timestampable(on="create")
@@ -334,18 +362,19 @@ class Agenda implements StringableInterface
 	public $registratiedatum;
 	
 	/**
-	 * Het tijdstip waarop deze entiteit voor het laatst is gewijzigd.
+	 * Het tijdstip waarop dit Agenda object voor het laatst is gewijzigd.
 	 *
 	 * @var string Een "Y-m-d H:i:s" waarde bijvoorbeeld "2018-12-31 13:33:05" ofwel "Jaar-dag-maand uur:minuut:seconde"
 	 * @Gedmo\Timestampable(on="update")
 	 * @Assert\DateTime
 	 * @ORM\Column(
-	 *     type     = "datetime",
+	 *     type     = "datetime", 
 	 *     nullable	= true
 	 * )
 	 * @Groups({"read"})
 	 */
-	public $wijzigingsdatum;	
+	public $wijzigingsdatum;
+	
 	
 	/**
 	 * @return string

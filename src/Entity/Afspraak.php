@@ -7,6 +7,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Serializer\Annotation\MaxDepth;
@@ -397,27 +401,26 @@ class Afspraak implements StringableInterface
 	public $herhaalTot;
 	
 	/**
-	 * Het tijdstip waarop deze Afspraak is aangemaakt.
+	 * Het tijdstip waarop dit Afspraak object is aangemaakt
 	 *
 	 * @var string Een "Y-m-d H:i:s" waarde bijvoorbeeld "2018-12-31 13:33:05" ofwel "Jaar-dag-maand uur:minuut:seconde"
 	 * @Gedmo\Timestampable(on="create")
 	 * @Assert\DateTime
 	 * @ORM\Column(
-	 *     type     = "datetime", 
-	 *     nullable=true
+	 *     type     = "datetime"
 	 * )
 	 * @Groups({"read"})
 	 */
 	public $registratiedatum;
 	
 	/**
-	 * Het tijdstip waarop deze Afspraak voor het laatst is gewijzigd.
+	 * Het tijdstip waarop dit Afspraak object voor het laatst is gewijzigd.
 	 *
 	 * @var string Een "Y-m-d H:i:s" waarde bijvoorbeeld "2018-12-31 13:33:05" ofwel "Jaar-dag-maand uur:minuut:seconde"
 	 * @Gedmo\Timestampable(on="update")
 	 * @Assert\DateTime
 	 * @ORM\Column(
-	 *     type     = "datetime",
+	 *     type     = "datetime", 
 	 *     nullable	= true
 	 * )
 	 * @Groups({"read"})
