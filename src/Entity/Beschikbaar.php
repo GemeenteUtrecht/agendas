@@ -38,7 +38,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/beschikbaar",
  *  		"openapi_context" = {
- * 				"summary" = "Haal een verzameling van Beschikbaarheid resources op"
+ * 				"summary" = "Haal een verzameling van Beschikbaarheden op"
  *  		}
  *  	},
  *  	"post"={
@@ -46,7 +46,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"personen"={"groups"={"write"}},
  *      	"path"="/beschikbaar",
  *  		"openapi_context" = {
- * 				"summary" = "Maak een Beschikbaarheid resource aan"
+ * 				"summary" = "Maak een Beschikbaarheid aan"
  *  		}
  *  	}
  *  },
@@ -56,7 +56,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/beschikbaarheden/{id}",
  *  		"openapi_context" = {
- * 				"summary" = "Haal een specifieke Beschikbaarheid resource op"
+ * 				"summary" = "Haal een specifieke Beschikbaarheid op"
  *  		}
  *  	},
  *     "put"={
@@ -64,7 +64,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/beschikbaarheden/{id}",
  *  		"openapi_context" = {
- * 				"summary" = "Vervang een specifieke Beschikbaarheid resource"
+ * 				"summary" = "Vervang een specifieke Beschikbaarheid"
  *  		}
  *  	},
  *     "delete"={
@@ -72,7 +72,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/beschikbaarheden/{id}",
  *  		"openapi_context" = {
- * 				"summary" = "Verwijder een Beschikbaarheid resource"
+ * 				"summary" = "Verwijder een Beschikbaarheid"
  *  		}
  *  	},
  *     "log"={
@@ -427,6 +427,18 @@ class Beschikbaar implements StringableInterface
 	 * @Groups({"read"})
 	 */
 	public $wijzigingsdatum;
+
+	/**
+     * De eigenaar (applicatie) van dit object, wordt bepaald aan de hand van de geauthenticeerde applicatie die de beschikbaarheid heeft aangemaakt
+     * 
+     * @var App\Entity\User $eigenaar
+     *
+     * @Gedmo\Blameable(on="create")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @Groups({"read"})
+     */
+    public $eigenaar;
+
 	
 	/**
 	 * @return string

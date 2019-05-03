@@ -38,7 +38,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/taak",
  *  		"openapi_context" = {
- * 				"summary" = "Haal een verzameling van taak resources op"
+ * 				"summary" = "Haal een verzameling van Taken op"
  *  		}
  *  	},
  *  	"post"={
@@ -46,7 +46,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"personen"={"groups"={"write"}},
  *      	"path"="/taak",
  *  		"openapi_context" = {
- * 				"summary" = "Maak een taak resource aan"
+ * 				"summary" = "Maak een Taak aan"
  *  		}
  *  	}
  *  },
@@ -56,7 +56,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/taken/{id}",
  *  		"openapi_context" = {
- * 				"summary" = "Haal een specifieke Taak resource op"
+ * 				"summary" = "Haal een specifieke Taak op"
  *  		}
  *  	},
  *     "put"={
@@ -64,7 +64,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/taken/{id}",
  *  		"openapi_context" = {
- * 				"summary" = "Vervang een specifieke taak resource"
+ * 				"summary" = "Vervang een specifieke Taak"
  *  		}
  *  	},
  *     "delete"={
@@ -72,7 +72,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/taken/{id}",
  *  		"openapi_context" = {
- * 				"summary" = "Verwijder een specifieke taak resource"
+ * 				"summary" = "Verwijder een specifieke Taak"
  *  		}
  *  	},
  *     "log"={
@@ -309,6 +309,18 @@ class Taak implements StringableInterface
 	 * @Groups({"read"})
 	 */
 	public $wijzigingsdatum;
+
+	/**
+     * De eigenaar (applicatie) van dit object, wordt bepaald aan de hand van de geauthenticeerde applicatie die de taak heeft aangemaakt
+     * 
+     * @var App\Entity\User $eigenaar
+     *
+     * @Gedmo\Blameable(on="create")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @Groups({"read"})
+     */
+    public $eigenaar;
+
 	
 	/**
 	 * @return string

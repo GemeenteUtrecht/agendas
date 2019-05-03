@@ -40,7 +40,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/agenda",
  *  		"openapi_context" = {
- * 				"summary" = "Haalt een verzameling van Agenda resources op"
+ * 				"summary" = "Haalt een verzameling van Agendas op"
  *  		}
  *  	},
  *  	"post"={
@@ -48,7 +48,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/agenda",
  *  		"openapi_context" = {
- * 				"summary" = "Maak een Agenda resources aan"
+ * 				"summary" = "Maak een Agendas aan"
  *  		}
  *  	},
  *     "match"={
@@ -87,7 +87,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/agendas/{id}",
  *  		"openapi_context" = {
- * 				"summary" = "Haalt een specifieke Agenda resources op"
+ * 				"summary" = "Haalt een specifieke Agenda op"
  *  		}
  *  	},
  *     "put"={
@@ -95,7 +95,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/agendas/{id}",
  *  		"openapi_context" = {
- *  			"summary" = "Vervang een specifieke Agenda resources"
+ *  			"summary" = "Vervang een specifieke Agenda"
  *  		}
  *  	},
  *     "delete"={
@@ -103,7 +103,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/agendas/{id}",
  *  		"openapi_context" = {
- * 				"summary" = "Verwijder een specifieke Agenda resources"
+ * 				"summary" = "Verwijder een specifieke Agenda"
  *  		}
  *  	},
  *     "availability"={
@@ -374,6 +374,18 @@ class Agenda implements StringableInterface
 	 * @Groups({"read"})
 	 */
 	public $wijzigingsdatum;
+
+	/**
+	 * De eigenaar (applicatie) van dit object, wordt bepaald aan de hand van de geauthenticeerde applicatie die de agenda heeft aangemaakt
+	 * 
+	 * @var App\Entity\User $eigenaar
+	 *
+     * @Gedmo\Blameable(on="create")
+	 * @ORM\ManyToOne(targetEntity="App\Entity\User")
+	 * @Groups({"read"})
+	 */
+	public $eigenaar;
+
 	
 	
 	/**

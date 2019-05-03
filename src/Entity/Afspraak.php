@@ -38,7 +38,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/afspraak",
  *  		"openapi_context" = {
- * 				"summary" = "Haal een verzameling van Afspraak resources op"
+ * 				"summary" = "Haal een verzameling van Afspraken op"
  *  		}
  *  	},
  *  	"post"={
@@ -46,7 +46,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"personen"={"groups"={"write"}},
  *      	"path"="/afspraak",
  *  		"openapi_context" = {
- * 				"summary" = "Maak een Afspraak resource aan"
+ * 				"summary" = "Maak een Afspraak aan"
  *  		}
  *  	}
  *  },
@@ -56,7 +56,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/afspraken/{id}",
  *  		"openapi_context" = {
- * 				"summary" = "Haal specifieke Afspraak resources op"
+ * 				"summary" = "Haal specifieke Afspraaks op"
  *  		}
  *  	},
  *     "put"={
@@ -64,7 +64,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/afspraken/{id}",
  *  		"openapi_context" = {
- * 				"summary" = "Vervang een specifieke Afspraak resource"
+ * 				"summary" = "Vervang een specifieke Afspraak"
  *  		}
  *  	},
  *     "delete"={
@@ -72,7 +72,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/afspraken/{id}",
  *  		"openapi_context" = {
- * 				"summary" = "Verwijder een specifieke Afspraak resource"
+ * 				"summary" = "Verwijder een specifieke Afspraak"
  *  		}
  *  	},
  *     "log"={
@@ -426,6 +426,18 @@ class Afspraak implements StringableInterface
 	 * @Groups({"read"})
 	 */
 	public $wijzigingsdatum;
+
+	/**
+     * De eigenaar (applicatie) van dit object, wordt bepaald aan de hand van de geauthenticeerde applicatie die de afspraak heeft aangemaakt
+     * 
+     * @var App\Entity\User $eigenaar
+     *
+     * @Gedmo\Blameable(on="create")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @Groups({"read"})
+     */
+    public $eigenaar;
+
 	
 	/**
 	 * @return string
