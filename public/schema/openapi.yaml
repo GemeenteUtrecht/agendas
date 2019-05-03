@@ -41,10 +41,22 @@ info:
      - agendas:lezen
      - agendas:maken
      - agendas:verwijderen
-     - applicatie:schrijven
-     - applicatie:lezen
-     - applicatie:maken
-     - applicatie:inloggen        
+     - Taak:schrijven
+     - Taak:lezen
+     - Taak:maken
+     - Taak:verwijderen
+     - afspraak:schrijven
+     - afspraak:lezen
+     - afspraak:maken
+     - afspraak:verwijderen
+     - beschikbaar:schrijven
+     - beschikbaar:lezen
+     - beschikbaar:maken
+     - beschikbaar:verwijderen
+     - Applicatie:schrijven
+     - Applicatie:lezen
+     - Applicatie:maken
+     - Applicatie:inloggen        
              
     # Authentication
     Voor het gebruik van deze applicatie is een JWT Token nodig, deze hangt altijd vast aan een applicatie (ofwel user). Geldige JWT Tokens worden aangemaakt bij het registreren van een applicatie en kennen een beperkte houdbaarheid. 
@@ -1978,9 +1990,6 @@ tags:
     name: Beschikbaar
     description: 'Een moment van beschikbaarheid behorende bij een of meerdere agendas, totale beschikbaarheid wordt berekend op agenda niveau door beschikbaarheid en afspraken met elkaar te vergelijken.'
   -
-    name: Organisatie
-    description: 'De Organisatie wordt gebruikt om standaard configuraties in te regelen.'
-  -
     name: Applicatie
     description: 'Een applicatie gebonden aan een JWT token behorende tot een organisatie.'
 x-tagGroups:
@@ -1991,5 +2000,4 @@ x-tagGroups:
       - Taak
       - Afspraak
       - Beschikbaar
-      - Organisatie
       - Applicatie

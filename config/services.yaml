@@ -64,10 +64,10 @@ parameters:
                  - beschikbaar:lezen
                  - beschikbaar:maken
                  - beschikbaar:verwijderen
-                 - applicatie:schrijven
-                 - applicatie:lezen
-                 - applicatie:maken
-                 - applicatie:inloggen        
+                 - Applicatie:schrijven
+                 - Applicatie:lezen
+                 - Applicatie:maken
+                 - Applicatie:inloggen        
                          
                 # Authentication
                 Voor het gebruik van deze applicatie is een JWT Token nodig, deze hangt altijd vast aan een applicatie (ofwel user). Geldige JWT Tokens worden aangemaakt bij het registreren van een applicatie en kennen een beperkte houdbaarheid. 
