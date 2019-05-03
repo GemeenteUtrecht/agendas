@@ -431,10 +431,10 @@ class Beschikbaar implements StringableInterface
 	/**
      * De eigenaar (applicatie) van dit object, wordt bepaald aan de hand van de geauthenticeerde applicatie die de beschikbaarheid heeft aangemaakt
      * 
-     * @var App\Entity\User $eigenaar
+     * @var App\Entity\Applicatie $eigenaar
      *
      * @Gedmo\Blameable(on="create")
-     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Applicatie")
      * @Groups({"read"})
      */
     public $eigenaar;

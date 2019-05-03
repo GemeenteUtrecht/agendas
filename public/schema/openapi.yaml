@@ -46,7 +46,7 @@ info:
      - applicatie:maken
      - applicatie:inloggen        
              
-    # Authenticatie
+    # Authentication
     Voor het gebruik van deze applicatie is een JWT Token nodig, deze hangt altijd vast aan een applicatie (ofwel user). Geldige JWT Tokens worden aangemaakt bij het registreren van een applicatie en kennen een beperkte houdbaarheid. 
     
     JWT Tokens kunnen zowel worden verlengd, als opnieuw worden aangevraagd, dit aan de hand van de applicatie id en sleutel.
@@ -587,8 +587,8 @@ paths:
         404:
           description: 'Applocatie niet gevonden'
       tags:
-        - User
-      operationId: getUserItem
+        - Applicatie
+      operationId: getApplicatieItem
       parameters:
         -
           name: id
@@ -607,8 +607,8 @@ paths:
         404:
           description: 'Applicatie niet gevonden'
       tags:
-        - User
-      operationId: putUserItem
+        - Applicatie
+      operationId: putApplicatieItem
       parameters:
         -
           name: id
@@ -620,14 +620,14 @@ paths:
         content:
           application/ld+json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/Applicatie'
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/Applicatie'
           text/html:
             schema:
-              $ref: '#/components/schemas/User'
-        description: 'The updated User resource'
+              $ref: '#/components/schemas/Applicatie'
+        description: 'The updated Applicatie resource'
   '/applicatie/{id}/log':
     get:
       summary: Logboek
@@ -645,8 +645,8 @@ paths:
         404:
           description: 'Applicatie object niet gevonden'
       tags:
-        - User
-      operationId: logUserItem
+        - Applicatie
+      operationId: logApplicatieItem
       parameters:
         -
           name: id
@@ -666,8 +666,8 @@ paths:
         404:
           description: 'Applicaties niet gevonden'
       tags:
-        - User
-      operationId: getUserCollection
+        - Applicatie
+      operationId: getApplicatieCollection
       parameters:
         -
           name: 'registratiedatum[before]'
@@ -969,20 +969,20 @@ paths:
         401:
           description: 'Applicatie niet ingeloged'
       tags:
-        - User
-      operationId: loginUserCollection
+        - Applicatie
+      operationId: loginApplicatieCollection
       requestBody:
         content:
           application/ld+json:
             schema:
-              $ref: '#/components/schemas/User-applicatie:schrijven'
+              $ref: '#/components/schemas/Applicatie-applicatie:schrijven'
           application/json:
             schema:
-              $ref: '#/components/schemas/User-applicatie:schrijven'
+              $ref: '#/components/schemas/Applicatie-applicatie:schrijven'
           text/html:
             schema:
-              $ref: '#/components/schemas/User-applicatie:schrijven'
-        description: 'The new User resource'
+              $ref: '#/components/schemas/Applicatie-applicatie:schrijven'
+        description: 'The new Applicatie resource'
   /registreer:
     post:
       summary: Registreren
@@ -998,20 +998,20 @@ paths:
         400:
           description: 'Ongeldige aanvraag'
       tags:
-        - User
-      operationId: registerUserCollection
+        - Applicatie
+      operationId: registerApplicatieCollection
       requestBody:
         content:
           application/ld+json:
             schema:
-              $ref: '#/components/schemas/User-applicatie:maken'
+              $ref: '#/components/schemas/Applicatie-applicatie:maken'
           application/json:
             schema:
-              $ref: '#/components/schemas/User-applicatie:maken'
+              $ref: '#/components/schemas/Applicatie-applicatie:maken'
           text/html:
             schema:
-              $ref: '#/components/schemas/User-applicatie:maken'
-        description: 'The new User resource'
+              $ref: '#/components/schemas/Applicatie-applicatie:maken'
+        description: 'The new Applicatie resource'
   /taak:
     get:
       summary: 'Haal een verzameling van Taken op'
@@ -1518,6 +1518,165 @@ components:
           type: string
       required:
         - naam
+    Applicatie:
+      type: object
+      description: 'Een Applicatie die is geidentificeerd en geautoriceerd om namens een organisatie wijzigingen uit te voeren'
+      properties:
+        id:
+          type: integer
+        naam:
+          type: email
+          maxLength: 255
+          minLength: 8
+          example: john@do.nl
+        sleutel:
+          type: string
+          maxLength: 16
+          minLength: 5
+          example: NietZoGeheim
+          description: 'Een door de organisatie opgegeven sleutel waarmee deze Applicatie zich identificeerd bij het ophalen van en JWT token.'
+        scopes:
+          type: array
+          example: '[]'
+          description: 'De scopes (rechten) die deze Applicatie heeft.'
+        organisatie:
+          type: string
+          example: '123456789'
+          required: 'true'
+          maxLength: 9
+          minLength: 8
+          description: 'Het RSIN van de organisatie waartoe deze Applicatie behoord. Dit moet een geldig RSIN zijn van 9 nummers en voldoen aan https://nl.wikipedia.org/wiki/Burgerservicenummer#11-proef.'
+        isActief:
+          type: boolean
+        registratiedatum:
+          description: 'Het tijdstip waarop deze Applicatie is aangemaakt'
+          type: string
+          format: date-time
+        wijzigingsdatum:
+          description: 'Het tijdstip waarop deze Applicatie voor het laatst is gewijzigd.'
+          type: string
+          format: date-time
+        contactPersoon:
+          title: Ambtenaar
+          type: url
+          example: 'https://ref.tst.vng.cloud/zrc/api/v1/zaken/24524f1c-1c14-4801-9535-22007b8d1b65'
+          required: 'true'
+          maxLength: 255
+          format: uri
+          description: 'De contactpersoon voor deze Applicatie, die bijvoorbeeld word verwittigd bij misbruik.'
+        fullname:
+          readOnly: true
+          type: string
+        user:
+          readOnly: true
+          type: boolean
+        username:
+          description: 'Username wordt door symfony gebruikt voor de gebruikersnaam maar in de context commonground component api gebruken we hem niet en onderdruken we hem door hem aan geen groupen toe te wijzen'
+        password:
+          readOnly: true
+        salt:
+          readOnly: true
+        roles:
+          readOnly: true
+    'Applicatie-applicatie:lezen':
+      type: object
+      description: 'Een Applicatie die is geidentificeerd en geautoriceerd om namens een organisatie wijzigingen uit te voeren'
+      properties:
+        id:
+          type: integer
+        naam:
+          type: email
+          maxLength: 255
+          minLength: 8
+          example: john@do.nl
+        organisatie:
+          type: string
+          example: '123456789'
+          required: 'true'
+          maxLength: 9
+          minLength: 8
+          description: 'Het RSIN van de organisatie waartoe deze Applicatie behoord. Dit moet een geldig RSIN zijn van 9 nummers en voldoen aan https://nl.wikipedia.org/wiki/Burgerservicenummer#11-proef.'
+        isActief:
+          type: boolean
+        registratiedatum:
+          description: 'Het tijdstip waarop deze Applicatie is aangemaakt'
+          type: string
+          format: date-time
+        wijzigingsdatum:
+          description: 'Het tijdstip waarop deze Applicatie voor het laatst is gewijzigd.'
+          type: string
+          format: date-time
+        contactPersoon:
+          title: Ambtenaar
+          type: url
+          example: 'https://ref.tst.vng.cloud/zrc/api/v1/zaken/24524f1c-1c14-4801-9535-22007b8d1b65'
+          required: 'true'
+          maxLength: 255
+          format: uri
+          description: 'De contactpersoon voor deze Applicatie, die bijvoorbeeld word verwittigd bij misbruik.'
+    'Applicatie-applicatie:maken':
+      type: object
+      description: 'Een Applicatie die is geidentificeerd en geautoriceerd om namens een organisatie wijzigingen uit te voeren'
+      properties:
+        naam:
+          type: email
+          maxLength: 255
+          minLength: 8
+          example: john@do.nl
+        sleutel:
+          type: string
+          maxLength: 16
+          minLength: 5
+          example: NietZoGeheim
+          description: 'Een door de organisatie opgegeven sleutel waarmee deze Applicatie zich identificeerd bij het ophalen van en JWT token.'
+        scopes:
+          type: array
+          example: '[]'
+          description: 'De scopes (rechten) die deze Applicatie heeft.'
+        organisatie:
+          type: string
+          example: '123456789'
+          required: 'true'
+          maxLength: 9
+          minLength: 8
+          description: 'Het RSIN van de organisatie waartoe deze Applicatie behoord. Dit moet een geldig RSIN zijn van 9 nummers en voldoen aan https://nl.wikipedia.org/wiki/Burgerservicenummer#11-proef.'
+        contactPersoon:
+          title: Ambtenaar
+          type: url
+          example: 'https://ref.tst.vng.cloud/zrc/api/v1/zaken/24524f1c-1c14-4801-9535-22007b8d1b65'
+          required: 'true'
+          maxLength: 255
+          format: uri
+          description: 'De contactpersoon voor deze Applicatie, die bijvoorbeeld word verwittigd bij misbruik.'
+    'Applicatie-applicatie:schrijven':
+      type: object
+      description: 'Een Applicatie die is geidentificeerd en geautoriceerd om namens een organisatie wijzigingen uit te voeren'
+      properties:
+        naam:
+          type: email
+          maxLength: 255
+          minLength: 8
+          example: john@do.nl
+        sleutel:
+          type: string
+          maxLength: 16
+          minLength: 5
+          example: NietZoGeheim
+          description: 'Een door de organisatie opgegeven sleutel waarmee deze Applicatie zich identificeerd bij het ophalen van en JWT token.'
+        scopes:
+          type: array
+          example: '[]'
+          description: 'De scopes (rechten) die deze Applicatie heeft.'
+        isActief:
+          type: boolean
+        contactPersoon:
+          title: Ambtenaar
+          type: url
+          example: 'https://ref.tst.vng.cloud/zrc/api/v1/zaken/24524f1c-1c14-4801-9535-22007b8d1b65'
+          required: 'true'
+          maxLength: 255
+          format: uri
+          description: 'De contactpersoon voor deze Applicatie, die bijvoorbeeld word verwittigd bij misbruik.'
     Beschikbaar:
       type: object
       description: Beschikbaarheid
@@ -1792,165 +1951,6 @@ components:
         beschrijving:
           description: 'Een beschrijvende tekst over deze Taak  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
-    User:
-      type: object
-      description: 'Een Applicatie die is geidentificeerd en geautoriceerd om namens een organisatie wijzigingen uit te voeren'
-      properties:
-        id:
-          type: integer
-        naam:
-          type: email
-          maxLength: 255
-          minLength: 8
-          example: john@do.nl
-        sleutel:
-          type: string
-          maxLength: 16
-          minLength: 5
-          example: NietZoGeheim
-          description: 'Een door de organisatie opgegeven sleutel waarmee deze Applicatie zich identificeerd bij het ophalen van en JWT token.'
-        scopes:
-          type: array
-          example: '[]'
-          description: 'De scopes (rechten) die deze Applicatie heeft.'
-        organisatie:
-          type: string
-          example: '123456789'
-          required: 'true'
-          maxLength: 9
-          minLength: 8
-          description: 'Het RSIN van de organisatie waartoe deze Applicatie behoord. Dit moet een geldig RSIN zijn van 9 nummers en voldoen aan https://nl.wikipedia.org/wiki/Burgerservicenummer#11-proef.'
-        isActief:
-          type: boolean
-        registratiedatum:
-          description: 'Het tijdstip waarop deze Applicatie is aangemaakt'
-          type: string
-          format: date-time
-        wijzigingsdatum:
-          description: 'Het tijdstip waarop deze Applicatie voor het laatst is gewijzigd.'
-          type: string
-          format: date-time
-        contactPersoon:
-          title: Ambtenaar
-          type: url
-          example: 'https://ref.tst.vng.cloud/zrc/api/v1/zaken/24524f1c-1c14-4801-9535-22007b8d1b65'
-          required: 'true'
-          maxLength: 255
-          format: uri
-          description: 'De contactpersoon voor deze Applicatie, die bijvoorbeeld word verwittigd bij misbruik.'
-        fullname:
-          readOnly: true
-          type: string
-        user:
-          readOnly: true
-          type: boolean
-        username:
-          description: 'Username wordt door symfony gebruikt voor de gebruikersnaam maar in de context commonground component api gebruken we hem niet en onderdruken we hem door hem aan geen groupen toe te wijzen'
-        password:
-          readOnly: true
-        salt:
-          readOnly: true
-        roles:
-          readOnly: true
-    'User-applicatie:lezen':
-      type: object
-      description: 'Een Applicatie die is geidentificeerd en geautoriceerd om namens een organisatie wijzigingen uit te voeren'
-      properties:
-        id:
-          type: integer
-        naam:
-          type: email
-          maxLength: 255
-          minLength: 8
-          example: john@do.nl
-        organisatie:
-          type: string
-          example: '123456789'
-          required: 'true'
-          maxLength: 9
-          minLength: 8
-          description: 'Het RSIN van de organisatie waartoe deze Applicatie behoord. Dit moet een geldig RSIN zijn van 9 nummers en voldoen aan https://nl.wikipedia.org/wiki/Burgerservicenummer#11-proef.'
-        isActief:
-          type: boolean
-        registratiedatum:
-          description: 'Het tijdstip waarop deze Applicatie is aangemaakt'
-          type: string
-          format: date-time
-        wijzigingsdatum:
-          description: 'Het tijdstip waarop deze Applicatie voor het laatst is gewijzigd.'
-          type: string
-          format: date-time
-        contactPersoon:
-          title: Ambtenaar
-          type: url
-          example: 'https://ref.tst.vng.cloud/zrc/api/v1/zaken/24524f1c-1c14-4801-9535-22007b8d1b65'
-          required: 'true'
-          maxLength: 255
-          format: uri
-          description: 'De contactpersoon voor deze Applicatie, die bijvoorbeeld word verwittigd bij misbruik.'
-    'User-applicatie:maken':
-      type: object
-      description: 'Een Applicatie die is geidentificeerd en geautoriceerd om namens een organisatie wijzigingen uit te voeren'
-      properties:
-        naam:
-          type: email
-          maxLength: 255
-          minLength: 8
-          example: john@do.nl
-        sleutel:
-          type: string
-          maxLength: 16
-          minLength: 5
-          example: NietZoGeheim
-          description: 'Een door de organisatie opgegeven sleutel waarmee deze Applicatie zich identificeerd bij het ophalen van en JWT token.'
-        scopes:
-          type: array
-          example: '[]'
-          description: 'De scopes (rechten) die deze Applicatie heeft.'
-        organisatie:
-          type: string
-          example: '123456789'
-          required: 'true'
-          maxLength: 9
-          minLength: 8
-          description: 'Het RSIN van de organisatie waartoe deze Applicatie behoord. Dit moet een geldig RSIN zijn van 9 nummers en voldoen aan https://nl.wikipedia.org/wiki/Burgerservicenummer#11-proef.'
-        contactPersoon:
-          title: Ambtenaar
-          type: url
-          example: 'https://ref.tst.vng.cloud/zrc/api/v1/zaken/24524f1c-1c14-4801-9535-22007b8d1b65'
-          required: 'true'
-          maxLength: 255
-          format: uri
-          description: 'De contactpersoon voor deze Applicatie, die bijvoorbeeld word verwittigd bij misbruik.'
-    'User-applicatie:schrijven':
-      type: object
-      description: 'Een Applicatie die is geidentificeerd en geautoriceerd om namens een organisatie wijzigingen uit te voeren'
-      properties:
-        naam:
-          type: email
-          maxLength: 255
-          minLength: 8
-          example: john@do.nl
-        sleutel:
-          type: string
-          maxLength: 16
-          minLength: 5
-          example: NietZoGeheim
-          description: 'Een door de organisatie opgegeven sleutel waarmee deze Applicatie zich identificeerd bij het ophalen van en JWT token.'
-        scopes:
-          type: array
-          example: '[]'
-          description: 'De scopes (rechten) die deze Applicatie heeft.'
-        isActief:
-          type: boolean
-        contactPersoon:
-          title: Ambtenaar
-          type: url
-          example: 'https://ref.tst.vng.cloud/zrc/api/v1/zaken/24524f1c-1c14-4801-9535-22007b8d1b65'
-          required: 'true'
-          maxLength: 255
-          format: uri
-          description: 'De contactpersoon voor deze Applicatie, die bijvoorbeeld word verwittigd bij misbruik.'
   securitySchemes:
     apiKey:
       type: apiKey
@@ -1980,6 +1980,9 @@ tags:
   -
     name: Organisatie
     description: 'De Organisatie wordt gebruikt om standaard configuraties in te regelen.'
+  -
+    name: Applicatie
+    description: 'Een applicatie gebonden aan een JWT token behorende tot een organisatie.'
 x-tagGroups:
   -
     name: Agenda
@@ -1989,3 +1992,4 @@ x-tagGroups:
       - Afspraak
       - Beschikbaar
       - Organisatie
+      - Applicatie

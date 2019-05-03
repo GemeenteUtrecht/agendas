@@ -52,12 +52,24 @@ parameters:
                  - agendas:lezen
                  - agendas:maken
                  - agendas:verwijderen
+                 - Taak:schrijven
+                 - Taak:lezen
+                 - Taak:maken
+                 - Taak:verwijderen
+                 - afspraak:schrijven
+                 - afspraak:lezen
+                 - afspraak:maken
+                 - afspraak:verwijderen
+                 - beschikbaar:schrijven
+                 - beschikbaar:lezen
+                 - beschikbaar:maken
+                 - beschikbaar:verwijderen
                  - applicatie:schrijven
                  - applicatie:lezen
                  - applicatie:maken
                  - applicatie:inloggen        
                          
-                # Authenticatie
+                # Authentication
                 Voor het gebruik van deze applicatie is een JWT Token nodig, deze hangt altijd vast aan een applicatie (ofwel user). Geldige JWT Tokens worden aangemaakt bij het registreren van een applicatie en kennen een beperkte houdbaarheid. 
                 
                 JWT Tokens kunnen zowel worden verlengd, als opnieuw worden aangevraagd, dit aan de hand van de applicatie id en sleutel.
@@ -90,11 +102,11 @@ parameters:
               description: "Een afspraak behorende bij een of meerdere agendas."
             - name: Beschikbaar
               description: "Een moment van beschikbaarheid behorende bij een of meerdere agendas, totale beschikbaarheid wordt berekend op agenda niveau door beschikbaarheid en afspraken met elkaar te vergelijken."
-            - name: Organisatie
-              description: "De Organisatie wordt gebruikt om standaard configuraties in te regelen."  
-            # - name: User
-            #   description: "Een gebruiker, of in dit geval een applicatie gebonden aan een JWT token behorende tot een organisatie."
-              # Grouping the endopoint  
+            # - name: Organisatie
+            #   description: "De Organisatie wordt gebruikt om standaard configuraties in te regelen."  
+            - name: Applicatie
+              description: "Een applicatie gebonden aan een JWT token behorende tot een organisatie."
+            #  Grouping the endopoint  
         x-tagGroups:
             - name: Agenda
               tags:
@@ -102,8 +114,8 @@ parameters:
               - Taak
               - Afspraak
               - Beschikbaar
-              - Organisatie
-              # - User
+              # - Organisatie
+              - Applicatie
               
         
 services:

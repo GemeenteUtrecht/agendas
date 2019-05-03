@@ -193,7 +193,7 @@ use App\Controller\UserController;
  * @ApiFilter(OrderFilter::class, properties={"id", "identificatie","bronOrganisatie"}, arguments={"orderParameterName"="order"})
  * @ApiFilter(SearchFilter::class, properties={"id": "exact","naam": "partial","bronOrganisatie": "exact"})
  */
-class User implements UserInterface, StringableInterface
+class Applicatie implements UserInterface, StringableInterface
 {
 	/**
 	 * @ORM\Id
@@ -222,7 +222,7 @@ class User implements UserInterface, StringableInterface
 	 *      minMessage = "The email needs to be at least {{ limit }} characters",
 	 *      maxMessage = "The email cannot be more then {{ limit }} characters"
 	 * )
-	 * @Groups({"user:write","user"})
+	 * @Groups({"applicatie:write","applicatie"})
 	 * @ApiProperty(
 	 * 	   iri="http://schema.org/name",
 	 *     attributes={
@@ -457,9 +457,9 @@ class User implements UserInterface, StringableInterface
 		return $this->name;
 	}
 	
-	public function isUser(?UserInterface $user = null): bool
+	public function isUser(?UserInterface $applicatie = null): bool
 	{
-		return $user instanceof self && $user->id === $this->id;
+		return $applicatie instanceof self && $applicatie->id === $this->id;
 	}
 	
 	public function __construct($username)
