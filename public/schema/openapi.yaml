@@ -238,15 +238,6 @@ paths:
       consumes:
         - application/json
         - text/html
-      produces:
-        - application/json
-      responses:
-        200:
-          description: 'Een overzicht van versies'
-        400:
-          description: 'Ongeldige aanvraag'
-        404:
-          description: 'Afspraak niet gevonden'
       tags:
         - Afspraak
       operationId: logAfspraakItem
@@ -257,6 +248,21 @@ paths:
           required: true
           schema:
             type: string
+      responses:
+        200:
+          description: 'Afspraak resource response'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Afspraak-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Afspraak-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Afspraak-read'
+        404:
+          description: 'Resource not found'
   '/afspraken/{id}/revert/{version}':
     post:
       summary: 'Versie teruggedraaien'
@@ -387,7 +393,7 @@ paths:
         - application/json
       responses:
         200:
-          description: 'Nog beschikbare data en tijden'
+          description: 'successful operation'
         400:
           description: 'Ongeldige aanvraag'
         404:
@@ -511,15 +517,6 @@ paths:
       consumes:
         - application/json
         - text/html
-      produces:
-        - application/json
-      responses:
-        200:
-          description: 'Nog beschikbare data en tijden'
-        400:
-          description: 'Ongeldige aanvraag'
-        404:
-          description: 'Agenda niet gevonden'
       tags:
         - Agenda
       operationId: availabilityAgendaItem
@@ -530,6 +527,21 @@ paths:
           required: true
           schema:
             type: string
+      responses:
+        200:
+          description: 'Agenda resource response'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Agenda-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Agenda-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Agenda-read'
+        404:
+          description: 'Resource not found'
   '/agendas/{id}/log':
     get:
       summary: 'Logboek inzien'
@@ -537,15 +549,6 @@ paths:
       consumes:
         - application/json
         - text/html
-      produces:
-        - application/json
-      responses:
-        200:
-          description: 'Een overzicht van versies'
-        400:
-          description: 'Ongeldige aanvraag'
-        404:
-          description: 'Agenda niet gevonden'
       tags:
         - Agenda
       operationId: logAgendaItem
@@ -556,6 +559,21 @@ paths:
           required: true
           schema:
             type: string
+      responses:
+        200:
+          description: 'Agenda resource response'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Agenda-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Agenda-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Agenda-read'
+        404:
+          description: 'Resource not found'
   '/agendas/{id}/revert/{version}':
     post:
       summary: 'Versie teruggedraaien'
@@ -591,13 +609,6 @@ paths:
     get:
       summary: 'Haal op'
       description: 'Haalt een Applicatie op'
-      responses:
-        200:
-          description: 'Een overzicht van Applicaties'
-        400:
-          description: 'Ongeldige aanvraag'
-        404:
-          description: 'Applocatie niet gevonden'
       tags:
         - Applicatie
       operationId: getApplicatieItem
@@ -608,6 +619,21 @@ paths:
           required: true
           schema:
             type: string
+      responses:
+        200:
+          description: 'Applicatie resource response'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Applicatie'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Applicatie'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Applicatie'
+        404:
+          description: 'Resource not found'
     put:
       summary: 'Werk bij'
       description: 'Werk een Applicatie bij'
@@ -647,15 +673,6 @@ paths:
       consumes:
         - application/json
         - text/html
-      produces:
-        - application/json
-      responses:
-        200:
-          description: 'Een overzicht van versies'
-        400:
-          description: 'Ongeldige aanvraag'
-        404:
-          description: 'Applicatie object niet gevonden'
       tags:
         - Applicatie
       operationId: logApplicatieItem
@@ -666,21 +683,150 @@ paths:
           required: true
           schema:
             type: string
+      responses:
+        200:
+          description: 'Applicatie resource response'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Applicatie-applicatie:lezen'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Applicatie-applicatie:lezen'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Applicatie-applicatie:lezen'
+        404:
+          description: 'Resource not found'
   /applicaties:
     get:
       summary: Verzameling
       description: 'Haal een verzameling van Applicaties op, het is mogelijk om deze resultaten te filteren aan de hand van query parameters. <br><br>Lees meer over het filteren van resulaten onder [filteren](/#section/Filteren).'
-      responses:
-        200:
-          description: 'Een overzicht van Applicaties'
-        400:
-          description: 'Ongeldige aanvraag'
-        404:
-          description: 'Applicaties niet gevonden'
       tags:
         - Applicatie
       operationId: getApplicatieCollection
+      responses:
+        200:
+          description: 'Applicatie collection response'
+          content:
+            application/ld+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Applicatie'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Applicatie'
+            text/html:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Applicatie'
       parameters:
+        -
+          name: id
+          in: query
+          required: false
+          schema:
+            type: integer
+        -
+          name: 'id[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: integer
+          style: form
+          explode: true
+        -
+          name: naam
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: organisatie
+          in: query
+          required: false
+          schema:
+            type: integer
+        -
+          name: 'organisatie[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: integer
+          style: form
+          explode: true
+        -
+          name: contactPersoon
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'contactPersoon[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: 'order[id]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'order[naam]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'order[organisatie]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'order[isActief]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'order[registratiedatum]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'order[wijzigingsdatum]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'order[contactPersoon]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: isActief
+          in: query
+          required: false
+          schema:
+            type: boolean
         -
           name: 'registratiedatum[before]'
           in: query
@@ -725,34 +871,6 @@ paths:
             type: string
         -
           name: 'wijzigingsdatum[strictly_after]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'order[id]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: id
-          in: query
-          required: false
-          schema:
-            type: integer
-        -
-          name: 'id[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: integer
-          style: form
-          explode: true
-        -
-          name: naam
           in: query
           required: false
           schema:
@@ -916,15 +1034,6 @@ paths:
       consumes:
         - application/json
         - text/html
-      produces:
-        - application/json
-      responses:
-        200:
-          description: 'Een overzicht van versies'
-        400:
-          description: 'Ongeldige aanvraag'
-        404:
-          description: 'Beschikbaarheid niet gevonden'
       tags:
         - Beschikbaar
       operationId: logBeschikbaarItem
@@ -935,6 +1044,21 @@ paths:
           required: true
           schema:
             type: string
+      responses:
+        200:
+          description: 'Beschikbaar resource response'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Beschikbaar-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Beschikbaar-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Beschikbaar-read'
+        404:
+          description: 'Resource not found'
   '/beschikbaarheden/{id}/revert/{version}':
     post:
       summary: 'Versie teruggedraaien'
@@ -968,8 +1092,8 @@ paths:
         description: 'The new Beschikbaar resource'
   /login_check:
     post:
-      summary: Login
-      description: 'Inloggen als Applicatie'
+      summary: 'Token halen'
+      description: 'Inloggen als Applicatie en JWT Token ophalen'
       consumes:
         - application/json
         - text/html
@@ -987,13 +1111,13 @@ paths:
         content:
           application/ld+json:
             schema:
-              $ref: '#/components/schemas/Applicatie-applicatie:schrijven'
+              $ref: '#/components/schemas/Applicatie-applicatie:inloggen'
           application/json:
             schema:
-              $ref: '#/components/schemas/Applicatie-applicatie:schrijven'
+              $ref: '#/components/schemas/Applicatie-applicatie:inloggen'
           text/html:
             schema:
-              $ref: '#/components/schemas/Applicatie-applicatie:schrijven'
+              $ref: '#/components/schemas/Applicatie-applicatie:inloggen'
         description: 'The new Applicatie resource'
   /registreer:
     post:
@@ -1183,15 +1307,6 @@ paths:
       consumes:
         - application/json
         - text/html
-      produces:
-        - application/json
-      responses:
-        200:
-          description: 'Een overzicht van versies'
-        400:
-          description: 'Ongeldige aanvraag'
-        404:
-          description: 'Taak niet gevonden'
       tags:
         - Taak
       operationId: logTaakItem
@@ -1202,6 +1317,21 @@ paths:
           required: true
           schema:
             type: string
+      responses:
+        200:
+          description: 'Taak resource response'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Taak-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Taak-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Taak-read'
+        404:
+          description: 'Resource not found'
   '/taken/{id}/revert/{version}':
     post:
       summary: 'Versie terugdraaien'
@@ -1537,10 +1667,10 @@ components:
         id:
           type: integer
         naam:
-          type: email
+          type: naam
           maxLength: 255
           minLength: 8
-          example: john@do.nl
+          example: mijn-applicatie
         sleutel:
           type: string
           maxLength: 16
@@ -1550,7 +1680,7 @@ components:
         scopes:
           type: array
           example: '[]'
-          description: 'De scopes (rechten) die deze Applicatie heeft.'
+          description: 'De scopes (rechten) die deze Applicatie heeft. Zie [scopes](/#section/Scopes) voor meer informatie.'
         organisatie:
           type: string
           example: '123456789'
@@ -1559,6 +1689,7 @@ components:
           minLength: 8
           description: 'Het RSIN van de organisatie waartoe deze Applicatie behoord. Dit moet een geldig RSIN zijn van 9 nummers en voldoen aan https://nl.wikipedia.org/wiki/Burgerservicenummer#11-proef.'
         isActief:
+          description: 'Word gebruikt om aan te geven of deze applicatie actief is (en mag inloggen) of dat deze slechts wordt gebruikt voor archief doeleinden'
           type: boolean
         registratiedatum:
           description: 'Het tijdstip waarop deze Applicatie is aangemaakt'
@@ -1590,6 +1721,21 @@ components:
           readOnly: true
         roles:
           readOnly: true
+    'Applicatie-applicatie:inloggen':
+      type: object
+      description: 'Een Applicatie die is geidentificeerd en geautoriceerd om namens een organisatie wijzigingen uit te voeren'
+      properties:
+        naam:
+          type: naam
+          maxLength: 255
+          minLength: 8
+          example: mijn-applicatie
+        sleutel:
+          type: string
+          maxLength: 16
+          minLength: 5
+          example: NietZoGeheim
+          description: 'Een door de organisatie opgegeven sleutel waarmee deze Applicatie zich identificeerd bij het ophalen van en JWT token.'
     'Applicatie-applicatie:lezen':
       type: object
       description: 'Een Applicatie die is geidentificeerd en geautoriceerd om namens een organisatie wijzigingen uit te voeren'
@@ -1597,10 +1743,10 @@ components:
         id:
           type: integer
         naam:
-          type: email
+          type: naam
           maxLength: 255
           minLength: 8
-          example: john@do.nl
+          example: mijn-applicatie
         organisatie:
           type: string
           example: '123456789'
@@ -1609,6 +1755,7 @@ components:
           minLength: 8
           description: 'Het RSIN van de organisatie waartoe deze Applicatie behoord. Dit moet een geldig RSIN zijn van 9 nummers en voldoen aan https://nl.wikipedia.org/wiki/Burgerservicenummer#11-proef.'
         isActief:
+          description: 'Word gebruikt om aan te geven of deze applicatie actief is (en mag inloggen) of dat deze slechts wordt gebruikt voor archief doeleinden'
           type: boolean
         registratiedatum:
           description: 'Het tijdstip waarop deze Applicatie is aangemaakt'
@@ -1631,10 +1778,10 @@ components:
       description: 'Een Applicatie die is geidentificeerd en geautoriceerd om namens een organisatie wijzigingen uit te voeren'
       properties:
         naam:
-          type: email
+          type: naam
           maxLength: 255
           minLength: 8
-          example: john@do.nl
+          example: mijn-applicatie
         sleutel:
           type: string
           maxLength: 16
@@ -1644,7 +1791,7 @@ components:
         scopes:
           type: array
           example: '[]'
-          description: 'De scopes (rechten) die deze Applicatie heeft.'
+          description: 'De scopes (rechten) die deze Applicatie heeft. Zie [scopes](/#section/Scopes) voor meer informatie.'
         organisatie:
           type: string
           example: '123456789'
@@ -1652,35 +1799,6 @@ components:
           maxLength: 9
           minLength: 8
           description: 'Het RSIN van de organisatie waartoe deze Applicatie behoord. Dit moet een geldig RSIN zijn van 9 nummers en voldoen aan https://nl.wikipedia.org/wiki/Burgerservicenummer#11-proef.'
-        contactPersoon:
-          title: Ambtenaar
-          type: url
-          example: 'https://ref.tst.vng.cloud/zrc/api/v1/zaken/24524f1c-1c14-4801-9535-22007b8d1b65'
-          required: 'true'
-          maxLength: 255
-          format: uri
-          description: 'De contactpersoon voor deze Applicatie, die bijvoorbeeld word verwittigd bij misbruik.'
-    'Applicatie-applicatie:schrijven':
-      type: object
-      description: 'Een Applicatie die is geidentificeerd en geautoriceerd om namens een organisatie wijzigingen uit te voeren'
-      properties:
-        naam:
-          type: email
-          maxLength: 255
-          minLength: 8
-          example: john@do.nl
-        sleutel:
-          type: string
-          maxLength: 16
-          minLength: 5
-          example: NietZoGeheim
-          description: 'Een door de organisatie opgegeven sleutel waarmee deze Applicatie zich identificeerd bij het ophalen van en JWT token.'
-        scopes:
-          type: array
-          example: '[]'
-          description: 'De scopes (rechten) die deze Applicatie heeft.'
-        isActief:
-          type: boolean
         contactPersoon:
           title: Ambtenaar
           type: url

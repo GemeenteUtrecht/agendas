@@ -40,18 +40,7 @@ use App\Controller\UserController;
  *      	"path"="/applicaties",
  *  		"openapi_context" = {
  * 				"summary" = "Verzameling",
- *         		"description" = "Haal een verzameling van Applicaties op, het is mogelijk om deze resultaten te filteren aan de hand van query parameters. <br><br>Lees meer over het filteren van resulaten onder [filteren](/#section/Filteren).",
- *             	"responses" = {
- *         			"200" = {
- *         				"description" = "Een overzicht van Applicaties"
- *         			},	
- *         			"400" = {
- *         				"description" = "Ongeldige aanvraag"
- *         			},
- *         			"404" = {
- *         				"description" = "Applicaties niet gevonden"
- *         			}
- *            	}            
+ *         		"description" = "Haal een verzameling van Applicaties op, het is mogelijk om deze resultaten te filteren aan de hand van query parameters. <br><br>Lees meer over het filteren van resulaten onder [filteren](/#section/Filteren)."            
  *  		}
  *  	},
  *     "register"={
@@ -86,10 +75,10 @@ use App\Controller\UserController;
  *         "path"="/login_check",
  *         "controller"= UserController::class,
  *     	   "normalization_context"={"groups"={"applicatie:lezen"}},
- *     	   "denormalization_context"={"groups"={"applicatie:schrijven"}}, 
+ *     	   "denormalization_context"={"groups"={"applicatie:inloggen"}}, 
  *         "openapi_context" = {
- *         		"summary" = "Login",
- *         		"description" = "Inloggen als Applicatie",
+ *         		"summary" = "Token halen",
+ *         		"description" = "Inloggen als Applicatie en JWT Token ophalen",
  *          	"consumes" = {
  *              	"application/json",
  *               	"text/html",
@@ -115,18 +104,7 @@ use App\Controller\UserController;
  *      	"path"="/applicatie/{id}",
  *  		"openapi_context" = {
  * 				"summary" = "Haal op",
- *         		"description" = "Haalt een Applicatie op",
- *             	"responses" = {
- *         			"200" = {
- *         				"description" = "Een overzicht van Applicaties"
- *         			},	
- *         			"400" = {
- *         				"description" = "Ongeldige aanvraag"
- *         			},
- *         			"404" = {
- *         				"description" = "Applocatie niet gevonden"
- *         			}
- *            	}            
+ *         		"description" = "Haalt een Applicatie op"           
  *  		}
  *  	},
  *     "put"={
@@ -161,20 +139,6 @@ use App\Controller\UserController;
  *          	"consumes" = {
  *              	"application/json",
  *               	"text/html",
- *            	},
- *             	"produces" = {
- *         			"application/json"
- *            	},
- *             	"responses" = {
- *         			"200" = {
- *         				"description" = "Een overzicht van versies"
- *         			},
- *         			"400" = {
- *         				"description" = "Ongeldige aanvraag"
- *         			},
- *         			"404" = {
- *         				"description" = "Applicatie object niet gevonden"
- *         			}
  *            	}
  *         }
  *     }
@@ -189,9 +153,6 @@ use App\Controller\UserController;
  *     fields={"naam", "organisatie"},
  *     message="De naam van een Applicatie dient uniek te zijn voor een organisatie"
  * )
- * @ApiFilter(DateFilter::class, properties={"registratiedatum","wijzigingsdatum"})
- * @ApiFilter(OrderFilter::class, properties={"id", "identificatie","bronOrganisatie"}, arguments={"orderParameterName"="order"})
- * @ApiFilter(SearchFilter::class, properties={"id": "exact","naam": "partial","bronOrganisatie": "exact"})
  */
 class Applicatie implements UserInterface, StringableInterface
 {
@@ -199,6 +160,8 @@ class Applicatie implements UserInterface, StringableInterface
 	 * @ORM\Id
 	 * @ORM\Column(type="integer")
 	 * @ORM\GeneratedValue(strategy="AUTO")
+     * @ApiFilter(SearchFilter::class, strategy="exact")
+     * @ApiFilter(OrderFilter::class)
 	 * @Groups({"applicatie:lezen"})
 	 */
 	public $id;
@@ -219,18 +182,20 @@ class Applicatie implements UserInterface, StringableInterface
 	 * @Assert\Length(
 	 *      min = 8,
 	 *      max = 255,
-	 *      minMessage = "The email needs to be at least {{ limit }} characters",
-	 *      maxMessage = "The email cannot be more then {{ limit }} characters"
+	 *      minMessage = "De naam moet tenminste {{ limit }} tekens bevatten",
+	 *      maxMessage = "De naam kan maximaal {{ limit }} tekens bevatten"
 	 * )
-	 * @Groups({"applicatie:write","applicatie"})
+	 * @Groups({"applicatie:write","user"})
+     * @ApiFilter(SearchFilter::class, strategy="partial")
+     * @ApiFilter(OrderFilter::class)
 	 * @ApiProperty(
 	 * 	   iri="http://schema.org/name",
 	 *     attributes={
 	 *         "openapi_context"={
-	 *             "type"="email",
+	 *             "type"="naam",
 	 *             "maxLength"=255,
 	 *             "minLength"=8,
-	 *             "example"="john@do.nl"
+	 *             "example"="mijn-applicatie"
 	 *         }
 	 *     }
 	 * )
@@ -263,7 +228,7 @@ class Applicatie implements UserInterface, StringableInterface
 	public $sleutel;
 	
 	/**
-	 * De scopes (rechten) die deze Applicatie heeft.
+	 * De scopes (rechten) die deze Applicatie heeft. Zie [scopes](/#section/Scopes) voor meer informatie.
 	 *
 	 * @Groups({"applicatie:schrijven","applicatie:maken"})
 	 * @ORM\Column(type="string", length=500)
@@ -293,6 +258,8 @@ class Applicatie implements UserInterface, StringableInterface
 	 *      maxMessage = "Het RSIN kan niet langer dan {{ limit }} karakters zijn"
 	 * )
 	 * @Groups({"applicatie:lezen", "applicatie:maken"})
+     * @ApiFilter(SearchFilter::class, strategy="exact")
+     * @ApiFilter(OrderFilter::class)
 	 * @ApiProperty(
 	 *     attributes={
 	 *         "openapi_context"={
@@ -309,7 +276,11 @@ class Applicatie implements UserInterface, StringableInterface
 	public $organisatie;	
 	
 	/**
+	 * Word gebruikt om aan te geven of deze applicatie actief is (en mag inloggen) of dat deze slechts wordt gebruikt voor archief doeleinden
+	 * 
 	 * @Groups({"applicatie:lezen","applicatie:schrijven"})
+     * @ApiFilter(BooleanFilter::class)
+     * @ApiFilter(OrderFilter::class)
 	 * @ORM\Column(name="is_active", type="boolean")
 	 */
 	public $isActief;
@@ -317,9 +288,11 @@ class Applicatie implements UserInterface, StringableInterface
 	/**
 	 * Het tijdstip waarop deze Applicatie is aangemaakt
 	 *
-	 * @var string Een "Y-m-d H:i:s" waarde bijvoorbeeld "2018-12-31 13:33:05" ofwel "Jaar-dag-maand uur:minuut:seconde"
+	 * @var datetime Een "Y-m-d H:i:s" waarde bijvoorbeeld "2018-12-31 13:33:05" ofwel "Jaar-dag-maand uur:minuut:seconde"
 	 * @Gedmo\Timestampable(on="create")
 	 * @Assert\DateTime
+     * @ApiFilter(DateFilter::class)
+     * @ApiFilter(OrderFilter::class)
 	 * @ORM\Column(
 	 *     type     = "datetime"
 	 * )
@@ -330,9 +303,11 @@ class Applicatie implements UserInterface, StringableInterface
 	/**
 	 * Het tijdstip waarop deze Applicatie voor het laatst is gewijzigd.
 	 *
-	 * @var string Een "Y-m-d H:i:s" waarde bijvoorbeeld "2018-12-31 13:33:05" ofwel "Jaar-dag-maand uur:minuut:seconde"
+	 * @var datetime Een "Y-m-d H:i:s" waarde bijvoorbeeld "2018-12-31 13:33:05" ofwel "Jaar-dag-maand uur:minuut:seconde"
 	 * @Gedmo\Timestampable(on="update")
 	 * @Assert\DateTime
+     * @ApiFilter(DateFilter::class)
+     * @ApiFilter(OrderFilter::class)
 	 * @ORM\Column(
 	 *     type     = "datetime",
 	 *     nullable	= true
@@ -349,6 +324,8 @@ class Applicatie implements UserInterface, StringableInterface
 	 *     nullable = true
 	 * )
 	 * @Groups({"applicatie:lezen", "applicatie:schrijven","applicatie:maken"})
+     * @ApiFilter(SearchFilter::class, strategy="exact")
+     * @ApiFilter(OrderFilter::class)
 	 * @ApiProperty(
 	 *     attributes={
 	 *         "openapi_context"={
