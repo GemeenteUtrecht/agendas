@@ -381,4 +381,8 @@ class Agenda implements StringableInterface
 		$this->afspraken = new ArrayCollection();
 		$this->taken = new ArrayCollection();
 	}
+	public function getUrl()
+	{
+		return 'http://agendas.demo.zaakonline.nl/agenda/'.$this->id;
+	}
 }

@@ -482,4 +482,8 @@ class Beschikbaar implements StringableInterface
 	{
 		return $this->agendas;
 	}
+	public function getUrl()
+	{
+		return 'http://agendas.demo.zaakonline.nl/beschikbaar/'.$this->id;
+	}
 }	

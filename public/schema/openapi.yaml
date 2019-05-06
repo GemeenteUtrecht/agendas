@@ -1,14 +1,14 @@
 openapi: 3.0.2
 info:
   description: |
-    Welkom inovator! <br> 
-    Fijn dat je de tijd en moeite hebt genomen om je te verdiepen in dit component. 
+    Welkom innovator! <br> 
+    Fijn dat je de tijd en moeite hebt genomen om je te verdiepen in dit component. Het "agenda" component is ontwikkeld voor de gemeente Utrecht en heeft als doel een agenda te koppelen aan objecten uit andere componenten. Dit stelt je in staat om aan deze objecten, afspraken en beschikbaarheid te kunnen beheren.
     
-    # Introductie                
-    Het "agenda" component is ontwikkeld voor de gemeente Utrecht en heeft als doel een agenda koppelen aan objecten uit andere componenten. Dit stelt je in staat om voor deze objecten afspraken en beschikbaarheid te tonen en bij te houden.
-    
+    # Ondersteuning
+    Wordt lid van het slackkanaal [https://zaakonline.slack.com](https://zaakonline.slack.com) voor ondersteuning door het ontwikkel team. En regelmatige updates over de ontwikkelingen op het gebied van de zaakonline componenten.
+                 
     # Common ground en open source
-    Om het voor alle partijen zo makkelijk mogenlijk te maken bieden we zo veel mogenlijk informatie openbaar aan over dit component.  
+    Om het voor alle partijen zo makkelijk mogelijk te maken, stellen we zo veel mogelijk informatie over dit component openbaar beschikbaar.
     - [datamodel als pdf](/schema/datamodel.pdf)
     - [datamodel als mwb](/schema/datamodel.mwb)
     - [codebase op github](https://github.com/GemeenteUtrecht/agendas)
@@ -16,14 +16,14 @@ info:
     - [docker container](https://hub.docker.com/r/huwelijksplanner/agendas-component)
     - [online demo](http://agenda.demo.zaakonline.nl/)
     
-    # OpenAPI Specification Cross-Origin Resource Sharing en linked Data
+    # OpenAPI Specification
     Deze API is gedocumenteerd in het **OpenAPI format** 
-    De API bevat Cross-Origin Resource Sharing (CORS) en is geimplementeerd volgens de [W3C spec](https://www.w3.org/TR/cors/) standaarden. De API staat cross-domain communicatie van de browser toe. Alle responses hebben een "wildcard same-origin", dit maakt ze publiekelijk en toegankelijk voor iedereen. Dat geldt voor elke code, op elke site.
+    De API bevat Cross-Origin Resource Sharing (CORS) en is geïmplementeerd volgens de [W3C spec](https://www.w3.org/TR/cors/) standaarden. De API staat cross-domain communicatie van de browser toe. Alle responses hebben een "wildcard same-origin", dit maakt ze openbaar en dus toegankelijk voor iedereen. Dat geldt voor elke code, op elke site.
     
     # Filteren en Sorteren
-    Het is mogelijk om resulten van deze API te filteren aan de hand van query parameters, deze worden meegegeven in de url tijdens het aanroepen van een endpoint, door extra waarden toe te voegen na een vraagteken. Toevoegen ?bronOrganisatie=12345689 (volledige endpoint  /agenda?bronOrganisatie=12345689), zorgt er bijvoorbeeld voor dat alleen agendas met bronOrganisatie (ofwel rsin/organisatie) 123456789 worden weergegeven.
+    Het is mogelijk om resultaten van deze API te filteren aan de hand van query parameters, deze worden meegegeven in de url tijdens het aanroepen van een endpoint, door extra waarden toe te voegen na een vraagteken. Bijvoorbeeld: ?bronOrganisatie=12345689 (*volledige endpoint  /agenda?bronOrganisatie=12345689*), zorgt ervoor dat alleen agendas met bronOrganisatie (ofwel rsin/organisatie) 123456789 worden weergegeven.
     
-    Voor het filteren op datum geldt dat er een weegmethode moet worden meegegeven, voor de waardes geldt dat elke door [PHP datetime](https://php.net/manual/en/datetime.construct.php) ondersteunde waarde kan worden gebruikt. Verschillende methoden kunnen worden gebruikt om een spreiding te selecteren (bijvoorbeeld /agenda?wijzigingsdatum[after]=2019-01-01&wijzigingsdatum[before]=2019-02-01 om alle agendas gewijzigd in Januari 2019 te selecteren.
+    Voor het filteren op datum geldt dat er een weegmethode moet worden meegegeven. Voor deze waardes geldt dat elke door [PHP datetime](https://php.net/manual/en/datetime.construct.php) ondersteunde waarde kan worden gebruikt. Verschillende methoden kunnen worden gebruikt om een spreiding te selecteren (bijvoorbeeld: */agenda?wijzigingsdatum[after]=2019-01-01&wijzigingsdatum[before]=2019-02-01*, om alle agendas gewijzigd in Januari 2019 te selecteren.
     
     De mogelijke weegmethoden voor datum vergelijking zijn:
      - after -> Data groter en gelijk aan
@@ -41,10 +41,10 @@ info:
      - agendas:lezen
      - agendas:maken
      - agendas:verwijderen
-     - Taak:schrijven
-     - Taak:lezen
-     - Taak:maken
-     - Taak:verwijderen
+     - taak:schrijven
+     - taak:lezen
+     - taak:maken
+     - taak:verwijderen
      - afspraak:schrijven
      - afspraak:lezen
      - afspraak:maken
@@ -53,17 +53,17 @@ info:
      - beschikbaar:lezen
      - beschikbaar:maken
      - beschikbaar:verwijderen
-     - Applicatie:schrijven
-     - Applicatie:lezen
-     - Applicatie:maken
-     - Applicatie:inloggen        
+     - applicatie:schrijven
+     - applicatie:lezen
+     - applicatie:maken
+     - applicatie:inloggen        
              
     # Authentication
     Voor het gebruik van deze applicatie is een JWT Token nodig, deze hangt altijd vast aan een applicatie (ofwel user). Geldige JWT Tokens worden aangemaakt bij het registreren van een applicatie en kennen een beperkte houdbaarheid. 
     
     JWT Tokens kunnen zowel worden verlengd, als opnieuw worden aangevraagd, dit aan de hand van de applicatie id en sleutel.
     
-    Let er bij het meegeven van JWT tokens op dat deze vooraf gedaan moeten worden door een Bearer en een spatie, onder de header Authorization. De volledig naam wordt daarmee: 'Authorization: Bearer [TOKEN]'
+    Let er bij het meegeven van JWT tokens op dat deze moet worden voorafgegaan door een Bearer en een spatie, onder de header Authorization. De volledig naam wordt daarmee: 'Authorization: Bearer [TOKEN]'.
     
   version: 0.0.1
   title: 'Agenda API'
@@ -608,7 +608,7 @@ paths:
   '/applicatie/{id}':
     get:
       summary: 'Haal op'
-      description: 'Haalt een Applicatie op'
+      description: 'Haal een Applicatie op'
       tags:
         - Applicatie
       operationId: getApplicatieItem
@@ -636,7 +636,7 @@ paths:
           description: 'Resource not found'
     put:
       summary: 'Werk bij'
-      description: 'Werk een Applicatie bij'
+      description: 'Werk een Applicatie bij.'
       responses:
         202:
           description: 'applicatie bijgewerkt'
@@ -669,7 +669,7 @@ paths:
   '/applicatie/{id}/log':
     get:
       summary: Logboek
-      description: 'Bekijk de wijzigingen op dit Applicatie object'
+      description: 'Bekijk de wijzigingen op dit Applicatie object.'
       consumes:
         - application/json
         - text/html
@@ -1101,9 +1101,9 @@ paths:
         - application/json
       responses:
         200:
-          description: 'Applicatie succesvol ingeloged'
+          description: 'Applicatie succesvol ingelogd'
         401:
-          description: 'Applicatie niet ingeloged'
+          description: 'Applicatie niet ingelogd'
       tags:
         - Applicatie
       operationId: loginApplicatieCollection
@@ -1440,6 +1440,8 @@ components:
         eigenaar:
           description: 'Met eigenaar wordt bijgehouden welke  applicatie verantwoordelijk is voor het object, en daarvoor de rechten beheerd en uitgeeft. In die zin moet de eigenaar dan ook worden gezien in de trant van autorisatie en configuratie in plaats van als onderdeel van het datamodel.'
           type: string
+        url:
+          readOnly: true
       required:
         - naam
         - samenvatting
@@ -1589,6 +1591,8 @@ components:
         eigenaar:
           description: 'Met eigenaar wordt bijgehouden welke  applicatie verantwoordelijk is voor het object, en daarvoor de rechten beheerd en uitgeeft. In die zin moet de eigenaar dan ook worden gezien in de trant van autorisatie en configuratie in plaats van als onderdeel van het datamodel.'
           type: string
+        url:
+          readOnly: true
       required:
         - naam
         - beschrijving
@@ -1676,7 +1680,7 @@ components:
           maxLength: 16
           minLength: 5
           example: NietZoGeheim
-          description: 'Een door de organisatie opgegeven sleutel waarmee deze Applicatie zich identificeerd bij het ophalen van en JWT token.'
+          description: 'Een door de organisatie opgegeven sleutel waarmee deze Applicatie zich identificeert bij het ophalen van en JWT token.'
         scopes:
           type: array
           example: '[]'
@@ -1687,7 +1691,7 @@ components:
           required: 'true'
           maxLength: 9
           minLength: 8
-          description: 'Het RSIN van de organisatie waartoe deze Applicatie behoord. Dit moet een geldig RSIN zijn van 9 nummers en voldoen aan https://nl.wikipedia.org/wiki/Burgerservicenummer#11-proef.'
+          description: 'Het RSIN van de organisatie waartoe deze Applicatie behoort. Dit moet een geldig RSIN zijn van 9 nummers en voldoen aan https://nl.wikipedia.org/wiki/Burgerservicenummer#11-proef.'
         isActief:
           description: 'Word gebruikt om aan te geven of deze applicatie actief is (en mag inloggen) of dat deze slechts wordt gebruikt voor archief doeleinden'
           type: boolean
@@ -1706,7 +1710,7 @@ components:
           required: 'true'
           maxLength: 255
           format: uri
-          description: 'De contactpersoon voor deze Applicatie, die bijvoorbeeld word verwittigd bij misbruik.'
+          description: 'De contactpersoon voor deze Applicatie, die bijvoorbeeld wordt verwittigd bij misbruik.'
         fullname:
           readOnly: true
           type: string
@@ -1714,7 +1718,7 @@ components:
           readOnly: true
           type: boolean
         username:
-          description: 'Username wordt door symfony gebruikt voor de gebruikersnaam maar in de context commonground component api gebruken we hem niet en onderdruken we hem door hem aan geen groupen toe te wijzen'
+          description: 'Username wordt door symfony gebruikt voor de gebruikersnaam maar in de context common ground component api gebruiken we hem niet en onderdrukken we hem door hem aan geen groepen toe te wijzen'
         password:
           readOnly: true
         salt:
@@ -1735,7 +1739,7 @@ components:
           maxLength: 16
           minLength: 5
           example: NietZoGeheim
-          description: 'Een door de organisatie opgegeven sleutel waarmee deze Applicatie zich identificeerd bij het ophalen van en JWT token.'
+          description: 'Een door de organisatie opgegeven sleutel waarmee deze Applicatie zich identificeert bij het ophalen van en JWT token.'
     'Applicatie-applicatie:lezen':
       type: object
       description: 'Een Applicatie die is geidentificeerd en geautoriceerd om namens een organisatie wijzigingen uit te voeren'
@@ -1753,7 +1757,7 @@ components:
           required: 'true'
           maxLength: 9
           minLength: 8
-          description: 'Het RSIN van de organisatie waartoe deze Applicatie behoord. Dit moet een geldig RSIN zijn van 9 nummers en voldoen aan https://nl.wikipedia.org/wiki/Burgerservicenummer#11-proef.'
+          description: 'Het RSIN van de organisatie waartoe deze Applicatie behoort. Dit moet een geldig RSIN zijn van 9 nummers en voldoen aan https://nl.wikipedia.org/wiki/Burgerservicenummer#11-proef.'
         isActief:
           description: 'Word gebruikt om aan te geven of deze applicatie actief is (en mag inloggen) of dat deze slechts wordt gebruikt voor archief doeleinden'
           type: boolean
@@ -1772,7 +1776,7 @@ components:
           required: 'true'
           maxLength: 255
           format: uri
-          description: 'De contactpersoon voor deze Applicatie, die bijvoorbeeld word verwittigd bij misbruik.'
+          description: 'De contactpersoon voor deze Applicatie, die bijvoorbeeld wordt verwittigd bij misbruik.'
     'Applicatie-applicatie:maken':
       type: object
       description: 'Een Applicatie die is geidentificeerd en geautoriceerd om namens een organisatie wijzigingen uit te voeren'
@@ -1787,7 +1791,7 @@ components:
           maxLength: 16
           minLength: 5
           example: NietZoGeheim
-          description: 'Een door de organisatie opgegeven sleutel waarmee deze Applicatie zich identificeerd bij het ophalen van en JWT token.'
+          description: 'Een door de organisatie opgegeven sleutel waarmee deze Applicatie zich identificeert bij het ophalen van en JWT token.'
         scopes:
           type: array
           example: '[]'
@@ -1798,7 +1802,7 @@ components:
           required: 'true'
           maxLength: 9
           minLength: 8
-          description: 'Het RSIN van de organisatie waartoe deze Applicatie behoord. Dit moet een geldig RSIN zijn van 9 nummers en voldoen aan https://nl.wikipedia.org/wiki/Burgerservicenummer#11-proef.'
+          description: 'Het RSIN van de organisatie waartoe deze Applicatie behoort. Dit moet een geldig RSIN zijn van 9 nummers en voldoen aan https://nl.wikipedia.org/wiki/Burgerservicenummer#11-proef.'
         contactPersoon:
           title: Ambtenaar
           type: url
@@ -1806,7 +1810,7 @@ components:
           required: 'true'
           maxLength: 255
           format: uri
-          description: 'De contactpersoon voor deze Applicatie, die bijvoorbeeld word verwittigd bij misbruik.'
+          description: 'De contactpersoon voor deze Applicatie, die bijvoorbeeld wordt verwittigd bij misbruik.'
     Beschikbaar:
       type: object
       description: Beschikbaarheid
@@ -1879,6 +1883,8 @@ components:
         eigenaar:
           description: 'Met eigenaar wordt bijgehouden welke  applicatie verantwoordelijk is voor het object, en daarvoor de rechten beheerd en uitgeeft. In die zin moet de eigenaar dan ook worden gezien in de trant van autorisatie en configuratie in plaats van als onderdeel van het datamodel.'
           type: string
+        url:
+          readOnly: true
       required:
         - naam
         - samenvatting
@@ -2109,7 +2115,7 @@ tags:
     description: 'Een moment van beschikbaarheid behorende bij een of meerdere agendas, totale beschikbaarheid wordt berekend op agenda niveau door beschikbaarheid en afspraken met elkaar te vergelijken.'
   -
     name: Applicatie
-    description: 'Een applicatie gebonden aan een JWT token behorende tot een organisatie.'
+    description: 'Een software applicatie binnen een organisatie die gebruik maakt van een component voor het creëren, ophalen, bijwerken of verwijderen van gegevens. Applicaties kunnen worden geregistreerd om namens een organisatie te handelen op een component. In deze zin zijn applicaties dan ook onderdeel van het beheerproces, infrastructuur en configuratie van een component in plaats van het datamodel dat door het component wordt geleverd.'
 x-tagGroups:
   -
     name: Agenda

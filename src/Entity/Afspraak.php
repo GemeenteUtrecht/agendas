@@ -481,4 +481,9 @@ class Afspraak implements StringableInterface
 	{
 		return $this->agendas;
 	}
+
+	public function getUrl()
+	{
+		return 'http://agendas.demo.zaakonline.nl/afspraak/'.$this->id;
+	}
 }	
