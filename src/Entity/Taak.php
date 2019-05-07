@@ -184,7 +184,7 @@ class Taak implements StringableInterface
 	public $naam;
 	
 	/**
-	 * Een samenvattende tekst over deze Taak  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>
+	 * Een korte samenvattende tekst over deze Taak bedoeld ter introductie.  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>
 	 *
 	 * @var string
 	 *
@@ -214,7 +214,7 @@ class Taak implements StringableInterface
 	public $samenvatting;
 	
 	/**
-	 * Een beschrijvende tekst over deze Taak  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>
+	 * Een uitgebreide beschrijvende tekst over deze Taak bedoeld ter verdere verduidelijking  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>
 	 *
 	 * @var string
 	 *
