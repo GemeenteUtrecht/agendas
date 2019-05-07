@@ -5,7 +5,7 @@ info:
     Fijn dat je de tijd en moeite hebt genomen om je te verdiepen in dit component. Het "agenda" component is ontwikkeld voor de gemeente Utrecht en heeft als doel een agenda te koppelen aan objecten uit andere componenten. Dit stelt je in staat om aan deze objecten, afspraken en beschikbaarheid te kunnen beheren.
     
     # Ondersteuning
-    Wordt lid van het slackkanaal [https://zaakonline.slack.com](https://zaakonline.slack.com) voor ondersteuning door het ontwikkel team. En regelmatige updates over de ontwikkelingen op het gebied van de zaakonline componenten.
+    Word lid van het slackkanaal [https://zaakonline.slack.com](https://zaakonline.slack.com) voor ondersteuning door het ontwikkel team. En krijg regelmatig updates over de ontwikkelingen op het gebied van de zaakonline componenten.
                  
     # Common ground en open source
     Om het voor alle partijen zo makkelijk mogelijk te maken, stellen we zo veel mogelijk informatie over dit component openbaar beschikbaar.
@@ -36,7 +36,7 @@ info:
     Kijk voor meer details over de mogelijkheden voor filteren en sorteren bij de GET (verzamel) endpoint van de entiteit die je wilt ophalen.
     
     # Scopes
-    Applicaties kunnen op deze API alleen wijzigingen uitvoeren waarvoor zij over de juiste rechten(scopes) beschikken. De op deze api verschikbare scopes zijn:
+    Applicaties kunnen op deze API alleen wijzigingen uitvoeren waarvoor zij over de juiste rechten(scopes) beschikken. De op deze api beschikbare scopes zijn:
      - agendas:schrijven
      - agendas:lezen
      - agendas:maken
@@ -636,14 +636,7 @@ paths:
           description: 'Resource not found'
     put:
       summary: 'Werk bij'
-      description: 'Werk een Applicatie bij.'
-      responses:
-        202:
-          description: 'applicatie bijgewerkt'
-        400:
-          description: 'Ongeldige aanvraag'
-        404:
-          description: 'Applicatie niet gevonden'
+      description: 'Werk een Applicatie bij'
       tags:
         - Applicatie
       operationId: putApplicatieItem
@@ -654,6 +647,23 @@ paths:
           required: true
           schema:
             type: string
+      responses:
+        200:
+          description: 'Applicatie resource updated'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Applicatie'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Applicatie'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Applicatie'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
       requestBody:
         content:
           application/ld+json:
@@ -669,10 +679,7 @@ paths:
   '/applicatie/{id}/log':
     get:
       summary: Logboek
-      description: 'Bekijk de wijzigingen op dit Applicatie object.'
-      consumes:
-        - application/json
-        - text/html
+      description: 'Bekijk de wijzigingen op dit Applicatie object'
       tags:
         - Applicatie
       operationId: logApplicatieItem
@@ -701,7 +708,7 @@ paths:
   /applicaties:
     get:
       summary: Verzameling
-      description: 'Haal een verzameling van Applicaties op, het is mogelijk om deze resultaten te filteren aan de hand van query parameters. <br><br>Lees meer over het filteren van resulaten onder [filteren](/#section/Filteren).'
+      description: 'Haal een verzameling van Applicaties op, het is mogelijk om deze resultaten te filteren aan de hand van query parameters. <br><br>Lees meer over het filteren van resultaten onder [filteren](/#section/Filteren).'
       tags:
         - Applicatie
       operationId: getApplicatieCollection
@@ -1094,19 +1101,32 @@ paths:
     post:
       summary: 'Token halen'
       description: 'Inloggen als Applicatie en JWT Token ophalen'
-      consumes:
-        - application/json
-        - text/html
-      produces:
-        - application/json
-      responses:
-        200:
-          description: 'Applicatie succesvol ingelogd'
-        401:
-          description: 'Applicatie niet ingelogd'
       tags:
         - Applicatie
       operationId: loginApplicatieCollection
+      responses:
+        201:
+          description: 'Applicatie resource created'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Applicatie-applicatie:lezen'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Applicatie-applicatie:lezen'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Applicatie-applicatie:lezen'
+          links:
+            GetApplicatieItem:
+              parameters:
+                id: '$response.body#/id'
+              operationId: getApplicatieItem
+              description: 'The `id` value returned in the response can be used as the `id` parameter in `GET /applicatie/{id}`.'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
       requestBody:
         content:
           application/ld+json:
@@ -1123,19 +1143,32 @@ paths:
     post:
       summary: Registreren
       description: 'Registreer een nieuwe Applicatie voor dit component'
-      consumes:
-        - application/json
-        - text/html
-      produces:
-        - application/json
-      responses:
-        201:
-          description: 'Applicatie aangemaakt'
-        400:
-          description: 'Ongeldige aanvraag'
       tags:
         - Applicatie
       operationId: registerApplicatieCollection
+      responses:
+        201:
+          description: 'Applicatie resource created'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Applicatie-applicatie:lezen'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Applicatie-applicatie:lezen'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Applicatie-applicatie:lezen'
+          links:
+            GetApplicatieItem:
+              parameters:
+                id: '$response.body#/id'
+              operationId: getApplicatieItem
+              description: 'The `id` value returned in the response can be used as the `id` parameter in `GET /applicatie/{id}`.'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
       requestBody:
         content:
           application/ld+json:
@@ -1384,10 +1417,10 @@ components:
           description: 'De naam van deze Afspraak <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
         samenvatting:
-          description: 'Een samenvattende tekst over deze Afspraak  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een korte samenvattende tekst over deze Afspraak bedoeld ter introductie.  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         beschrijving:
-          description: 'Een beschrijvende tekst over deze Afspraak  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een uitgebreide beschrijvende tekst over deze Afspraak bedoeld ter verdere verduidelijking.  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         van:
           description: 'Het begin van deze Afspraak.'
@@ -1462,10 +1495,10 @@ components:
           description: 'De naam van deze Afspraak <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
         samenvatting:
-          description: 'Een samenvattende tekst over deze Afspraak  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een korte samenvattende tekst over deze Afspraak bedoeld ter introductie.  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         beschrijving:
-          description: 'Een beschrijvende tekst over deze Afspraak  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een uitgebreide beschrijvende tekst over deze Afspraak bedoeld ter verdere verduidelijking.  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         van:
           description: 'Het begin van deze Afspraak.'
@@ -1534,10 +1567,10 @@ components:
           description: 'De naam van deze Afspraak <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
         samenvatting:
-          description: 'Een samenvattende tekst over deze Afspraak  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een korte samenvattende tekst over deze Afspraak bedoeld ter introductie.  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         beschrijving:
-          description: 'Een beschrijvende tekst over deze Afspraak  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een uitgebreide beschrijvende tekst over deze Afspraak bedoeld ter verdere verduidelijking.  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
     Agenda:
       type: object
@@ -1827,10 +1860,10 @@ components:
           description: 'De naam van deze Beschikbaarheid <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
         samenvatting:
-          description: 'Een samenvattende tekst over deze Beschikbaarheid  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een korte samenvattende tekst over deze Beschikbaarheid bedoeld ter introductie.  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         beschrijving:
-          description: 'Een beschrijvende tekst over deze Beschikbaarheid  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een uitgebreide beschrijvende tekst over deze Ambtenaar bedoeld ter verdere verduidelijking  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         van:
           description: 'Het begin van deze Beschikbaarheid.'
@@ -1905,10 +1938,10 @@ components:
           description: 'De naam van deze Beschikbaarheid <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
         samenvatting:
-          description: 'Een samenvattende tekst over deze Beschikbaarheid  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een korte samenvattende tekst over deze Beschikbaarheid bedoeld ter introductie.  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         beschrijving:
-          description: 'Een beschrijvende tekst over deze Beschikbaarheid  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een uitgebreide beschrijvende tekst over deze Ambtenaar bedoeld ter verdere verduidelijking  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         van:
           description: 'Het begin van deze Beschikbaarheid.'
@@ -1977,10 +2010,10 @@ components:
           description: 'De naam van deze Beschikbaarheid <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
         samenvatting:
-          description: 'Een samenvattende tekst over deze Beschikbaarheid  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een korte samenvattende tekst over deze Beschikbaarheid bedoeld ter introductie.  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         beschrijving:
-          description: 'Een beschrijvende tekst over deze Beschikbaarheid  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een uitgebreide beschrijvende tekst over deze Ambtenaar bedoeld ter verdere verduidelijking  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
     Taak:
       type: object
@@ -1998,10 +2031,10 @@ components:
           description: 'De naam van deze Taak <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
         samenvatting:
-          description: 'Een samenvattende tekst over deze Taak  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een korte samenvattende tekst over deze Taak bedoeld ter introductie.  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         beschrijving:
-          description: 'Een beschrijvende tekst over deze Taak  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een uitgebreide beschrijvende tekst over deze Taak bedoeld ter verdere verduidelijking  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         herhaalVan:
           description: 'Herhaal deze Taak vanaf'
@@ -2042,10 +2075,10 @@ components:
           description: 'De naam van deze Taak <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
         samenvatting:
-          description: 'Een samenvattende tekst over deze Taak  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een korte samenvattende tekst over deze Taak bedoeld ter introductie.  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         beschrijving:
-          description: 'Een beschrijvende tekst over deze Taak  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een uitgebreide beschrijvende tekst over deze Taak bedoeld ter verdere verduidelijking  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         herhaalVan:
           description: 'Herhaal deze Taak vanaf'
@@ -2082,10 +2115,10 @@ components:
           description: 'De naam van deze Taak <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
         samenvatting:
-          description: 'Een samenvattende tekst over deze Taak  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een korte samenvattende tekst over deze Taak bedoeld ter introductie.  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         beschrijving:
-          description: 'Een beschrijvende tekst over deze Taak  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een uitgebreide beschrijvende tekst over deze Taak bedoeld ter verdere verduidelijking  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
   securitySchemes:
     apiKey:
