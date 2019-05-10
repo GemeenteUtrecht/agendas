@@ -56,7 +56,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/afspraken/{id}",
  *  		"openapi_context" = {
- * 				"summary" = "Haal specifieke Afspraaks op"
+ * 				"summary" = "Haal een specifieke Afspraak op"
  *  		}
  *  	},
  *     "put"={
@@ -97,7 +97,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *     		"normalization_context"={"groups"={"read"}},
  *     		"denormalization_context"={"groups"={"write"}},
  *         	"openapi_context" = {
- *         		"summary" = "Versie teruggedraaien",
+ *         		"summary" = "Versie herstellen",
  *         		"description" = "Herstel een eerdere versie van deze Afspraak. Dit is een destructieve actie die niet ongedaan kan worden gemaakt",
  *          	"consumes" = {
  *              	"application/json",
@@ -108,7 +108,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *            	},
  *             	"responses" = {
  *         			"202" = {
- *         				"description" = "Teruggedraaid naar eerdere versie"
+ *         				"description" = "Hersteld naar eerdere versie"
  *         			},	
  *         			"400" = {
  *         				"description" = "Ongeldige aanvraag"

@@ -66,7 +66,7 @@ info:
     Let er bij het meegeven van JWT tokens op dat deze moet worden voorafgegaan door een Bearer en een spatie, onder de header Authorization. De volledig naam wordt daarmee: 'Authorization: Bearer [TOKEN]'.
     
   version: 0.0.1
-  title: 'Agenda API'
+  title: 'Agendas API'
   termsOfService: 'http://www.zaakonline.nl/terms/'
   contact:
     name: 'API Support'
@@ -147,7 +147,7 @@ paths:
         description: 'The new Afspraak resource'
   '/afspraken/{id}':
     get:
-      summary: 'Haal specifieke Afspraaks op'
+      summary: 'Haal een specifieke Afspraak op'
       tags:
         - Afspraak
       operationId: getAfspraakItem
@@ -265,7 +265,7 @@ paths:
           description: 'Resource not found'
   '/afspraken/{id}/revert/{version}':
     post:
-      summary: 'Versie teruggedraaien'
+      summary: 'Versie herstellen'
       description: 'Herstel een eerdere versie van deze Afspraak. Dit is een destructieve actie die niet ongedaan kan worden gemaakt'
       consumes:
         - application/json
@@ -274,7 +274,7 @@ paths:
         - application/json
       responses:
         202:
-          description: 'Teruggedraaid naar eerdere versie'
+          description: 'Hersteld naar eerdere versie'
         400:
           description: 'Ongeldige aanvraag'
         404:
@@ -576,7 +576,7 @@ paths:
           description: 'Resource not found'
   '/agendas/{id}/revert/{version}':
     post:
-      summary: 'Versie teruggedraaien'
+      summary: 'Versie herstellen'
       description: 'Herstel een eerdere versie van deze Agenda. Dit is een destructieve actie die niet ongedaan kan worden gemaakt'
       consumes:
         - application/json
@@ -1068,7 +1068,7 @@ paths:
           description: 'Resource not found'
   '/beschikbaarheden/{id}/revert/{version}':
     post:
-      summary: 'Versie teruggedraaien'
+      summary: 'Versie herstellen'
       description: 'Herstel een eerdere versie van deze Beschikbaarheid. Dit is een destructieve actie die niet ongedaan kan worden gemaakt'
       consumes:
         - application/json
@@ -1077,7 +1077,7 @@ paths:
         - application/json
       responses:
         202:
-          description: 'Teruggedraaid naar eerdere versie'
+          description: 'Hersteld naar eerdere versie'
         400:
           description: 'Ongeldige aanvraag'
         404:
@@ -1367,7 +1367,7 @@ paths:
           description: 'Resource not found'
   '/taken/{id}/revert/{version}':
     post:
-      summary: 'Versie terugdraaien'
+      summary: 'Versie herstellen'
       description: 'Herstel een eerdere versie van deze Taak. Dit is een destructieve actie die niet ongedaan kan worden gemaakt'
       consumes:
         - application/json
@@ -1376,7 +1376,7 @@ paths:
         - application/json
       responses:
         202:
-          description: 'Terug gedraaid naar eerdere versie'
+          description: 'Hersteld naar eerdere versie'
         400:
           description: 'Ongeldige aanvraag'
         404:
@@ -1577,7 +1577,7 @@ components:
       description: Agenda
       properties:
         id:
-          description: 'Het identificatie nummer van deze Agenda <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
+          description: 'Het identificatienummer van deze Agenda <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
           type: integer
         identificatie:
           type: string
@@ -1591,7 +1591,7 @@ components:
           required: 'true'
           maxLength: 9
           minLength: 8
-          description: 'Het RSIN van de organisatie waartoe deze Agenda behoord. Dit moet een geldig RSIN zijn van 9 nummers en voldoen aan https://nl.wikipedia.org/wiki/Burgerservicenummer#11-proef. <br> Het RSIN word bepaald aan de hand van de gauthenticeerde applicatie en kan niet worden overschreven'
+          description: 'Het RSIN van de organisatie waartoe deze Agenda behoort. Dit moet een geldig RSIN zijn van 9 nummers en voldoen aan https://nl.wikipedia.org/wiki/Burgerservicenummer#11-proef. <br> Het RSIN wordt bepaald aan de hand van de geauthenticeerde applicatie en kan niet worden overschreven'
         naam:
           description: 'De naam van deze Agenda <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
@@ -1637,7 +1637,7 @@ components:
       description: Agenda
       properties:
         id:
-          description: 'Het identificatie nummer van deze Agenda <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
+          description: 'Het identificatienummer van deze Agenda <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
           type: integer
         identificatie:
           type: string
@@ -1651,7 +1651,7 @@ components:
           required: 'true'
           maxLength: 9
           minLength: 8
-          description: 'Het RSIN van de organisatie waartoe deze Agenda behoord. Dit moet een geldig RSIN zijn van 9 nummers en voldoen aan https://nl.wikipedia.org/wiki/Burgerservicenummer#11-proef. <br> Het RSIN word bepaald aan de hand van de gauthenticeerde applicatie en kan niet worden overschreven'
+          description: 'Het RSIN van de organisatie waartoe deze Agenda behoort. Dit moet een geldig RSIN zijn van 9 nummers en voldoen aan https://nl.wikipedia.org/wiki/Burgerservicenummer#11-proef. <br> Het RSIN wordt bepaald aan de hand van de geauthenticeerde applicatie en kan niet worden overschreven'
         naam:
           description: 'De naam van deze Agenda <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
