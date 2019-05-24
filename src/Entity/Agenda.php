@@ -40,7 +40,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/agenda",
  *  		"openapi_context" = {
- * 				"summary" = "Haalt een verzameling van Agendas op"
+ * 				"summary" = "Haal een verzameling van Agendas op"
  *  		}
  *  	},
  *  	"post"={
@@ -48,7 +48,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *  		"denormalizationContext"={"groups"={"write"}},
  *      	"path"="/agenda",
  *  		"openapi_context" = {
- * 				"summary" = "Maak een Agendas aan"
+ * 				"summary" = "Maak een Agenda aan"
  *  		}
  *  	},
  *     "match"={

@@ -37,10 +37,10 @@ parameters:
                 Voor het filteren op datum geldt dat er een weegmethode moet worden meegegeven. Voor deze waardes geldt dat elke door [PHP datetime](https://php.net/manual/en/datetime.construct.php) ondersteunde waarde kan worden gebruikt. Verschillende methoden kunnen worden gebruikt om een spreiding te selecteren (bijvoorbeeld: */agenda?wijzigingsdatum[after]=2019-01-01&wijzigingsdatum[before]=2019-02-01*, om alle agendas gewijzigd in Januari 2019 te selecteren.
                 
                 De mogelijke weegmethoden voor datum vergelijking zijn:
-                 - after -> Data groter en gelijk aan
-                 - before -> Data kleiner en gelijk aan
-                 - strictly_after -> Data groter dan
-                 - strictly_before -> Data kleiner dan                                               
+                 - after -> Datums groter en gelijk aan
+                 - before -> Datums kleiner en gelijk aan
+                 - strictly_after -> Datums groter dan
+                 - strictly_before -> Datums kleiner dan                                               
                 
                 Daarnaast kunnen de resultaten ook worden gesorteerd, dit gaat aan de hand van de order parameter, gevolgd door desc (aflopend) of asc (oplopend). Er kunnen meerdere order parameters op volgorde van toepassing worden meegegeven (bijvoorbeeld https://agenda.demo.zaakonline.nl/agenda?order[bronOrganisatie]=desc&order[identificatie]=asc)
                 
