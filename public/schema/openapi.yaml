@@ -65,7 +65,7 @@ info:
     
     Let er bij het meegeven van JWT tokens op dat deze moet worden voorafgegaan door een Bearer en een spatie, onder de header Authorization. De volledig naam wordt daarmee: 'Authorization: Bearer [TOKEN]'.
     
-  version: '0.0.20 Alpha'
+  version: '0.0.22 Alpha'
   title: 'Agendas API'
   termsOfService: 'http://www.zaakonline.nl/terms/'
   contact:
@@ -234,7 +234,7 @@ paths:
   '/afspraken/{id}/log':
     get:
       summary: 'Logboek inzien'
-      description: 'Geeft een array van eerdere versies en wijzigingen van deze Afspraak'
+      description: 'Geeft een array van eerdere versies en wijzigingen van deze Afspraak.'
       consumes:
         - application/json
         - text/html
@@ -266,7 +266,7 @@ paths:
   '/afspraken/{id}/revert/{version}':
     post:
       summary: 'Versie herstellen'
-      description: 'Herstel een eerdere versie van deze Afspraak. Dit is een destructieve actie die niet ongedaan kan worden gemaakt'
+      description: 'Herstel een eerdere versie van deze Afspraak. Dit is een destructieve actie die niet ongedaan kan worden gemaakt.'
       consumes:
         - application/json
         - text/html
@@ -385,7 +385,7 @@ paths:
   /agenda/match:
     get:
       summary: 'Vergelijk beschikbaarheid'
-      description: 'Vergelijk een aantal Agenda''s en geef een lijst van matchende beschikbaarheid terug'
+      description: 'Vergelijk een aantal Agenda''s en geef een lijst van matchende beschikbaarheid terug.'
       consumes:
         - application/json
         - text/html
@@ -513,7 +513,7 @@ paths:
   '/agendas/{id}/beschikbaar':
     get:
       summary: 'Controleer beschikbaarheid'
-      description: 'Controleer welke periodes nog beschikbaar zijn in deze Agenda gedurende een gegeven periode'
+      description: 'Controleer welke periodes nog beschikbaar zijn in deze Agenda gedurende een gegeven periode.'
       consumes:
         - application/json
         - text/html
@@ -545,7 +545,7 @@ paths:
   '/agendas/{id}/log':
     get:
       summary: 'Logboek inzien'
-      description: 'Geeft een array van eerdere versies en wijzigingen van deze Agenda'
+      description: 'Geeft een array van eerdere versies en wijzigingen van deze Agenda.'
       consumes:
         - application/json
         - text/html
@@ -577,7 +577,7 @@ paths:
   '/agendas/{id}/revert/{version}':
     post:
       summary: 'Versie herstellen'
-      description: 'Herstel een eerdere versie van deze Agenda. Dit is een destructieve actie die niet ongedaan kan worden gemaakt'
+      description: 'Herstel een eerdere versie van deze Agenda. Dit is een destructieve actie die niet ongedaan kan worden gemaakt.'
       consumes:
         - application/json
         - text/html
@@ -1037,7 +1037,7 @@ paths:
   '/beschikbaarheden/{id}/log':
     get:
       summary: 'Logboek inzien'
-      description: 'Geeft een array van eerdere versies en wijzigingen van deze Beschikbaarheid'
+      description: 'Geeft een array van eerdere versies en wijzigingen van deze Beschikbaarheid.'
       consumes:
         - application/json
         - text/html
@@ -1069,7 +1069,7 @@ paths:
   '/beschikbaarheden/{id}/revert/{version}':
     post:
       summary: 'Versie herstellen'
-      description: 'Herstel een eerdere versie van deze Beschikbaarheid. Dit is een destructieve actie die niet ongedaan kan worden gemaakt'
+      description: 'Herstel een eerdere versie van deze Beschikbaarheid. Dit is een destructieve actie die niet ongedaan kan worden gemaakt.'
       consumes:
         - application/json
         - text/html
@@ -1336,7 +1336,7 @@ paths:
   '/taken/{id}/log':
     get:
       summary: 'Logboek inzien'
-      description: 'Geeft een array van eerdere versies en wijzigingen van deze Taak'
+      description: 'Geeft een array van eerdere versies en wijzigingen van deze Taak.'
       consumes:
         - application/json
         - text/html
@@ -1368,7 +1368,7 @@ paths:
   '/taken/{id}/revert/{version}':
     post:
       summary: 'Versie herstellen'
-      description: 'Herstel een eerdere versie van deze Taak. Dit is een destructieve actie die niet ongedaan kan worden gemaakt'
+      description: 'Herstel een eerdere versie van deze Taak. Dit is een destructieve actie, die niet ongedaan kan worden gemaakt.'
       consumes:
         - application/json
         - text/html
@@ -1406,15 +1406,15 @@ components:
       description: Afspraak
       properties:
         id:
-          description: 'Het identificatienummer van deze Afspraak <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
+          description: 'Het identificatienummer van deze Afspraak. <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
           type: integer
         agendas:
-          description: 'De agendas waar deze Afspraak in staat'
+          description: 'De agenda''s waar deze Afspraak in staat.'
           type: array
           items:
             type: string
         naam:
-          description: 'De naam van deze Afspraak <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
+          description: 'De naam van deze Afspraak. <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
         samenvatting:
           description: 'Een korte samenvattende tekst over deze Afspraak bedoeld ter introductie.  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
@@ -1463,7 +1463,7 @@ components:
           type: string
           format: date-time
         registratiedatum:
-          description: 'Het tijdstip waarop dit Afspraak object is aangemaakt'
+          description: 'Het tijdstip waarop dit Afspraak object is aangemaakt.'
           type: string
           format: date-time
         wijzigingsdatum:
@@ -1471,7 +1471,7 @@ components:
           type: string
           format: date-time
         eigenaar:
-          description: 'Met eigenaar wordt bijgehouden welke  applicatie verantwoordelijk is voor het object, en daarvoor de rechten beheerd en uitgeeft. In die zin moet de eigenaar dan ook worden gezien in de trant van autorisatie en configuratie in plaats van als onderdeel van het datamodel.'
+          description: 'Met eigenaar wordt bijgehouden welke  applicatie verantwoordelijk is voor het object, en daarvoor de rechten beheert en uitgeeft. De eigenaar kan dan ook worden gezien in de trant van autorisatie en configuratie in plaats van als onderdeel van het datamodel.'
           type: string
         url:
           readOnly: true
@@ -1484,15 +1484,15 @@ components:
       description: Afspraak
       properties:
         id:
-          description: 'Het identificatienummer van deze Afspraak <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
+          description: 'Het identificatienummer van deze Afspraak. <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
           type: integer
         agendas:
-          description: 'De agendas waar deze Afspraak in staat'
+          description: 'De agenda''s waar deze Afspraak in staat.'
           type: array
           items:
             type: string
         naam:
-          description: 'De naam van deze Afspraak <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
+          description: 'De naam van deze Afspraak. <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
         samenvatting:
           description: 'Een korte samenvattende tekst over deze Afspraak bedoeld ter introductie.  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
@@ -1541,7 +1541,7 @@ components:
           type: string
           format: date-time
         registratiedatum:
-          description: 'Het tijdstip waarop dit Afspraak object is aangemaakt'
+          description: 'Het tijdstip waarop dit Afspraak object is aangemaakt.'
           type: string
           format: date-time
         wijzigingsdatum:
@@ -1549,7 +1549,7 @@ components:
           type: string
           format: date-time
         eigenaar:
-          description: 'Met eigenaar wordt bijgehouden welke  applicatie verantwoordelijk is voor het object, en daarvoor de rechten beheerd en uitgeeft. In die zin moet de eigenaar dan ook worden gezien in de trant van autorisatie en configuratie in plaats van als onderdeel van het datamodel.'
+          description: 'Met eigenaar wordt bijgehouden welke  applicatie verantwoordelijk is voor het object, en daarvoor de rechten beheert en uitgeeft. De eigenaar kan dan ook worden gezien in de trant van autorisatie en configuratie in plaats van als onderdeel van het datamodel.'
           type: string
       required:
         - naam
@@ -1564,7 +1564,7 @@ components:
         - beschrijving
       properties:
         naam:
-          description: 'De naam van deze Afspraak <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
+          description: 'De naam van deze Afspraak. <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
         samenvatting:
           description: 'Een korte samenvattende tekst over deze Afspraak bedoeld ter introductie.  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
@@ -1582,7 +1582,7 @@ components:
         identificatie:
           type: string
           example: 6a36c2c4-213e-4348-a467-dfa3a30f64aa
-          description: 'De unieke identificatie van deze Agenda binnen de organisatie die ddeze Agenda heeft gecreeerd. <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
+          description: 'De unieke identificatie van deze Agenda binnen de organisatie die deze Agenda heeft gecreëerd. <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
           maxLength: 40
         bronOrganisatie:
           title: bronOrganisatie
@@ -1591,12 +1591,12 @@ components:
           required: 'true'
           maxLength: 9
           minLength: 8
-          description: 'Het RSIN van de organisatie waartoe deze Agenda behoort. Dit moet een geldig RSIN zijn van 9 nummers en voldoen aan https://nl.wikipedia.org/wiki/Burgerservicenummer#11-proef. <br> Het RSIN wordt bepaald aan de hand van de geauthenticeerde applicatie en kan niet worden overschreven'
+          description: 'Het RSIN van de organisatie waartoe deze Agenda behoort. Dit moet een geldig RSIN zijn van 9 nummers en voldoen aan https://nl.wikipedia.org/wiki/Burgerservicenummer#11-proef. <br> Het RSIN wordt bepaald aan de hand van de geauthenticeerde applicatie en kan niet worden overschreven.'
         naam:
-          description: 'De naam van deze Agenda <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
+          description: 'De naam van deze Agenda. <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
         beschrijving:
-          description: 'Een beschrijvende tekst over deze Agenda  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een beschrijvende tekst over deze Agenda. <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         beschikbaarheid:
           description: 'De beschikbare momenten van deze Agenda.'
@@ -1614,7 +1614,7 @@ components:
           items:
             type: string
         registratiedatum:
-          description: 'Het tijdstip waarop dit Agenda object is aangemaakt'
+          description: 'Het tijdstip waarop dit Agenda object is aangemaakt.'
           type: string
           format: date-time
         wijzigingsdatum:
@@ -1622,7 +1622,7 @@ components:
           type: string
           format: date-time
         eigenaar:
-          description: 'Met eigenaar wordt bijgehouden welke  applicatie verantwoordelijk is voor het object, en daarvoor de rechten beheerd en uitgeeft. In die zin moet de eigenaar dan ook worden gezien in de trant van autorisatie en configuratie in plaats van als onderdeel van het datamodel.'
+          description: 'Met eigenaar wordt bijgehouden welke  applicatie verantwoordelijk is voor het object, en daarvoor de rechten beheert en uitgeeft. De eigenaar kan dan ook worden gezien in de trant van autorisatie en configuratie in plaats van als onderdeel van het datamodel.'
           type: string
         url:
           readOnly: true
@@ -1642,7 +1642,7 @@ components:
         identificatie:
           type: string
           example: 6a36c2c4-213e-4348-a467-dfa3a30f64aa
-          description: 'De unieke identificatie van deze Agenda binnen de organisatie die ddeze Agenda heeft gecreeerd. <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
+          description: 'De unieke identificatie van deze Agenda binnen de organisatie die deze Agenda heeft gecreëerd. <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
           maxLength: 40
         bronOrganisatie:
           title: bronOrganisatie
@@ -1651,9 +1651,9 @@ components:
           required: 'true'
           maxLength: 9
           minLength: 8
-          description: 'Het RSIN van de organisatie waartoe deze Agenda behoort. Dit moet een geldig RSIN zijn van 9 nummers en voldoen aan https://nl.wikipedia.org/wiki/Burgerservicenummer#11-proef. <br> Het RSIN wordt bepaald aan de hand van de geauthenticeerde applicatie en kan niet worden overschreven'
+          description: 'Het RSIN van de organisatie waartoe deze Agenda behoort. Dit moet een geldig RSIN zijn van 9 nummers en voldoen aan https://nl.wikipedia.org/wiki/Burgerservicenummer#11-proef. <br> Het RSIN wordt bepaald aan de hand van de geauthenticeerde applicatie en kan niet worden overschreven.'
         naam:
-          description: 'De naam van deze Agenda <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
+          description: 'De naam van deze Agenda. <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
         beschikbaarheid:
           description: 'De beschikbare momenten van deze Agenda.'
@@ -1671,7 +1671,7 @@ components:
           items:
             type: string
         registratiedatum:
-          description: 'Het tijdstip waarop dit Agenda object is aangemaakt'
+          description: 'Het tijdstip waarop dit Agenda object is aangemaakt.'
           type: string
           format: date-time
         wijzigingsdatum:
@@ -1679,7 +1679,7 @@ components:
           type: string
           format: date-time
         eigenaar:
-          description: 'Met eigenaar wordt bijgehouden welke  applicatie verantwoordelijk is voor het object, en daarvoor de rechten beheerd en uitgeeft. In die zin moet de eigenaar dan ook worden gezien in de trant van autorisatie en configuratie in plaats van als onderdeel van het datamodel.'
+          description: 'Met eigenaar wordt bijgehouden welke  applicatie verantwoordelijk is voor het object, en daarvoor de rechten beheert en uitgeeft. De eigenaar kan dan ook worden gezien in de trant van autorisatie en configuratie in plaats van als onderdeel van het datamodel.'
           type: string
       required:
         - naam
@@ -1690,10 +1690,10 @@ components:
         identificatie:
           type: string
           example: 6a36c2c4-213e-4348-a467-dfa3a30f64aa
-          description: 'De unieke identificatie van deze Agenda binnen de organisatie die ddeze Agenda heeft gecreeerd. <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
+          description: 'De unieke identificatie van deze Agenda binnen de organisatie die deze Agenda heeft gecreëerd. <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
           maxLength: 40
         naam:
-          description: 'De naam van deze Agenda <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
+          description: 'De naam van deze Agenda. <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
       required:
         - naam
@@ -1849,7 +1849,7 @@ components:
       description: Beschikbaarheid
       properties:
         id:
-          description: 'Het identificatienummer van deze Beschikbaarheid <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
+          description: 'Het identificatienummer van deze Beschikbaarheid. <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
           type: integer
         agendas:
           description: 'De agendas waar deze Beschikbaarheid in staat.'
@@ -1857,24 +1857,24 @@ components:
           items:
             type: string
         naam:
-          description: 'De naam van deze Beschikbaarheid <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
+          description: 'De naam van deze Beschikbaarheid. <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
         samenvatting:
           description: 'Een korte samenvattende tekst over deze Beschikbaarheid bedoeld ter introductie.  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         beschrijving:
-          description: 'Een uitgebreide beschrijvende tekst over deze Ambtenaar bedoeld ter verdere verduidelijking  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een uitgebreide beschrijvende tekst over deze Beschikbaarheid bedoeld ter verdere verduidelijking. <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         van:
           description: 'Het begin van deze Beschikbaarheid.'
           type: string
           format: date-time
         tot:
-          description: 'Het einde van deze Beschikbaarheid'
+          description: 'Het einde van deze Beschikbaarheid.'
           type: string
           format: date-time
         herhaal:
-          description: 'Herhaal deze Beschikbaarheid'
+          description: 'Herhaal deze Beschikbaarheid.'
           type: boolean
         maandag:
           description: Maandag
@@ -1914,7 +1914,7 @@ components:
           type: string
           format: date-time
         eigenaar:
-          description: 'Met eigenaar wordt bijgehouden welke  applicatie verantwoordelijk is voor het object, en daarvoor de rechten beheerd en uitgeeft. In die zin moet de eigenaar dan ook worden gezien in de trant van autorisatie en configuratie in plaats van als onderdeel van het datamodel.'
+          description: 'Met eigenaar wordt bijgehouden welke applicatie verantwoordelijk is voor het object, en daarvoor de rechten beheert en uitgeeft. De eigenaar kan dan ook worden gezien in de trant van autorisatie en configuratie in plaats van als onderdeel van het datamodel.'
           type: string
         url:
           readOnly: true
@@ -1927,7 +1927,7 @@ components:
       description: Beschikbaarheid
       properties:
         id:
-          description: 'Het identificatienummer van deze Beschikbaarheid <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
+          description: 'Het identificatienummer van deze Beschikbaarheid. <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
           type: integer
         agendas:
           description: 'De agendas waar deze Beschikbaarheid in staat.'
@@ -1935,24 +1935,24 @@ components:
           items:
             type: string
         naam:
-          description: 'De naam van deze Beschikbaarheid <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
+          description: 'De naam van deze Beschikbaarheid. <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
         samenvatting:
           description: 'Een korte samenvattende tekst over deze Beschikbaarheid bedoeld ter introductie.  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         beschrijving:
-          description: 'Een uitgebreide beschrijvende tekst over deze Ambtenaar bedoeld ter verdere verduidelijking  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een uitgebreide beschrijvende tekst over deze Beschikbaarheid bedoeld ter verdere verduidelijking. <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         van:
           description: 'Het begin van deze Beschikbaarheid.'
           type: string
           format: date-time
         tot:
-          description: 'Het einde van deze Beschikbaarheid'
+          description: 'Het einde van deze Beschikbaarheid.'
           type: string
           format: date-time
         herhaal:
-          description: 'Herhaal deze Beschikbaarheid'
+          description: 'Herhaal deze Beschikbaarheid.'
           type: boolean
         maandag:
           description: Maandag
@@ -1992,7 +1992,7 @@ components:
           type: string
           format: date-time
         eigenaar:
-          description: 'Met eigenaar wordt bijgehouden welke  applicatie verantwoordelijk is voor het object, en daarvoor de rechten beheerd en uitgeeft. In die zin moet de eigenaar dan ook worden gezien in de trant van autorisatie en configuratie in plaats van als onderdeel van het datamodel.'
+          description: 'Met eigenaar wordt bijgehouden welke applicatie verantwoordelijk is voor het object, en daarvoor de rechten beheert en uitgeeft. De eigenaar kan dan ook worden gezien in de trant van autorisatie en configuratie in plaats van als onderdeel van het datamodel.'
           type: string
       required:
         - naam
@@ -2007,34 +2007,34 @@ components:
         - beschrijving
       properties:
         naam:
-          description: 'De naam van deze Beschikbaarheid <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
+          description: 'De naam van deze Beschikbaarheid. <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
         samenvatting:
           description: 'Een korte samenvattende tekst over deze Beschikbaarheid bedoeld ter introductie.  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         beschrijving:
-          description: 'Een uitgebreide beschrijvende tekst over deze Ambtenaar bedoeld ter verdere verduidelijking  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een uitgebreide beschrijvende tekst over deze Beschikbaarheid bedoeld ter verdere verduidelijking. <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
     Taak:
       type: object
       description: taak
       properties:
         id:
-          description: 'Het identificatienummer van deze Taak <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
+          description: 'Het identificatienummer van deze Taak. <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
           type: integer
         agendas:
-          description: 'De agendas waar deze Taken in staan'
+          description: 'De agenda''s waar deze Taken in staan.'
           type: array
           items:
             type: string
         naam:
-          description: 'De naam van deze Taak <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
+          description: 'De naam van deze Taak. <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
         samenvatting:
           description: 'Een korte samenvattende tekst over deze Taak bedoeld ter introductie.  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         beschrijving:
-          description: 'Een uitgebreide beschrijvende tekst over deze Taak bedoeld ter verdere verduidelijking  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een uitgebreide beschrijvende tekst over deze Taak bedoeld ter verdere verduidelijking.  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         herhaalVan:
           description: 'Herhaal deze Taak vanaf'
@@ -2045,15 +2045,15 @@ components:
           type: string
           format: date-time
         registratiedatum:
-          description: 'Het tijdstip waarop deze Taak is aangemaakt'
+          description: 'Het tijdstip waarop deze Taak is aangemaakt.'
           type: string
           format: date-time
         wijzigingsdatum:
-          description: 'Het tijdstip waarop deze Taak voor het laatst is gewijzigd'
+          description: 'Het tijdstip waarop deze Taak voor het laatst is gewijzigd.'
           type: string
           format: date-time
         eigenaar:
-          description: 'De eigenaar (applicatie) van dit object, wordt bepaald aan de hand van de geauthenticeerde applicatie die de taak heeft aangemaakt'
+          description: 'De eigenaar (applicatie) van dit object, wordt bepaald aan de hand van de geauthenticeerde applicatie die de taak heeft aangemaakt.'
           type: string
       required:
         - naam
@@ -2064,21 +2064,21 @@ components:
       description: taak
       properties:
         id:
-          description: 'Het identificatienummer van deze Taak <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
+          description: 'Het identificatienummer van deze Taak. <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>'
           type: integer
         agendas:
-          description: 'De agendas waar deze Taken in staan'
+          description: 'De agenda''s waar deze Taken in staan.'
           type: array
           items:
             type: string
         naam:
-          description: 'De naam van deze Taak <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
+          description: 'De naam van deze Taak. <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
         samenvatting:
           description: 'Een korte samenvattende tekst over deze Taak bedoeld ter introductie.  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         beschrijving:
-          description: 'Een uitgebreide beschrijvende tekst over deze Taak bedoeld ter verdere verduidelijking  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een uitgebreide beschrijvende tekst over deze Taak bedoeld ter verdere verduidelijking.  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         herhaalVan:
           description: 'Herhaal deze Taak vanaf'
@@ -2089,15 +2089,15 @@ components:
           type: string
           format: date-time
         registratiedatum:
-          description: 'Het tijdstip waarop deze Taak is aangemaakt'
+          description: 'Het tijdstip waarop deze Taak is aangemaakt.'
           type: string
           format: date-time
         wijzigingsdatum:
-          description: 'Het tijdstip waarop deze Taak voor het laatst is gewijzigd'
+          description: 'Het tijdstip waarop deze Taak voor het laatst is gewijzigd.'
           type: string
           format: date-time
         eigenaar:
-          description: 'De eigenaar (applicatie) van dit object, wordt bepaald aan de hand van de geauthenticeerde applicatie die de taak heeft aangemaakt'
+          description: 'De eigenaar (applicatie) van dit object, wordt bepaald aan de hand van de geauthenticeerde applicatie die de taak heeft aangemaakt.'
           type: string
       required:
         - naam
@@ -2112,13 +2112,13 @@ components:
         - beschrijving
       properties:
         naam:
-          description: 'De naam van deze Taak <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
+          description: 'De naam van deze Taak. <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>'
           type: string
         samenvatting:
           description: 'Een korte samenvattende tekst over deze Taak bedoeld ter introductie.  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
         beschrijving:
-          description: 'Een uitgebreide beschrijvende tekst over deze Taak bedoeld ter verdere verduidelijking  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
+          description: 'Een uitgebreide beschrijvende tekst over deze Taak bedoeld ter verdere verduidelijking.  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>'
           type: string
   securitySchemes:
     apiKey:
@@ -2136,7 +2136,7 @@ externalDocs:
 tags:
   -
     name: Agenda
-    description: 'De agenda wordt gebruikt om een momenten in de tijd of een tijdspanne weer tegeven.'
+    description: 'De agenda wordt gebruikt om een momenten in de tijd of een tijdspanne weertegeven.'
   -
     name: Taak
     description: 'En taak of ''to do'' binnen een agenda.'
@@ -2145,7 +2145,7 @@ tags:
     description: 'Een afspraak behorende bij een of meerdere agendas.'
   -
     name: Beschikbaar
-    description: 'Een moment van beschikbaarheid behorende bij een of meerdere agendas, totale beschikbaarheid wordt berekend op agenda niveau door beschikbaarheid en afspraken met elkaar te vergelijken.'
+    description: 'Een moment van beschikbaarheid behorende bij een of meerdere agendas, totale beschikbaarheid wordt berekend op agenda niveau, door beschikbaarheid en afspraken met elkaar te vergelijken.'
   -
     name: Applicatie
     description: 'Een software applicatie binnen een organisatie die gebruik maakt van een component voor het creëren, ophalen, bijwerken of verwijderen van gegevens. Applicaties kunnen worden geregistreerd om namens een organisatie te handelen op een component. In deze zin zijn applicaties dan ook onderdeel van het beheerproces, infrastructuur en configuratie van een component in plaats van het datamodel dat door het component wordt geleverd.'

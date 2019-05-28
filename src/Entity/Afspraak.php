@@ -83,7 +83,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *     		"denormalization_context"={"groups"={"write"}},
  *         	"openapi_context" = {
  *         		"summary" = "Logboek inzien",
- *         		"description" = "Geeft een array van eerdere versies en wijzigingen van deze Afspraak",
+ *         		"description" = "Geeft een array van eerdere versies en wijzigingen van deze Afspraak.",
  *          	"consumes" = {
  *              	"application/json",
  *               	"text/html",
@@ -98,7 +98,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *     		"denormalization_context"={"groups"={"write"}},
  *         	"openapi_context" = {
  *         		"summary" = "Versie herstellen",
- *         		"description" = "Herstel een eerdere versie van deze Afspraak. Dit is een destructieve actie die niet ongedaan kan worden gemaakt",
+ *         		"description" = "Herstel een eerdere versie van deze Afspraak. Dit is een destructieve actie die niet ongedaan kan worden gemaakt.",
  *          	"consumes" = {
  *              	"application/json",
  *               	"text/html",
@@ -129,7 +129,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
 class Afspraak implements StringableInterface
 {
 	/**
-	 * Het identificatienummer van deze Afspraak <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>
+	 * Het identificatienummer van deze Afspraak. <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>
 	 *
 	 * @var int|null
 	 *
@@ -142,7 +142,7 @@ class Afspraak implements StringableInterface
 	public $id;
 	
 	/**
-	 * De agendas waar deze Afspraak in staat
+	 * De agenda's waar deze Afspraak in staat.
 	 *
 	 * @var \Doctrine\Common\Collections\Collection|\App\Entity\Product
 	 *
@@ -154,7 +154,7 @@ class Afspraak implements StringableInterface
 	public $agendas;
 	
 	/**
-	 * De naam van deze Afspraak <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>
+	 * De naam van deze Afspraak. <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>
 	 *
 	 * @var string
 	 *
@@ -387,7 +387,7 @@ class Afspraak implements StringableInterface
 	public $herhaalTot;
 	
 	/**
-	 * Het tijdstip waarop dit Afspraak object is aangemaakt
+	 * Het tijdstip waarop dit Afspraak object is aangemaakt.
 	 *
 	 * @var string Een "Y-m-d H:i:s" waarde bijvoorbeeld "2018-12-31 13:33:05" ofwel "Jaar-dag-maand uur:minuut:seconde"
 	 * @Gedmo\Timestampable(on="create")
@@ -414,7 +414,7 @@ class Afspraak implements StringableInterface
 	public $wijzigingsdatum;
 
 	/**
-     * Met eigenaar wordt bijgehouden welke  applicatie verantwoordelijk is voor het object, en daarvoor de rechten beheerd en uitgeeft. In die zin moet de eigenaar dan ook worden gezien in de trant van autorisatie en configuratie in plaats van als onderdeel van het datamodel.
+     * Met eigenaar wordt bijgehouden welke  applicatie verantwoordelijk is voor het object, en daarvoor de rechten beheert en uitgeeft. De eigenaar kan dan ook worden gezien in de trant van autorisatie en configuratie in plaats van als onderdeel van het datamodel.
      * 
      * @var App\Entity\Applicatie $eigenaar
      *

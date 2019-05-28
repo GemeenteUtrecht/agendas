@@ -83,7 +83,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *     		"denormalization_context"={"groups"={"write"}},
  *         	"openapi_context" = {
  *         		"summary" = "Logboek inzien",
- *         		"description" = "Geeft een array van eerdere versies en wijzigingen van deze Taak",
+ *         		"description" = "Geeft een array van eerdere versies en wijzigingen van deze Taak.",
  *          	"consumes" = {
  *              	"application/json",
  *               	"text/html",
@@ -98,7 +98,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *     		"denormalization_context"={"groups"={"write"}},
  *         	"openapi_context" = {
  *         		"summary" = "Versie herstellen",
- *         		"description" = "Herstel een eerdere versie van deze Taak. Dit is een destructieve actie die niet ongedaan kan worden gemaakt",
+ *         		"description" = "Herstel een eerdere versie van deze Taak. Dit is een destructieve actie, die niet ongedaan kan worden gemaakt.",
  *          	"consumes" = {
  *              	"application/json",
  *               	"text/html",
@@ -128,7 +128,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
 class Taak implements StringableInterface
 {
 	/**
-	 * Het identificatienummer van deze Taak <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>
+	 * Het identificatienummer van deze Taak. <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>
 	 *
 	 * @var int|null
 	 *
@@ -141,7 +141,7 @@ class Taak implements StringableInterface
 	public $id;
 	
 	/**
-	 * De agendas waar deze Taken in staan
+	 * De agenda's waar deze Taken in staan.
 	 *
 	 * @var \Doctrine\Common\Collections\Collection|\App\Entity\Product
 	 *
@@ -153,7 +153,7 @@ class Taak implements StringableInterface
 	public $agendas;
 	
 	/**
-	 * De naam van deze Taak <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>
+	 * De naam van deze Taak. <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>
 	 *
 	 * @var string
 	 *
@@ -214,7 +214,7 @@ class Taak implements StringableInterface
 	public $samenvatting;
 	
 	/**
-	 * Een uitgebreide beschrijvende tekst over deze Taak bedoeld ter verdere verduidelijking  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>
+	 * Een uitgebreide beschrijvende tekst over deze Taak bedoeld ter verdere verduidelijking.  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>
 	 *
 	 * @var string
 	 *
@@ -270,7 +270,7 @@ class Taak implements StringableInterface
 	public $herhaalTot;
 	
 	/**
-	 * Het tijdstip waarop deze Taak is aangemaakt
+	 * Het tijdstip waarop deze Taak is aangemaakt.
 	 *
 	 * @var string Een "Y-m-d H:i:s" waarde bijvoorbeeld "2018-12-31 13:33:05" ofwel "Jaar-dag-maand uur:minuut:seconde"
 	 * @Gedmo\Timestampable(on="create")
@@ -283,7 +283,7 @@ class Taak implements StringableInterface
 	public $registratiedatum;
 	
 	/**
-	 * Het tijdstip waarop deze Taak voor het laatst is gewijzigd
+	 * Het tijdstip waarop deze Taak voor het laatst is gewijzigd.
 	 *
 	 * @var string Een "Y-m-d H:i:s" waarde bijvoorbeeld "2018-12-31 13:33:05" ofwel "Jaar-dag-maand uur:minuut:seconde"
 	 * @Gedmo\Timestampable(on="update")
@@ -297,7 +297,7 @@ class Taak implements StringableInterface
 	public $wijzigingsdatum;
 
 	/**
-     * De eigenaar (applicatie) van dit object, wordt bepaald aan de hand van de geauthenticeerde applicatie die de taak heeft aangemaakt
+     * De eigenaar (applicatie) van dit object, wordt bepaald aan de hand van de geauthenticeerde applicatie die de taak heeft aangemaakt.
      * 
      * @var App\Entity\Applicatie $eigenaar
      *

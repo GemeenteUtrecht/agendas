@@ -59,7 +59,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *     	   "denormalization_context"={"groups"={"match"}},
  *         "openapi_context" = {
  *         		"summary" = "Vergelijk beschikbaarheid",
- *         		"description" = "Vergelijk een aantal Agenda's en geef een lijst van matchende beschikbaarheid terug",
+ *         		"description" = "Vergelijk een aantal Agenda's en geef een lijst van matchende beschikbaarheid terug.",
  *          	"consumes" = {
  *              	"application/json",
  *               	"text/html",
@@ -114,7 +114,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *     	   "denormalization_context"={"groups"={"write"}},
  *         "openapi_context" = {
  *         		"summary" = "Controleer beschikbaarheid",
- *         		"description" = "Controleer welke periodes nog beschikbaar zijn in deze Agenda gedurende een gegeven periode",
+ *         		"description" = "Controleer welke periodes nog beschikbaar zijn in deze Agenda gedurende een gegeven periode.",
  *          	"consumes" = {
  *              	"application/json",
  *               	"text/html",
@@ -129,7 +129,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *     		"denormalization_context"={"groups"={"write"}},
  *         	"openapi_context" = {
  *         		"summary" = "Logboek inzien",
- *         		"description" = "Geeft een array van eerdere versies en wijzigingen van deze Agenda",
+ *         		"description" = "Geeft een array van eerdere versies en wijzigingen van deze Agenda.",
  *          	"consumes" = {
  *              	"application/json",
  *               	"text/html",
@@ -144,7 +144,7 @@ use ActivityLogBundle\Entity\Interfaces\StringableInterface;
  *     		"denormalization_context"={"groups"={"write"}},
  *         	"openapi_context" = {
  *         		"summary" = "Versie herstellen",
- *         		"description" = "Herstel een eerdere versie van deze Agenda. Dit is een destructieve actie die niet ongedaan kan worden gemaakt",
+ *         		"description" = "Herstel een eerdere versie van deze Agenda. Dit is een destructieve actie die niet ongedaan kan worden gemaakt.",
  *          	"consumes" = {
  *              	"application/json",
  *               	"text/html",
@@ -187,7 +187,7 @@ class Agenda implements StringableInterface
 	public $id;
 	
 	/**
-	 * De unieke identificatie van deze Agenda binnen de organisatie die ddeze Agenda heeft gecreeerd. <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>
+	 * De unieke identificatie van deze Agenda binnen de organisatie die deze Agenda heeft gecreëerd. <br /><b>Schema:</b> <a href="https://schema.org/identifier">https://schema.org/identifier</a>
 	 *
 	 * @var string
 	 * @ORM\Column(
@@ -215,7 +215,7 @@ class Agenda implements StringableInterface
 	public $identificatie;
 	
 	/**
-	 * Het RSIN van de organisatie waartoe deze Agenda behoort. Dit moet een geldig RSIN zijn van 9 nummers en voldoen aan https://nl.wikipedia.org/wiki/Burgerservicenummer#11-proef. <br> Het RSIN wordt bepaald aan de hand van de geauthenticeerde applicatie en kan niet worden overschreven
+	 * Het RSIN van de organisatie waartoe deze Agenda behoort. Dit moet een geldig RSIN zijn van 9 nummers en voldoen aan https://nl.wikipedia.org/wiki/Burgerservicenummer#11-proef. <br> Het RSIN wordt bepaald aan de hand van de geauthenticeerde applicatie en kan niet worden overschreven.
 	 *
 	 * @var integer
 	 * @ORM\Column(
@@ -248,7 +248,7 @@ class Agenda implements StringableInterface
 
 	
 	/**
-	 * De naam van deze Agenda <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>
+	 * De naam van deze Agenda. <br /><b>Schema:</b> <a href="https://schema.org/name">https://schema.org/name</a>
 	 *
 	 * @var string
 	 *
@@ -268,7 +268,7 @@ class Agenda implements StringableInterface
 	public $naam;
 	
 	/**
-	 * Een beschrijvende tekst over deze Agenda  <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>
+	 * Een beschrijvende tekst over deze Agenda. <br /><b>Schema:</b> <a href="https://schema.org/description">https://schema.org/description</a>
 	 *
 	 * @var string
 	 *
@@ -321,7 +321,7 @@ class Agenda implements StringableInterface
 	public $taken;
 	
 	/**
-	 * Het tijdstip waarop dit Agenda object is aangemaakt
+	 * Het tijdstip waarop dit Agenda object is aangemaakt.
 	 *
 	 * @var string Een "Y-m-d H:i:s" waarde bijvoorbeeld "2018-12-31 13:33:05" ofwel "Jaar-dag-maand uur:minuut:seconde"
 	 * @Gedmo\Timestampable(on="create")
@@ -348,7 +348,7 @@ class Agenda implements StringableInterface
 	public $wijzigingsdatum;
 
 	/**
-	 * Met eigenaar wordt bijgehouden welke  applicatie verantwoordelijk is voor het object, en daarvoor de rechten beheerd en uitgeeft. In die zin moet de eigenaar dan ook worden gezien in de trant van autorisatie en configuratie in plaats van als onderdeel van het datamodel.
+	 * Met eigenaar wordt bijgehouden welke  applicatie verantwoordelijk is voor het object, en daarvoor de rechten beheert en uitgeeft. De eigenaar kan dan ook worden gezien in de trant van autorisatie en configuratie in plaats van als onderdeel van het datamodel.
 	 * 
 	 * @var App\Entity\Applicatie $eigenaar
 	 *
